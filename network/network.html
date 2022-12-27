@@ -16,6 +16,7 @@
   <link     rel="stylesheet" href="network.css"  />
 </head>
 <body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary"> </nav>
     <div class=" container mt-4 mb-4 pb-1 admin-container" >
        
         <div class="text-center pt-5 pb-4 fst-italic opacity-99 sub-heading">  Network connection parameters(Wi-Fi STA mode, Ethernet, AP Mode, NTP Sync ), should be configured by the commissioning team once the product is deployed.
@@ -139,6 +140,10 @@
      
         </div>
     </div> 
-    
+    <script type="module">
+      import {Navbar} from '../Components/navbar.js';
+      let navbar=document.querySelector('.navbar');
+      navbar.innerHTML =Navbar()
+      </script>
 </body>
 </html>

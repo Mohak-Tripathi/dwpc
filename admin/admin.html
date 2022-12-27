@@ -20,11 +20,7 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-
-    
-
-  </nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary"> </nav>
 
 
   <div class="container mt-4 mb-4 pb-1 admin-container" >
@@ -38,7 +34,7 @@
   <!-- <div class="col-3 mb-3 border">  -->
     <p class="text-primary">Choose Variant</p>
     <form>
-      <div class="form-outline mb-2 w-25">
+      <div class="form mb-2 w-25">
         <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
         <!-- <label class="form-label" for="form1Example1">Email address</label> -->
       </div>
@@ -59,7 +55,7 @@
 
       <p class="text-primary">AP Mode SSID</p>
       <form>
-        <div class="form-outline mb-2 w-25">
+        <div class="form mb-2 w-25">
           <input type="text" id="apModeSSID" class="form-control  form-control-sm" placeholder="Set AP Mode SSID Password"/>
           <!-- <label class="form-label" for="apModeSSID">Set AP Mode SSID</label> -->
         </div>
@@ -82,7 +78,8 @@
 
     <p class="text-primary">Set AP Mode SSID Password</p>
     <form>
-      <div class="form-outline mb-2 w-25">
+      <div class="form mb-2 w-25">
+        <!-- outline -->
         <input type="text" id="apModeSSIDPass" class="form-control  form-control-sm" placeholder="Set AP Mode SSID Password"/>
         <!-- <label class="form-label" for="apModeSSIDPass">Set AP Mode SSID Password</label> -->
       </div>
@@ -104,7 +101,8 @@
 
     <p class="text-primary">OTA Update</p>
     <form>
-      <div class="form-outline mb-2 w-25">
+      <div class="form mb-2 w-25">
+        <!-- outline -->
         <input type="text" id="otaUpdate" class="form-control  form-control-sm" placeholder="Set OTA Update"/>
         <!-- <label class="form-label" for="otaUpdate">Set AP Mode SSID Password</label> -->
       </div>
@@ -117,11 +115,17 @@
 
 </div>
   </div>
-<script
+<!-- <script
 type="text/javascript"
 src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"
 
-></script>
-<script defer src="./admin.js"></script>
+></script> -->
+
+<script type="module">
+  import {Navbar} from '../Components/navbar.js';
+  let navbar=document.querySelector('.navbar');
+  navbar.innerHTML =Navbar()
+  </script>
+<!-- <script defer src="./admin.js"></script> -->
 </body>
 </html>
