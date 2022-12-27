@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.css" rel="stylesheet"
+/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link     rel="stylesheet" href="service.css"  />
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary"> </nav>
+    <div class=" container mt-4 mb-4 pb-1 admin-container" >
+       
+        <div class="text-center pt-5 pb-4 fst-italic opacity-99 sub-heading"> Model input parameters for optimal performance during inference, should be configured by the production team before the product is shipped from the factory.
+        </div>
+
+        <div class="row mt-3 mb-5 me-2 ms-2 p-2">
+ 
+          
+  <div class="row mini-box mb-2"> 
+    <div class="col-4 h5"> Calliberate</div>
+    <div class="col-4"> 
+        <button type="button" class="btn min-button btn-primary"> Calliberate</button>
+    </div>
+  </div>
+  <div class="row mini-box  mb-2"> 
+    <div class="col-4 h5"> Factory Reset</div>
+    <div class="col-4">
+        <button type="button" class="btn min-button btn-primary"> Reset</button>
+    </div>
+  </div>
+  <div class="row mini-box  mb-2"> 
+    <div class="col-4 h5"> Reboot </div>
+    <div class="col-4">
+        <button type="button" class="btn min-button btn-primary"> Reboot</button>
+    </div>
+  </div>
+      
+     
+        </div>
+     
+        </div>
+
+
+    
+  <footer id="footer"> </footer>
+
+
+    <script type="module">
+      import {Navbar} from '../Components/navbar.js';
+      let navbar=document.querySelector('.navbar');
+      navbar.innerHTML =Navbar()
+
+      
+  import {Footer} from '../Components/footer.js';
+  let footer=document.getElementById('footer');
+  footer.innerHTML = Footer()
+      </script>
+</body>
+</html>

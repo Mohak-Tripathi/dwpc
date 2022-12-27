@@ -26,7 +26,7 @@ function Navbar() {
           <a class="btn btn-primary px-3 me-2" href="../network/network.html" role="button"> <span class="material-symbols-outlined me-2">
             wifi
             </span>Network</a>
-          <a class="btn btn-primary px-3 me-2" href="network.html" role="button"> <span class="material-symbols-outlined me-2">
+          <a class="btn btn-primary px-3 me-2" href="../dashboard/dashboard.html" role="button"> <span class="material-symbols-outlined me-2">
             space_dashboard
             </span>Dashboard</a>
           <a class="btn btn-primary px-3 me-2" href="logout.html" role="button"> <span class="material-symbols-outlined me-2">
