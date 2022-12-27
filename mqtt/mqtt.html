@@ -13,23 +13,24 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.css" rel="stylesheet"
 />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <link     rel="stylesheet" href="network.css"  />
+  <link     rel="stylesheet" href="mqtt.css"  />
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary"> </nav>
-    <div class=" container mt-4 mb-4 p-4 admin-container" >
+    <div class=" container mt-4 mb-4 pb-1 admin-container" >
        
-        <div class="text-center pt-5 pb-4 fst-italic opacity-99 sub-heading">  Network connection parameters(Wi-Fi STA mode, Ethernet, AP Mode, NTP Sync ), should be configured by the commissioning team once the product is deployed.
+        <div class="text-center pt-5 pb-4 fst-italic opacity-99 sub-heading">  MQTT connection parameters, should be configured by the commissioning team once the product is deployed.
         </div>
 
-        <div class="row ">
-            <!-- border -->
-            <p class="text-primary">Configure the WIFI credentials of your wifi router</p>
+        <div class="row mb-5 p-2 ">
+ 
+          
             <form action="">
-                <div class="row"> 
+                <div class="row mb-3"> 
+                    <p class="text-primary">Configure MQTT broker and port</p>
                 <div class="col-6 ">
                     <!-- border -->
-                    <p>SSID</p>
+                    <p>Broker</p>
                 <div class="form">
                     <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
                     <!-- <label class="form-label" for="form1Example1">Email address</label> -->
@@ -38,111 +39,79 @@
       
                 <div class="col-6 ">
                     <!-- border -->
-                    <p>Password</p>
+                    <p>Port</p>
                   <div class="form">
                     <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
                     <!-- <label class="form-label" for="form1Example1">Email address</label> -->
                   </div>
                 </div>
+            </div>
+
+            <div class="row mb-3"> 
+                <p class="text-primary">Configure the topics to publish the data</p>
+                <div class="col-6">
+                    <!-- border -->
+                    <p>Occupancy/People Count Topic</p>
+                <div class="form">
+                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
+                    <!-- <label class="form-label" for="form1Example1">Email address</label> -->
+                  </div>
+                </div>
+      
+                <div class="col-6">
+                    <!-- border -->
+                    <p>Device Health Topic</p>
+                  <div class="form">
+                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
+                    <!-- <label class="form-label" for="form1Example1">Email address</label> -->
+                  </div>
+                </div>
+            </div>
+                
+            <div class="row mb-3"> 
+                <p class="text-primary">Configure the User name and password</p>
+                <div class="col-6">
+                    <!-- border -->
+                    <p>Mqtt User Name</p>
+                <div class="form">
+                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
+                    <!-- <label class="form-label" for="form1Example1">Email address</label> -->
+                  </div>
+                </div>
+      
+                <div class="col-6">
+                    <!-- border -->
+                    <p> Password</p>
+                  <div class="form">
+                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
+                    <!-- <label class="form-label" for="form1Example1">Email address</label> -->
+                  </div>
+                </div>
+            </div>
                 <div style="display:flex; justify-content:flex-end">
                     <button type="submit" class="btn bg-transparent bg-gradient text-primary border-margin">SAVE</button>
                     </div>
-                </div>
+              
 
             </form>
       
      
+        </div>
+
+        <div class="row">
+
+
         </div>
     
-        <div class="row ">
-            <!-- border -->
-            <p class="text-primary">Configure the Static IP for Wifi Interface (CIDR Format)</p>
-            <form action="">
-                <div class="row"> 
-                <div class="col-6 ">
-                    <!-- border -->
-                    <p>Static IP</p>
-                <div class="form">
-                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
-                    <!-- <label class="form-label" for="form1Example1">Email address</label> -->
-                  </div>
-                </div>
-      
-                <div class="col-6 ">
-                    <!-- border -->
-                    <p> Gateway IP</p>
-                  <div class="form">
-                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
-                    <!-- <label class="form-label" for="form1Example1">Email address</label> -->
-                  </div>
-                </div>
-                <div style="display:flex; justify-content:flex-end">
-                    <button type="submit" class="btn bg-transparent bg-gradient text-primary border-margin">SAVE</button>
-                    </div>
-                </div>
-
-            </form>
-      
-     
-        </div>
-        <div class="row">
-            <p class="text-primary">Configure the Static IP for Ethernet Interface (CIDR Format)</p>
-            <form action="">
-                <div class="row"> 
-                <div class="col-6 ">
-                    <!-- border -->
-                    <p>Static IP</p>
-                <div class="form">
-                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
-                    <!-- <label class="form-label" for="form1Example1">Email address</label> -->
-                  </div>
-                </div>
-      
-                <div class="col-6 ">
-                    <!-- border -->
-                    <p> Gateway IP</p>
-                  <div class="form">
-                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
-                    <!-- <label class="form-label" for="form1Example1">Email address</label> -->
-                  </div>
-                </div>
-                <div style="display:flex; justify-content:flex-end">
-                    <button type="submit" class="btn bg-transparent bg-gradient text-primary border-margin">SAVE</button>
-                    </div>
-                </div>
-
-            </form>
-      
-     
-        </div>
-
-        <div class="row border">
-            <p class="text-primary">Configure the NTP Server</p>
-            <form action="">
-                <div class="row"> 
-                <div class="col-6 ">
-                    <!-- border -->
-                    <p>NTP Server Address</p>
-                <div class="form">
-                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
-           
-                  </div>
-                </div>
-      
-           
-                <div style="display:flex; justify-content:flex-end">
-                    <button type="submit" class="btn bg-transparent bg-gradient text-primary border-margin">SAVE</button>
-                    </div>
-                </div>
-
-            </form>
-      
+       
      
         </div>
     </div> 
 
     
   <footer id="footer"> </footer>
+
+
     <script type="module">
       import {Navbar} from '../Components/navbar.js';
       let navbar=document.querySelector('.navbar');
