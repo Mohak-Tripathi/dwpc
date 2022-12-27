@@ -18,7 +18,7 @@ function Navbar() {
           </button> -->
   
       
-          <a class="btn btn-primary px-3 me-2" href="..service/service.html" role="button" > <i class="fa-solid fa-right-to-bracket"></i> Services </a>
+          <a class="btn btn-primary px-3 me-2" href="../service/service.html" role="button" > <i class="fa-solid fa-right-to-bracket"></i> Services </a>
           <a class="btn btn-primary px-3 me-2" href="../inference/inference.html" role="button"> <i class="fa-solid fa-sensor"></i> Inference </a>
           <a class="btn btn-primary px-3 me-2" href="../mqtt/mqtt.html" role="button"> <span class="material-symbols-outlined me-2">
             settings_ethernet

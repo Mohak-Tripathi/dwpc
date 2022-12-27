@@ -19,27 +19,26 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary"> </nav>
     <div class=" container mt-4 mb-4 pb-1 admin-container" >
        
-        <div class="text-center pt-5 pb-4 fst-italic opacity-99 sub-heading">  MQTT connection parameters, should be configured by the commissioning team once the product is deployed.
+        <div class="text-center pt-5 pb-4 fst-italic opacity-99 sub-heading"> Model input parameters for optimal performance during inference, should be configured by the production team before the product is shipped from the factory.
         </div>
 
-        <div class="row mb-5 p-2 ">
+        <div class="row mt-3 mb-5 me-2 ms-2 p-2 border">
  
           
             <form action="">
                 <div class="row mb-3"> 
-                    <p class="text-primary">Configure MQTT broker and port</p>
+                    <p class="text-primary"> DWPC Configuration </p>
                 <div class="col-6 ">
-                    <!-- border -->
-                    <p>Broker</p>
+                    <p> Aggregation Interval</p>
                 <div class="form">
-                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
-                    <!-- <label class="form-label" for="form1Example1">Email address</label> -->
+                    <input type="text" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
+
                   </div>
                 </div>
       
                 <div class="col-6 ">
                     <!-- border -->
-                    <p>Port</p>
+                    <p>Distance In threhold</p>
                   <div class="form">
                     <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
                     <!-- <label class="form-label" for="form1Example1">Email address</label> -->
@@ -48,10 +47,10 @@
             </div>
 
             <div class="row mb-3"> 
-                <p class="text-primary">Configure the topics to publish the data</p>
+                <!-- <p class="text-primary">Configure the topics to publish the data</p> -->
                 <div class="col-6">
                     <!-- border -->
-                    <p>Occupancy/People Count Topic</p>
+                    <p>Distance Out threhold</p>
                 <div class="form">
                     <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
                     <!-- <label class="form-label" for="form1Example1">Email address</label> -->
@@ -60,7 +59,7 @@
       
                 <div class="col-6">
                     <!-- border -->
-                    <p>Device Health Topic</p>
+                    <p>Periodic Reset Interval</p>
                   <div class="form">
                     <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
                     <!-- <label class="form-label" for="form1Example1">Email address</label> -->
@@ -69,24 +68,58 @@
             </div>
                 
             <div class="row mb-3"> 
-                <p class="text-primary">Configure the User name and password</p>
+                <!-- <p class="text-primary">Configure the User name and password</p> -->
                 <div class="col-6">
                     <!-- border -->
-                    <p>Mqtt User Name</p>
+                    <p>Function Mode</p>
                 <div class="form">
                     <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
-                    <!-- <label class="form-label" for="form1Example1">Email address</label> -->
+              
                   </div>
                 </div>
       
                 <div class="col-6">
                     <!-- border -->
-                    <p> Password</p>
+                    <p> Measurement Frequency</p>
                   <div class="form">
                     <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
                     <!-- <label class="form-label" for="form1Example1">Email address</label> -->
                   </div>
                 </div>
+            </div>
+            <div class="row mb-3"> 
+                <!-- <p class="text-primary">Configure the User name and password</p> -->
+                <div class="col-6">
+                    <!-- border -->
+                    <p>Pixel Count 1% Threshold</p>
+                <div class="form">
+                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
+              
+                  </div>
+                </div>
+      
+                <div class="col-6">
+                    <!-- border -->
+                    <p>Pixel Count 2% Threshold</p>
+                  <div class="form">
+                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
+                    <!-- <label class="form-label" for="form1Example1">Email address</label> -->
+                  </div>
+                </div>
+            </div>
+
+            <div class="row mb-3"> 
+                <!-- <p class="text-primary">Configure the User name and password</p> -->
+                <div class="col-6">
+                    <!-- border -->
+                    <p>Room Capacity</p>
+                <div class="form">
+                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
+              
+                  </div>
+                </div>
+      
+            
             </div>
                 <div style="display:flex; justify-content:flex-end">
                     <button type="submit" class="btn bg-transparent bg-gradient text-primary border-margin">SAVE</button>
