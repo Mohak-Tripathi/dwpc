@@ -34,11 +34,11 @@ Whats New: EVERYTHING
  const bcrypt = require("bcryptjs");
  const md5 = require("md5");
 
-//  const adminRoutes = require("./router/admin");
-//  const mqttRoutes = require("./router/mqtt");
-//  const serviceRoutes = require("./router/service");
-//  const networkRoutes = require("./router/network");
-//  const inferenceRoutes = require("./router/inference");
+//  const adminRoutes = require("./router/adminRoute");
+//  const mqttRoutes = require("./router/mqttRoute");
+//  const serviceRoutes = require("./router/serviceRoute");
+ const networkRoutes = require("./router/networkRoute");
+//  const inferenceRoutes = require("./router/inferenceRoute");
  const authRoutes = require("./router/authRoute")
  
  app.use(cookieParser());
@@ -56,11 +56,11 @@ Whats New: EVERYTHING
 
 
  app.use("/api/v1", authRoutes);
-//  app.use("/api/v1/adminRoute", adminRoutes);
-//  app.use("/api/v1/mqttRoute", mqttRoutes);
-//  app.use("/api/v1/serviceRoute", serviceRoutes);
-//  app.use("/api/v1/networkRoute", networkRoutes);
-//  app.use("/api/v1/inferenceRoute", inferenceRoutes);
+//  app.use("/api/v1/admin", adminRoutes);
+//  app.use("/api/v1/mqtt", mqttRoutes);
+//  app.use("/api/v1/service", serviceRoutes);
+ app.use("/api/v1/network", networkRoutes);
+//  app.use("/api/v1/inference", inferenceRoutes);
 
 
 //  app.get("/", (req, res) => {

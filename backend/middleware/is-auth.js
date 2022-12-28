@@ -27,7 +27,7 @@ Auther: Mohak Tripathi
  
  // module.exports = async (req, res, next) => {
  
-   const authentication = async(req,res,next) => {
+   const isAuthenticated = async(req,res,next) => {
    const token = req.cookies.jwt;
    console.log(token, "mttoken")
  
@@ -59,7 +59,7 @@ Auther: Mohak Tripathi
  //***************Added by Mohak****************/
  
  // Handling users roles
-  const authorizeRoles = (...roles) => {
+  const isAuthorizeRoles = (...roles) => {
    return (req, res, next) => {
      if (!roles.includes(req.username.role)) {   //req.username attched in authentication
  
@@ -71,6 +71,6 @@ Auther: Mohak Tripathi
    }
  }
        /******************  Added by MOHAK T*************/
- module.exports = {authentication, authorizeRoles};
+ module.exports = {isAuthenticated, isAuthorizeRoles};
  
    

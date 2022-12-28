@@ -42,24 +42,15 @@
 			"role": "Demo"
 		}
 	],
-	"network_info": {
-		"nwk_interface": "",
-		"static_ip": "",
-		"gateway_ip": "",
-		"SSID": "PS-1456",
-		"password": null
-	},
-	"ntp_server": {
-		"ntp_server": "www.google.com"
-	},
+	"ntp_server": "rcyui",
 	"variant": "MQTT",
 	"network_information": {
 		"wifi_cred_ssid": "mohakfd",
 		"wifi_cred_pass": "Mohak@@1914",
 		"static_ip_wifi": "PS20",
 		"static_ip_wifi_pass": "Mohak@@1914",
-		"static_ip_eth": "mohskj",
-		"static_ip_eth_pass": "98989856",
+		"static_ip_eth": "PS-31",
+		"static_ip_eth_pass": "ps32",
 		"ap_mode_ssid": "PS-202",
 		"ap_mode_ssid_pass": "Mohak@@19146789"
 	},
