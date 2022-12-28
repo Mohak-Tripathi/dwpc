@@ -34,11 +34,11 @@ Whats New: EVERYTHING
  const bcrypt = require("bcryptjs");
  const md5 = require("md5");
 
-//  const adminRoutes = require("./routes/admin");
-//  const mqttRoutes = require("./routes/mqtt");
-//  const serviceRoutes = require("./routes/service");
-//  const networkRoutes = require("./routes/network");
-//  const inferenceRoutes = require("./routes/inference");
+//  const adminRoutes = require("./router/admin");
+//  const mqttRoutes = require("./router/mqtt");
+//  const serviceRoutes = require("./router/service");
+//  const networkRoutes = require("./router/network");
+//  const inferenceRoutes = require("./router/inference");
  const authRoutes = require("./router/authRoute")
  
  app.use(cookieParser());
