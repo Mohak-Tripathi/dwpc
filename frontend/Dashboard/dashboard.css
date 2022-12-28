@@ -18,7 +18,7 @@ body {
 	margin: 0;
 	padding: 0;
 	-webkit-font-smoothing: antialiased;
-	font-family: 'Muli', sans-serif;
+	/* font-family: 'Muli', sans-serif; */
 	font-weight: 400;
 	width: 100%;
 	min-height: 100%;
@@ -216,3 +216,32 @@ text-align: center;
     font-family: Calibri
 }
 
+
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 15px;
+  }
+  
+  
+  .admin-container{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    border-radius: 5px;
+    width: 800px;
+	border: 10px solid black
+  }
+  
+
+  .sub-heading{
+    font-family: ui-sans-serif
+  }
+
+
+  /* .border-margin{
+    border: 1px solid #3B71CA;
+    padding: 8px 40px
+  } */
