@@ -1,11 +1,69 @@
 {
-    "dependencies": {
-      "bcryptjs": "^2.4.3",
-      "cookie-parser": "^1.4.6",
-      "cors": "^2.8.5",
-      "express": "^4.18.2",
-      "jsonwebtoken": "^9.0.0",
-      "md5": "^2.3.0"
-    }
-  }
-  
+	"mqtt": {
+		"broker": "18989",
+		"port": 1899,
+		"ca": "crud-api-toolkit-app.rar",
+		"topic": "dsdssdk",
+		"health_topic": "ds",
+		"mqtt_user_name": "Mohadk",
+		"mqtt_password": "mosds"
+	},
+	"sensor": {
+		"mode": 2,
+		"overlap_threshold": 21,
+		"confidence_threshold": 23,
+		"resolution": {
+			"width": 12,
+			"height": 13
+		},
+		"people_count_degree": 14,
+		"model_input_resolution": 15,
+		"iou_threshold": 16,
+		"sleep_time": 17
+	},
+	"device_info": {
+		"eth_mac": "b827ebc86e65",
+		"wlan_mac": ""
+	},
+	"credentials": [
+		{
+			"app_user": "Production_User",
+			"app_password": "f213ca89494ed2145819fd304ba0cee5",
+			"role": "Production"
+		},
+		{
+			"app_user": "Support_User",
+			"app_password": "a3517876c46b72354b5c330bf57f5968",
+			"role": "Support"
+		},
+		{
+			"app_user": "Demo_User",
+			"app_password": "faeb5fa19d257ec2303cb3b4ca41759e",
+			"role": "Demo"
+		}
+	],
+	"network_info": {
+		"nwk_interface": "",
+		"static_ip": "",
+		"gateway_ip": "",
+		"SSID": "PS-1456",
+		"password": null
+	},
+	"ntp_server": {
+		"ntp_server": "www.google.com"
+	},
+	"variant": "MQTT",
+	"network_information": {
+		"wifi_cred_ssid": "mohakfd",
+		"wifi_cred_pass": "Mohak@@1914",
+		"static_ip_wifi": "PS20",
+		"static_ip_wifi_pass": "Mohak@@1914",
+		"static_ip_eth": "mohskj",
+		"static_ip_eth_pass": "98989856",
+		"ap_mode_ssid": "PS-202",
+		"ap_mode_ssid_pass": "Mohak@@19146789"
+	},
+	"people_count": 789,
+	"desk_occupancy": 1889,
+	"time_stamp": "12:01:21"
+}

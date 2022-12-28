@@ -1,7 +1,7 @@
 const express= require('express');
 const router= express.Router();
 
-const {login} = require("../controllers/authController")
+const {login, logout} = require("../controllers/authController")
 
 // const {isAuthenticated} = require("../middlewares/auth");
 
@@ -12,7 +12,7 @@ const {login} = require("../controllers/authController")
 
 router.route("/login").post(login);   // if authenticated will not be written it will throw error, can not read the property of undefined becz in authentication only we are attaching userid. 
 
-
+router.route("/logout").get(logout);
 
 
 module.exports = router;
