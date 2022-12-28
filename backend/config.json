@@ -45,8 +45,8 @@
 	"ntp_server": "rcyui",
 	"variant": "MQTT",
 	"network_information": {
-		"wifi_cred_ssid": "mohakfd",
-		"wifi_cred_pass": "Mohak@@1914",
+		"wifi_cred_ssid": "ps-13",
+		"wifi_cred_pass": "ps13",
 		"static_ip_wifi": "PS20",
 		"static_ip_wifi_pass": "Mohak@@1914",
 		"static_ip_eth": "PS-31",

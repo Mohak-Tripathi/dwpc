@@ -3,7 +3,7 @@
 const express= require('express');
 const router= express.Router();
 
-const {changeNtpServer, staticIpEtherent} = require("../controllers/networkController")
+const {changeNtpServer, staticIpEtherent,   wifiCredentials} = require("../controllers/networkController")
 
 const {isAuthenticated, isAuthorizeRoles} = require("../middleware/is-auth.js");
 
@@ -22,6 +22,13 @@ router.post(
 
     isAuthorizeRoles("Production", "Support"), 
     staticIpEtherent
+  );
+
+
+  router.post(
+    "/cred",
+    isAuthorizeRoles("Production", "Support"), 
+    wifiCredentials
   );
 
   module.exports = router

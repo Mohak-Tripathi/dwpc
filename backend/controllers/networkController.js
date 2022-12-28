@@ -33,3 +33,22 @@ exports.changeNtpServer= (req, res, next) => {
     fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
     res.status(200).json({ message: "static ip ethernet is saved" });
   };
+
+
+  exports.wifiCredentials = (req, res, next) => {
+
+    const {
+      SSID,
+      password
+    } = req.body;
+  
+  
+  
+    const config = JSON.parse(fs.readFileSync("./config.json"));
+  
+    config.network_information.wifi_cred_ssid = SSID;
+    config.network_information.wifi_cred_pass = password;
+  
+    fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
+    res.status(200).json({ message: "wifi credentials saved" });
+  };
