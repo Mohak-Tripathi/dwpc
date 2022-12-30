@@ -84,3 +84,4 @@ exports.getNtpServer = (req, res, next) => {
   res.status(200).json(config.ntp_server);
 };
 
+

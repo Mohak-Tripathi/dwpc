@@ -8,18 +8,19 @@
 		"mqtt_user_name": "Mohadk",
 		"mqtt_password": "mosds"
 	},
-	"sensor": {
-		"mode": 2,
-		"overlap_threshold": 21,
-		"confidence_threshold": 23,
-		"resolution": {
-			"width": 12,
-			"height": 13
-		},
-		"people_count_degree": 14,
-		"model_input_resolution": 15,
-		"iou_threshold": 16,
-		"sleep_time": 17
+	"inference": {
+		"aggregation_interval": 11,
+		"in_zone_distance_threhold": 12,
+		"out_zone_istance_threhold": 13,
+		"periodic_reset_interval": 14,
+		"function_mode": 15,
+		"measurement_frequency": 16,
+		"pixel_count_one_person_threshold": 17,
+		"pixel_count_two_person_threshold": 18,
+		"room_capacity": 19,
+		"os_timer_delay": 20,
+		"wait_timer": 31,
+		"sensing_mode": 32
 	},
 	"device_info": {
 		"eth_mac": "b827ebc86e65",

@@ -38,7 +38,7 @@ Whats New: EVERYTHING
 //  const mqttRoutes = require("./router/mqttRoute");
 //  const serviceRoutes = require("./router/serviceRoute");
  const networkRoutes = require("./router/networkRoute");
-//  const inferenceRoutes = require("./router/inferenceRoute");
+ const inferenceRoutes = require("./router/inferenceRoute");
  const authRoutes = require("./router/authRoute")
  
  app.use(cookieParser());
@@ -60,7 +60,7 @@ Whats New: EVERYTHING
 //  app.use("/api/v1/mqtt", mqttRoutes);
 //  app.use("/api/v1/service", serviceRoutes);
  app.use("/api/v1/network", networkRoutes);
-//  app.use("/api/v1/inference", inferenceRoutes);
+ app.use("/api/v1/inference", inferenceRoutes);
 
 
 //  app.get("/", (req, res) => {

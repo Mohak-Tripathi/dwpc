@@ -57,4 +57,22 @@ exports.changeApModePassword = (req, res, next) => {
     }
   
   };
+
+  exports.getVariant = (req, res, next) => {
+    const config = JSON.parse(fs.readFileSync("./config.json"));
+    res.status(200).json(config.variant);
+  };
+  
+
+  exports.setVariant = (req, res) => {
+    const { variantData } = req.body;
+
+  
+    const config = JSON.parse(fs.readFileSync("./config.json"));
+    config.variant = variantData;
+    fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
+    res.status(200).json({
+      message: "variant set succesfully",
+    });
+  };
   
