@@ -47,12 +47,12 @@
 	"network_information": {
 		"wifi_cred_ssid": "ps-13",
 		"wifi_cred_pass": "ps13",
-		"static_ip_wifi": "PS20",
-		"static_ip_wifi_pass": "Mohak@@1914",
+		"static_ip_wifi": "PS-9",
+		"static_ip_wifi_pass": "PS-9",
 		"static_ip_eth": "PS-31",
 		"static_ip_eth_pass": "ps32",
-		"ap_mode_ssid": "PS-202",
-		"ap_mode_ssid_pass": "Mohak@@19146789"
+		"ap_mode_ssid": "PS-12",
+		"ap_mode_ssid_pass": "motyo"
 	},
 	"people_count": 789,
 	"desk_occupancy": 1889,

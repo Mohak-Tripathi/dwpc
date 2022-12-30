@@ -3,6 +3,12 @@ const fs = require("fs");
 const path = require("path");
 
 
+exports.getNetworkInfo = (req, res, next) => {
+  console.log("At getNetworkInfo");
+  const config = JSON.parse(fs.readFileSync("./config.json"));
+  res.status(200).json(config.network_information);
+};
+
 
 exports.changeNtpServer= (req, res, next) => {
     const { ntpServer } = req.body;
@@ -52,3 +58,29 @@ exports.changeNtpServer= (req, res, next) => {
     fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
     res.status(200).json({ message: "wifi credentials saved" });
   };
+
+
+  
+exports.staticIpWifi = (req, res, next) => {
+
+  const {
+    static_ip,
+    gateway_ip
+  } = req.body;
+
+
+  const config = JSON.parse(fs.readFileSync("./config.json"));
+
+  config.network_information.static_ip_wifi = static_ip;
+  config.network_information.static_ip_wifi_pass = gateway_ip
+
+  fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
+  res.status(200).json({ message: "static ip wifi is saved" });
+};
+
+
+exports.getNtpServer = (req, res, next) => {
+  const config = JSON.parse(fs.readFileSync("./config.json"));
+  res.status(200).json(config.ntp_server);
+};
+
