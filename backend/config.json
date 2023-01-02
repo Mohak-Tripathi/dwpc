@@ -1,12 +1,28 @@
 {
-	"mqtt": {
-		"broker": "18989",
-		"port": 1899,
+	"mqtt_broker_one": {
+		"broker": "1",
+		"port": 2,
 		"ca": "crud-api-toolkit-app.rar",
-		"topic": "dsdssdk",
-		"health_topic": "ds",
-		"mqtt_user_name": "Mohadk",
-		"mqtt_password": "mosds"
+		"people_count_topic": "0",
+		"device_health_topic": "ds",
+		"mqtt_user_name": "Moht",
+		"mqtt_password": "momod"
+	},
+	"mqtt_broker_two": {
+		"broker": 5,
+		"port": 9,
+		"ca": "crud-api-toolkit-app.rar",
+		"people_count_topic": 98,
+		"device_health_topic": "ds2",
+		"mqtt_user_name": "Mohtkl",
+		"mqtt_password": "momodplpp"
+	},
+	"admin": {
+		"variant": "ZIGBEE",
+		"ap_mode_ssid": "PS-12",
+		"ap_mode_ssid_pass": "motyo",
+		"ota": "okay",
+		"wifi_status": "disabled"
 	},
 	"inference": {
 		"aggregation_interval": 11,
@@ -21,10 +37,6 @@
 		"os_timer_delay": 20,
 		"wait_timer": 31,
 		"sensing_mode": 32
-	},
-	"device_info": {
-		"eth_mac": "b827ebc86e65",
-		"wlan_mac": ""
 	},
 	"credentials": [
 		{
@@ -43,8 +55,6 @@
 			"role": "Demo"
 		}
 	],
-	"ntp_server": "rcyui",
-	"variant": "MQTT",
 	"network_information": {
 		"wifi_cred_ssid": "ps-13",
 		"wifi_cred_pass": "ps13",
@@ -52,8 +62,7 @@
 		"static_ip_wifi_pass": "PS-9",
 		"static_ip_eth": "PS-31",
 		"static_ip_eth_pass": "ps32",
-		"ap_mode_ssid": "PS-12",
-		"ap_mode_ssid_pass": "motyo"
+		"ntp_server": "rcytyui"
 	},
 	"people_count": 789,
 	"desk_occupancy": 1889,

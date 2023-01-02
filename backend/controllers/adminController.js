@@ -4,7 +4,7 @@ const path = require("path");
 
 exports.getApModeSsid = (req, res, next) => {
     const config = JSON.parse(fs.readFileSync("./config.json"));
-    res.status(200).json(config.network_information.ap_mode_ssid);
+    res.status(200).json(config.admin.ap_mode_ssid);
   };
 
 
@@ -17,7 +17,7 @@ exports.getApModeSsid = (req, res, next) => {
   
       const config = JSON.parse(fs.readFileSync("./config.json"));
   
-      config.network_information.ap_mode_ssid = ap_mode_ssid;
+      config.admin.ap_mode_ssid = ap_mode_ssid;
   
       fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
   
@@ -42,7 +42,7 @@ exports.changeApModePassword = (req, res, next) => {
   
       const config = JSON.parse(fs.readFileSync("./config.json"));
   
-      config.network_information.ap_mode_ssid_pass = ap_mode_ssid_pass;
+      config.admin.ap_mode_ssid_pass = ap_mode_ssid_pass;
   
       fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
   
@@ -60,19 +60,88 @@ exports.changeApModePassword = (req, res, next) => {
 
   exports.getVariant = (req, res, next) => {
     const config = JSON.parse(fs.readFileSync("./config.json"));
-    res.status(200).json(config.variant);
+    res.status(200).json(config.admin.variant);
   };
   
 
-  exports.setVariant = (req, res) => {
+  exports.setVariant = (req, res, next) => {
     const { variantData } = req.body;
 
-  
+  if(variantData){
     const config = JSON.parse(fs.readFileSync("./config.json"));
-    config.variant = variantData;
+    config.admin.variant = variantData;
     fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
     res.status(200).json({
       message: "variant set succesfully",
     });
+  }
+  else{
+    res.status(200).json({
+      message: "variant set configuration failed",
+    });
+  }
+    
   };
+  
+
+  
+  exports.setOtaUpdate = (req, res, next) => {
+    const { otaData } = req.body;
+
+  if( otaData){
+    const config = JSON.parse(fs.readFileSync("./config.json"));
+    config.admin.ota = otaData;
+    fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
+    res.status(200).json({
+      message: "OTA Update set succesfully",
+    });
+  }
+  else{
+    res.status(200).json({
+      message: "OTA Update set failed",
+    });
+  }
+
+  };
+
+  
+  exports.getOtaUpdate = (req, res, next) => {
+    const config = JSON.parse(fs.readFileSync("./config.json"));
+    res.status(200).json(config.admin.ota);
+  };
+
+
+
+    
+exports.setWifiStatusUpdate = (req, res, next) => {
+
+  let { wifiStatus} = req.body;
+
+  if ( wifiStatus) {
+
+    const config = JSON.parse(fs.readFileSync("./config.json"));
+
+    config.admin.wifi_status = wifiStatus;
+
+    fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
+
+    res.status(200).json({
+      message: "wifi status is set",
+    });
+  }
+  else {
+    res.status(200).json({
+      message: "wifi status set configration failed",
+    });
+  }
+
+};
+
+exports.getWifiStatusUpdate= (req, res, next) => {
+  const config = JSON.parse(fs.readFileSync("./config.json"));
+  res.status(200).json(config.admin.wifi_status);
+};
+
+
+  
   

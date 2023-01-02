@@ -14,7 +14,7 @@ exports.changeNtpServer= (req, res, next) => {
     const { ntpServer } = req.body;
   
     const config = JSON.parse(fs.readFileSync("./config.json"));
-    config.ntp_server = ntpServer;
+    config.network_information.ntp_server = ntpServer;
     fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
     res.status(200).json({
       message: "Ntp Server set succesfully",
@@ -81,7 +81,7 @@ exports.staticIpWifi = (req, res, next) => {
 
 exports.getNtpServer = (req, res, next) => {
   const config = JSON.parse(fs.readFileSync("./config.json"));
-  res.status(200).json(config.ntp_server);
+  res.status(200).json(config.network_information.ntp_server);
 };
 
 

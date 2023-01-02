@@ -35,8 +35,8 @@ Whats New: EVERYTHING
  const md5 = require("md5");
 
  const adminRoutes = require("./router/adminRoute");
-//  const mqttRoutes = require("./router/mqttRoute");
-//  const serviceRoutes = require("./router/serviceRoute");
+const mqttRoutes = require("./router/mqttRoute");
+ const serviceRoutes = require("./router/serviceRoute");
  const networkRoutes = require("./router/networkRoute");
  const inferenceRoutes = require("./router/inferenceRoute");
  const authRoutes = require("./router/authRoute")
@@ -52,13 +52,12 @@ Whats New: EVERYTHING
 
 //  app.use(express.static(path.join(__dirname, "public", "build")));
 
-//  app.use(authentication);
 
 
  app.use("/api/v1", authRoutes);
  app.use("/api/v1/admin", adminRoutes);
-//  app.use("/api/v1/mqtt", mqttRoutes);
-//  app.use("/api/v1/service", serviceRoutes);
+ app.use("/api/v1/mqtt", mqttRoutes);
+  app.use("/api/v1/service", serviceRoutes);
  app.use("/api/v1/network", networkRoutes);
  app.use("/api/v1/inference", inferenceRoutes);
 
