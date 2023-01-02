@@ -45,13 +45,7 @@ const mqttRoutes = require("./router/mqttRoute");
  
  app.use(bodyParser.json());
  
-
-
-
-
-
 //  app.use(express.static(path.join(__dirname, "public", "build")));
-
 
 
  app.use("/api/v1", authRoutes);
