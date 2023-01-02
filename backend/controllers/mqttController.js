@@ -9,7 +9,8 @@ port,
 people_count_topic,
 device_health_topic,
 mqtt_user_name,
-mqtt_password
+mqtt_password,
+response
   
     } = req.body;
     const config = JSON.parse(fs.readFileSync("./config.json"));
@@ -20,6 +21,7 @@ mqtt_password
     config.mqtt_broker_one.device_health_topic = device_health_topic;
     config.mqtt_broker_one.mqtt_user_name =mqtt_user_name;
     config.mqtt_broker_one.mqtt_password = mqtt_password;
+    config.mqtt_broker_one.response = response;
 
     fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
     res.status(200).json({ message: "mqtt destination one params saved" });
@@ -41,7 +43,8 @@ port,
 people_count_topic,
 device_health_topic,
 mqtt_user_name,
-mqtt_password
+mqtt_password,
+response
   
     } = req.body;
     const config = JSON.parse(fs.readFileSync("./config.json"));
@@ -52,6 +55,7 @@ mqtt_password
     config.mqtt_broker_two.device_health_topic = device_health_topic;
     config.mqtt_broker_two.mqtt_user_name =mqtt_user_name;
     config.mqtt_broker_two.mqtt_password = mqtt_password;
+    config.mqtt_broker_two.response = response;
 
     fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
     res.status(200).json({ message: "mqtt destination two params saved" });
@@ -107,8 +111,6 @@ mqtt_password
   };
 
 
-  
-
   exports.fileUploadHandlerTwo = (req, res, next) => {
 
     const file = req.file;
@@ -150,6 +152,57 @@ mqtt_password
       });
     }
   };
+
+
+  exports.setmqttOneProtocol = (req, res, next) => {
+
+    let { mqttProtocolOne} = req.body;
+  
+    if ( mqttProtocolOne) {
+  
+      const config = JSON.parse(fs.readFileSync("./config.json"));
+      config.mqtt_broker_one.mqtt_protocol = mqttProtocolOne;
+  
+      fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
+  
+      res.status(200).json({
+        message: "protocol for broker one has set"
+      });
+    }
+    else {
+      res.status(200).json({
+        message: "protocol for broker one has failed"
+      });
+    }
+  
+  };
+
+
+  
+  exports.setmqttTwoProtocol = (req, res, next) => {
+
+    let { mqttProtocolTwo} = req.body;
+  
+    if ( mqttProtocolTwo) {
+  
+      const config = JSON.parse(fs.readFileSync("./config.json"));
+      config.mqtt_broker_two.mqtt_protocol = mqttProtocolTwo;
+  
+      fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
+  
+      res.status(200).json({
+        message: "protocol for broker two has set"
+      });
+    }
+    else {
+      res.status(200).json({
+        message: "protocol for broker two has failed"
+      });
+    }
+  
+  };
+
+
 
 
    

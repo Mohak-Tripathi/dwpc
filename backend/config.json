@@ -6,7 +6,9 @@
 		"people_count_topic": "0",
 		"device_health_topic": "ds",
 		"mqtt_user_name": "Moht",
-		"mqtt_password": "momod"
+		"mqtt_password": "momod",
+		"mqtt_protocol": "TLS",
+		"response": "34"
 	},
 	"mqtt_broker_two": {
 		"broker": 5,
@@ -15,7 +17,9 @@
 		"people_count_topic": 98,
 		"device_health_topic": "ds2",
 		"mqtt_user_name": "Mohtkl",
-		"mqtt_password": "momodplpp"
+		"mqtt_password": "momodplpp",
+		"mqtt_protocol": "TCP",
+		"response": "34"
 	},
 	"admin": {
 		"variant": "ZIGBEE",
