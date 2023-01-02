@@ -13,14 +13,8 @@ router.get("/mqtt_one", isAuthorizeRoles("Production", "Support"), getmqttOneDes
 router.post("/mqtt_one_cert_file", isAuthorizeRoles("Production", "Support"),     upload.single("mqtt_cert_file"), fileUploadHandlerOne)
 
 
-
-
 router.post("/mqtt_two", isAuthorizeRoles("Production", "Support"), setmqttTwoDestination)
 router.get("/mqtt_two", isAuthorizeRoles("Production", "Support"), getmqttTwoDestination)
 router.post("/mqtt_two_cert_file", isAuthorizeRoles("Production", "Support"),     upload2.single("mqtt_certificate_file_two"), fileUploadHandlerTwo)
-
-
-
-
 
 module.exports = router;

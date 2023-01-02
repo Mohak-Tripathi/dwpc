@@ -63,24 +63,6 @@ mqtt_password
     res.status(200).json(config.mqtt_broker_two);
   };
 
-//   exports.setmqttOneDestinationfile = (req, res, next) => {
-//     const {
-//       ca    
-//             } = req.body;
-//             const config = JSON.parse(fs.readFileSync("./config.json"));
-            
-//             config.mqtt_broker_one.ca = ca;
-         
-        
-//             fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
-//             res.status(200).json({ message: "mqtt destination one certificate saved" });
-//   };
-
-
-
-
-
-
 
   exports.fileUploadHandlerOne = (req, res, next) => {
 
