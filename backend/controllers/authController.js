@@ -4,8 +4,10 @@ const path = require("path");
  const jwt = require("jsonwebtoken");
 
 
+
  exports.login = (req, res, next) => {
     const { username, password } = req.body;
+    console.log(username, password, "hj")
 
     const config = JSON.parse(fs.readFileSync("./config.json"));
   

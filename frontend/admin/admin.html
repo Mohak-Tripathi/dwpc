@@ -35,7 +35,7 @@
     <p class="text-primary">Choose Variant</p>
     <form>
       <div class="form mb-2 w-25">
-        <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
+        <input type="email" id="admin-email" class="form-control form-control-sm" placeholder="Email address" />
         <!-- <label class="form-label" for="form1Example1">Email address</label> -->
       </div>
       <div style="display:flex; justify-content:flex-end">
@@ -54,14 +54,14 @@
     <!-- <div class="col-3 mb-3 border">  -->
 
       <p class="text-primary">AP Mode SSID</p>
-      <form>
+      <form id="admin-apMode-form">
         <div class="form mb-2 w-25">
-          <input type="text" id="apModeSSID" class="form-control  form-control-sm" placeholder="Set AP Mode SSID Password"/>
+          <input type="text" id="admin-apModeSSID" class="form-control  form-control-sm" placeholder="Set AP Mode SSID Password"/>
           <!-- <label class="form-label" for="apModeSSID">Set AP Mode SSID</label> -->
         </div>
        
         <div style="display:flex; justify-content:flex-end">
-          <button type="submit" class="btn bg-transparent  bg-gradient text-primary border-margin">SAVE</button>
+          <button  type="submit" class="btn bg-transparent  bg-gradient text-primary border-margin">SAVE</button>
           </div>
       </form>
       
@@ -77,10 +77,10 @@
    <!-- <div class="col-3 mb-3 border">  -->
 
     <p class="text-primary">Set AP Mode SSID Password</p>
-    <form>
+    <form id="admin-apModePassword-form">
       <div class="form mb-2 w-25">
-        <!-- outline -->
-        <input type="text" id="apModeSSIDPass" class="form-control  form-control-sm" placeholder="Set AP Mode SSID Password"/>
+ 
+        <input type="text" id="admin-apModeSSIDPass" class="form-control  form-control-sm" placeholder="Set AP Mode SSID Password"/>
         <!-- <label class="form-label" for="apModeSSIDPass">Set AP Mode SSID Password</label> -->
       </div>
      
@@ -153,6 +153,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"
   let footer=document.getElementById('footer');
   footer.innerHTML = Footer()
   </script>
-<!-- <script defer src="./admin.js"></script> -->
+<script defer src="./admin.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
 </html>
