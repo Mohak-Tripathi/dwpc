@@ -19,9 +19,9 @@ const path = require("path");
       username === targetObject[0].app_user &&
       password === targetObject[0].app_password
     ) {
-      const token = jwt.sign(
+      const token =     jwt.sign(
         { username: username },
-        "DwpcProject@fTIoTDev",
+        "DwpcProject@fTIoT",
         {
           expiresIn: "1h", // expires in 1 hours
         }
@@ -29,17 +29,9 @@ const path = require("path");
   
  
       return res
-        .status(200)
-        .cookie("jwt", token, {
-          // enabled: true,
-          httpOnly: true,
-          Secure: true,
-          maxAge: 3600000,
-          SameSite: "None",
- 
-        })
-        .json({
+        .status(200).json({
           user: targetObject[0],
+          token: token
         });
     } else {
       return res.status(400).json({

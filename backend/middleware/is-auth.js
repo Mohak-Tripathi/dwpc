@@ -24,22 +24,23 @@ Auther: Mohak Tripathi
  const path = require("path");
 
  
- 
- // module.exports = async (req, res, next) => {
- 
    const isAuthenticated = async(req,res,next) => {
-   const token = req.cookies.jwt;
-   console.log(token, "mttoken")
- 
-   try {
-     if (!token) {
-       return res.status(401).json({ message: "Not Authenticated" });
- 
-     }
-     const decrypt = await jwt.verify(token, "DwpcProject@fTIoTDev");
+
+    let token 
+    console.log(req.headers, "reqmohak")
+
+
+    if(req.headers.authorization && req.headers.authorization.startsWith("Bearer")){
+
+try{
+
+    token = req.headers.authorization.split(" ")[1]
+
+    const decrypt = jwt.verify(token, "DwpcProject@fTIoT");
+
+    console.log(decrypt, "jk")
 
      const config = JSON.parse(fs.readFileSync("./config.json"));
- 
  
      let targetObject = config.credentials.filter((elem) => {
        return elem.app_user === decrypt.username;
@@ -47,10 +48,53 @@ Auther: Mohak Tripathi
  
      req.username = targetObject[0];
  console.log(req.username, "kkl")
-     next();
-   } catch (err) {
-     return res.status(500).json(err.toString());
-   }
+
+
+
+    next()
+}
+catch(error){
+console.log(error)
+res.status(401)
+throw new Error ("Token failed, bad token ")
+
+
+}
+
+    }
+
+    if(!token){
+
+        res.status(401)
+
+        throw new Error ("Not authorized, no Token ")
+    }
+
+
+
+  //  const token = req.cookies.jwt;
+  //  console.log(token, "mttoken")
+ 
+  //  try {
+  //    if (!token) {
+  //      return res.status(401).json({ message: "Not Authenticated" });
+ 
+  //    }
+//      const decrypt = await jwt.verify(token, "DwpcProject@fTIoTDev");
+
+//      const config = JSON.parse(fs.readFileSync("./config.json"));
+ 
+ 
+//      let targetObject = config.credentials.filter((elem) => {
+//        return elem.app_user === decrypt.username;
+//      });
+ 
+//      req.username = targetObject[0];
+//  console.log(req.username, "kkl")
+  //    next();
+  //  } catch (err) {
+  //    return res.status(500).json(err.toString());
+  //  }
  };
  
  
