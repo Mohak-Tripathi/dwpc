@@ -48,6 +48,7 @@ exports.changeNtpServer= (req, res, next) => {
       password
     } = req.body;
   
+    console.log(SSID, password, "mmm")
   
   
     const config = JSON.parse(fs.readFileSync("./config.json"));
