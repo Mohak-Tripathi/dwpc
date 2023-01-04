@@ -28,19 +28,19 @@
   <div class="row mini-box mb-2 "> 
     <div class="col-4 h5"> Calliberate</div>
     <div class="col-4"> 
-        <button type="button" class="btn min-button btn-primary"> Calliberate</button>
+        <button type="button" id="calliberate-button" class="btn min-button btn-primary"> Calliberate</button>
     </div>
   </div>
   <div class="row mini-box  mb-2"> 
     <div class="col-4 h5"> Factory Reset</div>
     <div class="col-4">
-        <button type="button" class="btn min-button btn-primary"> Reset</button>
+        <button type="button" id="reset-button" class="btn min-button btn-primary"> Reset</button>
     </div>
   </div>
   <div class="row mini-box  mb-2"> 
     <div class="col-4 h5"> Reboot </div>
     <div class="col-4">
-        <button type="button" class="btn min-button btn-primary"> Reboot</button>
+        <button type="button" id="reboot-button" class="btn min-button btn-primary"> Reboot</button>
     </div>
   </div>
       
@@ -53,7 +53,7 @@
     
   <footer id="footer"> </footer>
 
-
+  <script defer src="./service.js"></script>
     <script type="module">
       import {Navbar} from '../Components/navbar.js';
       let navbar=document.querySelector('.navbar');

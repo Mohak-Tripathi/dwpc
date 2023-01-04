@@ -27,7 +27,7 @@ Auther: Mohak Tripathi
    const isAuthenticated = async(req,res,next) => {
 
     let token 
-    console.log(req.headers, "reqmohak")
+    // console.log(req.headers, "reqmohak")
 
 
     if(req.headers.authorization && req.headers.authorization.startsWith("Bearer")){
@@ -35,8 +35,8 @@ Auther: Mohak Tripathi
 try{
 
     token = req.headers.authorization.split(" ")[1]
-
-    const decrypt = jwt.verify(token, "DwpcProject@fTIoT");
+// console.log(token, "klpop")
+    const decrypt = await jwt.verify(token, "DwpcProject@fTIoT");
 
     console.log(decrypt, "jk")
 

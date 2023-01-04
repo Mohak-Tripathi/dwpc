@@ -22,11 +22,11 @@
 		"response": "34"
 	},
 	"admin": {
-		"variant": "ZIGBEE",
-		"ap_mode_ssid": "PS-12",
-		"ap_mode_ssid_pass": "motyo",
-		"ota": "okay",
-		"wifi_status": "disabled"
+		"variant": "TLS",
+		"ap_mode_ssid": "mohakshukla",
+		"ap_mode_ssid_pass": "vvdv",
+		"ota": "ota-mohak",
+		"wifi_status": "enabled"
 	},
 	"inference": {
 		"aggregation_interval": 11,

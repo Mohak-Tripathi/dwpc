@@ -20,14 +20,14 @@ const path = require("path");
       password === targetObject[0].app_password
     ) {
       const token =     jwt.sign(
-        { username: username },
+        { username },
         "DwpcProject@fTIoT",
         {
           expiresIn: "1h", // expires in 1 hours
         }
       );
   
-//  console.log(token , "papapap")
+console.log(token , "papapap")
       return res
         .status(200).json({
           user: targetObject[0],
