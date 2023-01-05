@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {upload, upload2} = require("../middleware/upload");
 
-const {setmqttOneDestination, getmqttOneDestination, setmqttTwoDestination, getmqttTwoDestination,     fileUploadHandlerOne,   fileUploadHandlerTwo, setmqttOneProtocol, setmqttTwoProtocol} = require("../controllers/mqttController")
+const {setmqttOneDestination, getmqttOneDestination, setmqttTwoDestination, getmqttTwoDestination,     fileUploadHandlerOne,   fileUploadHandlerTwo, setmqttOneProtocol, setmqttTwoProtocol, getmqttBrokerStatus, setmqttBrokerStatus } = require("../controllers/mqttController")
 
 const {isAuthenticated, isAuthorizeRoles} = require("../middleware/is-auth.js");
 
@@ -17,5 +17,9 @@ router.post("/mqtt_two", isAuthorizeRoles("Production", "Support"), setmqttTwoDe
 router.get("/mqtt_two", isAuthorizeRoles("Production", "Support"), getmqttTwoDestination)
 router.post("/mqtt_two_cert_file", isAuthorizeRoles("Production", "Support"),     upload2.single("mqtt_certificate_file_two"), fileUploadHandlerTwo)
 router.post("/mqtt_two_protocol", isAuthorizeRoles("Production", "Support"), setmqttTwoProtocol)
+
+
+router.get("/mqtt_broker_status", isAuthorizeRoles("Production", "Support"), getmqttBrokerStatus)
+router.post("/mqtt_broker_status", isAuthorizeRoles("Production", "Support"), setmqttBrokerStatus )
 
 module.exports = router;

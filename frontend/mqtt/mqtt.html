@@ -45,24 +45,24 @@
 </div>
  
           
-            <form action="">
+            <form action="" id="mqtt-form">
                 <div class="row mb-3"> 
                     <p class="text-primary">Configure MQTT broker and port</p>
                 <div class="col-6 ">
-                    <!-- border -->
+           
                     <p>Broker</p>
                 <div class="form">
-                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
-                    <!-- <label class="form-label" for="form1Example1">Email address</label> -->
+                    <input type="text" id="mqtt-broker" class="form-control form-control-sm" placeholder="mqtt-broker" />
+            
                   </div>
                 </div>
       
                 <div class="col-6 ">
-                    <!-- border -->
+    
                     <p>Port</p>
                   <div class="form">
-                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
-                    <!-- <label class="form-label" for="form1Example1">Email address</label> -->
+                    <input type="text" id="mqtt-port" class="form-control form-control-sm" placeholder="mqtt port" />
+  
                   </div>
                 </div>
             </div>
@@ -70,11 +70,11 @@
             <div class="row mb-3"> 
                 <p class="text-primary">Configure the topics to publish the data</p>
                 <div class="col-6">
-                    <!-- border -->
+       
                     <p>Occupancy/People Count Topic</p>
                 <div class="form">
-                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
-                    <!-- <label class="form-label" for="form1Example1">Email address</label> -->
+                    <input type="text" id="mqtt-people-count" class="form-control form-control-sm" placeholder="mqtt-people-count" />
+
                   </div>
                 </div>
       
@@ -82,8 +82,8 @@
                     <!-- border -->
                     <p>Device Health Topic</p>
                   <div class="form">
-                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
-                    <!-- <label class="form-label" for="form1Example1">Email address</label> -->
+                    <input type="text" id="mqtt-device-health" class="form-control form-control-sm" placeholder="mqtt-device-health" />
+       
                   </div>
                 </div>
             </div>
@@ -94,8 +94,8 @@
                     <!-- border -->
                     <p>Mqtt User Name</p>
                 <div class="form">
-                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
-                    <!-- <label class="form-label" for="form1Example1">Email address</label> -->
+                    <input type="text" id="mqtt-user-name" class="form-control form-control-sm" placeholder="mqtt-user-name" />
+
                   </div>
                 </div>
       
@@ -103,8 +103,8 @@
                     <!-- border -->
                     <p> Password</p>
                   <div class="form">
-                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
-                    <!-- <label class="form-label" for="form1Example1">Email address</label> -->
+                    <input type="text" id="mqtt-user-password" class="form-control form-control-sm" placeholder="mqtt-user-password" />
+
                   </div>
                 </div>
             </div>
@@ -167,6 +167,7 @@
     
   <footer id="footer"> </footer>
 
+  <script defer src="./mqtt.js"></script>
 
     <script type="module">
       import {Navbar} from '../Components/navbar.js';

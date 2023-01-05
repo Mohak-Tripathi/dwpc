@@ -1,14 +1,14 @@
 {
+	"mqtt_broker_status": "broker-2",
 	"mqtt_broker_one": {
-		"broker": "1",
-		"port": 2,
+		"broker": "12",
+		"port": "12",
 		"ca": "Screenshot (6).png",
-		"people_count_topic": "0",
-		"device_health_topic": "ds",
-		"mqtt_user_name": "Moht",
-		"mqtt_password": "momod",
-		"mqtt_protocol": "TLS",
-		"response": "34"
+		"people_count_topic": "34",
+		"device_health_topic": "13",
+		"mqtt_user_name": "34",
+		"mqtt_password": "14",
+		"mqtt_protocol": "TLS"
 	},
 	"mqtt_broker_two": {
 		"broker": 5,

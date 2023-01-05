@@ -202,6 +202,36 @@ response
   
   };
 
+  exports.setmqttBrokerStatus = (req, res, next) => {
+
+    let { mqttStatus} = req.body;
+  
+    if ( mqttStatus) {
+  
+      const config = JSON.parse(fs.readFileSync("./config.json"));
+      config.mqtt_broker_status = mqttStatus;
+  
+      fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
+  
+      res.status(200).json({
+        message: "mqtt broker status has set"
+      });
+    }
+    else {
+      res.status(200).json({
+        message: "mqtt broker status has failed"
+      });
+    }
+  
+  };
+
+
+
+  exports.getmqttBrokerStatus = (req, res, next) => {
+    const config = JSON.parse(fs.readFileSync("./config.json"));
+    res.status(200).json(config.mqtt_broker_status);
+  };
+  
 
 
 
