@@ -29,8 +29,9 @@ e.preventDefault()
         }})
         .then((data)=>{
             if(data){
-
+console.log(data)
                  localStorage.setItem("token", JSON.stringify(data.token));
+                 localStorage.setItem("user", JSON.stringify(data.user.role));
              window.location.href="../admin/admin.html"
                 }   
         })
