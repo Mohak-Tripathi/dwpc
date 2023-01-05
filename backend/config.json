@@ -22,11 +22,11 @@
 		"response": "34"
 	},
 	"admin": {
-		"variant": "TLS",
+		"variant": "TCP",
 		"ap_mode_ssid": "mohakshukla",
 		"ap_mode_ssid_pass": "vvdv",
 		"ota": "ota-mohak",
-		"wifi_status": "enabled"
+		"wifi_status": "disabled"
 	},
 	"inference": {
 		"aggregation_interval": 1,
@@ -68,5 +68,4 @@
 		"static_ip_eth_pass": "777777",
 		"ntp_server": "ghhj@gmail.com"
 	}
-
 }

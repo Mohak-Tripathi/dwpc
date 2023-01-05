@@ -1,4 +1,40 @@
 
+function getAdminData(){
+
+
+    let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+        fetch("http://localhost:8080/api/v1/admin/admin_info", {
+            method: 'GET',
+            headers: {
+          Authorization: `Bearer ${BearerCheck}`,
+            },
+        })
+            .then(response => response.json())
+            .then(response => {
+          console.log(response)
+
+          document.getElementById("variant-data").value = response.variant
+          document.getElementById("admin-apModeSSID").value =  response.ap_mode_ssid
+          document.getElementById("admin-apModeSSIDPass").value =  response.ap_mode_ssid_pass 
+          document.getElementById("otaUpdate").value = response.ota
+          document.getElementById("wifi-admin-data").value = response.wifi_status
+       
+        })
+            .catch(err => console.error(err));
+      }
+    
+    
+      getAdminData()
+
+
+
+
+
+
+
+
+
+
 document.getElementById("variant-button").addEventListener("click", getVariantValue)
 
 

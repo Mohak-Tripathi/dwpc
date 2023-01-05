@@ -2,10 +2,16 @@ const fs = require("fs");
 const path = require("path");
 
 
-exports.getApModeSsid = (req, res, next) => {
+// exports.getApModeSsid = (req, res, next) => {
+//     const config = JSON.parse(fs.readFileSync("./config.json"));
+//     res.status(200).json(config.admin.ap_mode_ssid);
+//   };
+
+  exports.getAdminInfo = (req, res, next) => {
     const config = JSON.parse(fs.readFileSync("./config.json"));
-    res.status(200).json(config.admin.ap_mode_ssid);
+    res.status(200).json(config.admin);
   };
+
 
 
 
