@@ -11,15 +11,14 @@
 		"mqtt_protocol": "TLS"
 	},
 	"mqtt_broker_two": {
-		"broker": 5,
-		"port": 9,
-		"ca": "Screenshot (14).png",
-		"people_count_topic": 98,
-		"device_health_topic": "ds2",
-		"mqtt_user_name": "Mohtkl",
-		"mqtt_password": "momodplpp",
-		"mqtt_protocol": "TCP",
-		"response": "34"
+		"broker": "14",
+		"port": "10",
+		"ca": "Screenshot (13).png",
+		"people_count_topic": "6",
+		"device_health_topic": "4",
+		"mqtt_user_name": "0",
+		"mqtt_password": "-4",
+		"mqtt_protocol": "TCP"
 	},
 	"admin": {
 		"variant": "TCP",

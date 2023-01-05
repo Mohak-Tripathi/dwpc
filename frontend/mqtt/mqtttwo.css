@@ -22,13 +22,6 @@
   }
 
 
-  /* .material-symbols-outlined {
-    font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 48
-  } */
 
   .border-margin{
     border: 1px solid #3B71CA;
@@ -36,7 +29,7 @@
   }
 
 
-  #mqtt-data, #mqtt-protocol{
+  #mqtt-broker-data, #mqtt-protocol-2{
     padding: 3.5px;
   
     border-radius: 5px;

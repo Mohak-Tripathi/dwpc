@@ -56,7 +56,6 @@ e.preventDefault()
   let WaitTimer= document.getElementById("wait-timer").value
   let SensingMode= document.getElementById("sensing-mode").value
 
-// console.log(aggregationInterval, InZoneDistanceThrehold )
 
 var inferenceData = JSON.stringify({
     "aggregation_interval":  aggregationInterval,

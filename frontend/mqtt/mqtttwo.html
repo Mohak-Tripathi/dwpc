@@ -13,7 +13,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.css" rel="stylesheet"
 />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <link     rel="stylesheet" href="mqtt.css"  />
+  <link     rel="stylesheet" href="mqtttwo.css"  />
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary"> </nav>
@@ -28,15 +28,15 @@
          
 <div class="row mb-1 ">
 
-    <p class="text-primary">Choose Broker</p>
+    <p class="text-primary">Choose Broker-1</p>
    <div >
-    <select name="" id="mqtt-data" class="mb-2 w-25">
+    <select name="" id="mqtt-broker-data" class="mb-2 w-25">
 
       <option value="broker-1">Broker 1</option>
-      <option value="broker-2">Broker2</option>
+      <!-- <option value="broker-2">Broker2</option> -->
   </select>
   <div style="display:flex; justify-content:flex-end">
-    <button type="submit" id="mqtt-button" class="btn bg-transparent bg-gradient text-primary border-margin">SAVE</button>
+    <button type="submit" id="mqtt-broker-button" class="btn bg-transparent bg-gradient text-primary border-margin">SAVE</button>
     </div>
 
    </div>
@@ -45,24 +45,24 @@
 </div>
  
           
-            <form action="">
+            <form action="" id="mqtt-broker-form">
                 <div class="row mb-3"> 
                     <p class="text-primary">Configure MQTT broker and port</p>
                 <div class="col-6 ">
-                    <!-- border -->
-                    <p>Broker</p>
+           
+                    <p>Broker-2</p>
                 <div class="form">
-                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
-                    <!-- <label class="form-label" for="form1Example1">Email address</label> -->
+                    <input type="text" id="mqtt-broker-2" class="form-control form-control-sm" placeholder="mqtt-broker" />
+            
                   </div>
                 </div>
       
                 <div class="col-6 ">
-                    <!-- border -->
+    
                     <p>Port</p>
                   <div class="form">
-                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
-                    <!-- <label class="form-label" for="form1Example1">Email address</label> -->
+                    <input type="text" id="mqtt-port-2" class="form-control form-control-sm" placeholder="mqtt port" />
+  
                   </div>
                 </div>
             </div>
@@ -70,11 +70,11 @@
             <div class="row mb-3"> 
                 <p class="text-primary">Configure the topics to publish the data</p>
                 <div class="col-6">
-                    <!-- border -->
+       
                     <p>Occupancy/People Count Topic</p>
                 <div class="form">
-                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
-                    <!-- <label class="form-label" for="form1Example1">Email address</label> -->
+                    <input type="text" id="mqtt-people-count-2" class="form-control form-control-sm" placeholder="mqtt-people-count" />
+
                   </div>
                 </div>
       
@@ -82,8 +82,8 @@
                     <!-- border -->
                     <p>Device Health Topic</p>
                   <div class="form">
-                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
-                    <!-- <label class="form-label" for="form1Example1">Email address</label> -->
+                    <input type="text" id="mqtt-device-health-2" class="form-control form-control-sm" placeholder="mqtt-device-health" />
+       
                   </div>
                 </div>
             </div>
@@ -94,8 +94,8 @@
                     <!-- border -->
                     <p>Mqtt User Name</p>
                 <div class="form">
-                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
-                    <!-- <label class="form-label" for="form1Example1">Email address</label> -->
+                    <input type="text" id="mqtt-user-name-2" class="form-control form-control-sm" placeholder="mqtt-user-name" />
+
                   </div>
                 </div>
       
@@ -103,8 +103,8 @@
                     <!-- border -->
                     <p> Password</p>
                   <div class="form">
-                    <input type="email" id="form1Example1" class="form-control form-control-sm" placeholder="Email address" />
-                    <!-- <label class="form-label" for="form1Example1">Email address</label> -->
+                    <input type="text" id="mqtt-user-password-2" class="form-control form-control-sm" placeholder="mqtt-user-password" />
+
                   </div>
                 </div>
             </div>
@@ -122,10 +122,14 @@
             <p class="text-primary">Configure Mqtt Certificate (Select MQTT Protocol)</p>
 <div class="col-4 "> 
     <p> Select Protocol</p>
-    <select name="" id="mqtt-protocol">
+    <select name="" id="mqtt-protocol-2">
         <option value="TCP">MQTT/TCP</option>
         <option value="TLS">MQTT/TLS</option>
     </select>
+
+     <div style="display:flex; justify-content:flex-end">
+        <button type="submit" id="mqtt-protocol-button-2" class="btn bg-transparent  bg-gradient text-primary border-margin">SAVE</button>
+        </div>
 </div>
 <div class="col-4"> 
     
@@ -133,7 +137,7 @@
     <form>
       <div class="form mb-2 w-50">
 
-        <input type="text" id="otaUpdate" class="form-control  form-control-sm" placeholder="Set OTA Update"/>
+        <input type="text" id="mqtt-cert-2" class="form-control  form-control-sm" placeholder="mqtt certification " readonly/>
 
       </div>
      
@@ -144,15 +148,15 @@
 </div>
 <div class="col-4"> 
     <p>MQTT Certificate</p>
-    <form>
+    <form encType='multipart/form-data' id="mqtt-cert-form" method="POST" action="/mqtt_one_cert_file">
         <div class="form mb-2 w-25">
   
-          <input type="file" id="otaUpdate" class="form-control  form-control-sm" placeholder="Set OTA Update"/>
+          <input type="file" name="mqtt_cert_file" id="upload-mqtt-certificate" class="form-control  form-control-sm" placeholder="Set OTA Update"/>
   
         </div>
        
     <div style="display:flex; justify-content:flex-end">
-          <button type="submit" class="btn bg-transparent  bg-gradient text-primary border-margin">SAVE</button>
+          <button type="submit" id="upload-mqtt-cert-button" class="btn bg-transparent  bg-gradient text-primary border-margin">SAVE</button>
           </div>
       </form>
 </div>
@@ -167,6 +171,7 @@
     
   <footer id="footer"> </footer>
 
+  <script defer src="./mqtttwo.js"></script>
 
     <script type="module">
       import {Navbar} from '../Components/navbar.js';

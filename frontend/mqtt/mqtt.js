@@ -1,30 +1,64 @@
 
+function getMqttData(){
 
 
-// function getMqttData(){
-
-
-//     let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
-//         fetch("http://localhost:8080/api/v1/mqtt/mqtt_one", {
-//             method: 'GET',
-//             headers: {
-//           Authorization: `Bearer ${BearerCheck}`,
-//             },
-//         })
-//             .then(response => response.json())
-//             .then(response => {
-//           console.log(response)
+    let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+        fetch("http://localhost:8080/api/v1/mqtt/mqtt_one", {
+            method: 'GET',
+            headers: {
+          Authorization: `Bearer ${BearerCheck}`,
+            },
+        })
+            .then(response => response.json())
+            .then(response => {
+          console.log(response)
     
-//           document.getElementById("aggregation-interval").value =  response.aggregation_interval
-//           document.getElementById("In-zone-distance-threhold").value  =  response.in_zone_distance_threhold
-//           document.getElementById("out-zone-distance-threhold").value  =  response.out_zone_istance_threhold
 
-//         })
-//             .catch(err => console.error(err));
-//       }
+            document.getElementById("mqtt-broker").value = response.broker
+            document.getElementById("mqtt-port").value = response.port
+            document.getElementById("mqtt-people-count").value = response.people_count_topic
+             document.getElementById("mqtt-device-health").value = response.device_health_topic
+           document.getElementById("mqtt-user-name").value = response.mqtt_user_name
+            document.getElementById("mqtt-user-password").value = response.mqtt_password
+            document.getElementById("mqtt-protocol").value = response.mqtt_protocol
+            document.getElementById("mqtt-cert").value = response.ca
+
+      
+
+       
+
+        })
+            .catch(err => console.error(err));
+      }
     
     
-//       getMqttData()
+      getMqttData()
+
+
+
+      // function getMqttBrokerStatus(){
+
+
+      //   let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+      //       fetch("http://localhost:8080/api/v1/mqtt/mqtt_broker_status", {
+      //           method: 'GET',
+      //           headers: {
+      //         Authorization: `Bearer ${BearerCheck}`,
+      //           },
+      //       })
+      //           .then(response => response.json())
+      //           .then(response => {
+      //         console.log(response)
+        
+      //         document.getElementById("mqtt-data").value =  response
+
+    
+      //       })
+      //           .catch(err => console.error(err));
+      //     }
+        
+        
+      //     getMqttBrokerStatus()
 
 
 
@@ -35,7 +69,6 @@ document.getElementById("mqtt-button").addEventListener("click", setMqttValue)
 function setMqttValue(){
     let mqttBrokerValue =   document.getElementById("mqtt-data").value
 
-    console.log("hello" , mqttBrokerValue)
 
     var mqttBrokerSelection = JSON.stringify({
         "mqttStatus":  mqttBrokerValue
@@ -56,7 +89,9 @@ function setMqttValue(){
     })
     .then((res)=> {
     if(res.status === 200){
+        window.location.href="mqtttwo.html"
         return res.json()
+
     }else{
         alert("something went wrong")  ;
     }})
@@ -115,3 +150,108 @@ var mqttBrokerOneData = JSON.stringify({
 
 
     }
+
+
+
+
+    document.getElementById("mqtt-protocol-button").addEventListener("click", setMqttProtocolStatus)
+
+function setMqttProtocolStatus(){
+
+    let mqttProtocol =   document.getElementById("mqtt-protocol").value
+
+  
+    var mqttProtocolSelection = JSON.stringify({
+        "mqttProtocolOne" :  mqttProtocol 
+      });
+
+      let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+
+
+    fetch("http://localhost:8080/api/v1/mqtt/mqtt_one_protocol", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json, text/plain, */*",
+            "Content-type": "application/json",
+        Authorization: `Bearer ${BearerCheck}`,
+
+        },
+        body: mqttProtocolSelection
+    })
+    .then((res)=> {
+    if(res.status === 200){
+  
+        return res.json()
+    }else{
+        alert("something went wrong")  ;
+    }})
+    .then((data)=>{
+   
+      console.log(data) 
+    })
+    .catch(err => console.log(err))
+
+}
+
+
+
+
+
+document.getElementById("mqtt-cert-form").addEventListener("submit",  setMqttProtocolCert)
+
+
+function  setMqttProtocolCert(e){
+e.preventDefault()
+
+const data= document.getElementById("upload-mqtt-certificate").value
+
+
+var formdata = new FormData();
+formdata.set("mqtt_cert_file", data );
+
+// fileInput.files[0]
+let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+
+var requestOptions = {
+  method: 'POST',
+  body: formdata,
+  headers: {
+    "Accept": "application/json, text/plain, */*",
+
+Authorization: `Bearer ${BearerCheck}`,
+
+},
+  redirect: 'follow'
+};
+
+fetch("http://localhost:8080/api/v1/mqtt/mqtt_one_cert_file", requestOptions)
+
+.then((res)=> {
+    if(res.status === 200){
+        
+        return res.text()
+    }else{
+        console.log(res);
+                console.log(res.status);
+                console.log(res.json());
+                console.log(res.text());
+        alert("something went wrong")  ;
+    }})
+    .then((data)=>{
+      console.log(data) 
+    })
+    .catch(err => console.log(err))
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+    
