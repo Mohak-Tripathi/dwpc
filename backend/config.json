@@ -40,7 +40,7 @@
 		"room_capacity": 9,
 		"os_timer_delay": 10,
 		"wait_timer": 11,
-		"sensing_mode": 12
+		"sensing_mode": 13
 	},
 	"credentials": [
 		{
@@ -67,8 +67,6 @@
 		"static_ip_eth": "900000",
 		"static_ip_eth_pass": "777777",
 		"ntp_server": "ghhj@gmail.com"
-	},
-	"people_count": 789,
-	"desk_occupancy": 1889,
-	"time_stamp": "12:01:21"
+	}
+
 }

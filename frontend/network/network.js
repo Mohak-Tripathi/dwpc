@@ -1,4 +1,41 @@
 
+
+
+function getNetworkData(){
+
+
+  let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+      fetch("http://localhost:8080/api/v1/network/nwk", {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${BearerCheck}`,
+      },
+    })
+      .then(response => response.json())
+      .then(response => {
+        console.log(response)
+
+        document.getElementById("network-wifi-ssid").value = response.wifi_cred_ssid
+        document.getElementById("network-wifi-password").value =  response.wifi_cred_pass
+        document.getElementById("network-static-ip-wifi").value = response.static_ip_wifi
+        document.getElementById("network-gateway-ip-wifi").value = response.static_ip_wifi_pass
+        document.getElementById("network-static-ip-ethernet").value = response.static_ip_eth
+        document.getElementById("network-gateway-ip-ethernet").value = response.static_ip_eth_pass
+         document.getElementById("ntp-data").value = response.ntp_server
+
+      })
+      .catch(err => console.error(err));
+    }
+  
+  
+    getNetworkData()
+
+
+
+
+
+
+
 document.getElementById("network-wifi-form").addEventListener("submit", getWifiInferenceForm)
 
 
@@ -7,8 +44,6 @@ e.preventDefault()
   let networkSsid = document.getElementById("network-wifi-ssid").value
   let networkPassword = document.getElementById("network-wifi-password").value
 
-
-// console.log(aggregationInterval, InZoneDistanceThrehold )
 
 var inferenceData = JSON.stringify({
     "SSID": networkSsid,

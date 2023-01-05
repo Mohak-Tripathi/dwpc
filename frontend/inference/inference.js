@@ -1,4 +1,43 @@
 
+
+
+function getInferenceData(){
+
+
+let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+    fetch("http://localhost:8080/api/v1/inference/dwpc_params", {
+		method: 'GET',
+		headers: {
+      Authorization: `Bearer ${BearerCheck}`,
+		},
+	})
+		.then(response => response.json())
+		.then(response => {
+      console.log(response)
+
+      document.getElementById("aggregation-interval").value =  response.aggregation_interval
+      document.getElementById("In-zone-distance-threhold").value  =  response.in_zone_distance_threhold
+      document.getElementById("out-zone-distance-threhold").value  =  response.out_zone_istance_threhold
+      document.getElementById("periodic-reset-interval").value  =  response.periodic_reset_interval
+      document.getElementById("function-mode").value  =  response.function_mode
+      document.getElementById("measurement-frequency").value  =  response.measurement_frequency
+      document.getElementById("pixel-count-one-person-threshold").value  =  response.pixel_count_one_person_threshold
+      document.getElementById("pixel-count-two-person-threshold").value  =  response.pixel_count_two_person_threshold
+      document.getElementById("room-capacity").value  =  response.room_capacity
+      document.getElementById("os-timer-delay").value  =  response.os_timer_delay
+      document.getElementById("wait-timer").value  =  response.wait_timer
+      document.getElementById("sensing-mode").value  =  response.sensing_mode
+    })
+		.catch(err => console.error(err));
+  }
+
+
+  getInferenceData()
+
+
+
+
+
 document.getElementById("inference-form").addEventListener("submit", getInferenceForm)
 
 
