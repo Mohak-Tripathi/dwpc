@@ -7,8 +7,8 @@ exports.saveInference = (req, res, next) => {
   
     const {
   aggregation_interval,
-  in_zone_distance_threhold,
-  out_zone_istance_threhold,
+  in_zone_distance_threshold,
+  out_zone_distance_threshold,
   periodic_reset_interval,
   function_mode,
   measurement_frequency,
@@ -24,8 +24,8 @@ exports.saveInference = (req, res, next) => {
     const config = JSON.parse(fs.readFileSync("./config.json"));
     
     config.inference.aggregation_interval = parseInt(aggregation_interval );
-    config.inference.in_zone_distance_threhold = parseFloat(in_zone_distance_threhold,);
-    config.inference.out_zone_istance_threhold = parseInt(out_zone_istance_threhold);
+    config.inference.in_zone_distance_threshold = parseFloat(in_zone_distance_threshold,);
+    config.inference.out_zone_distance_threshold = parseInt(out_zone_distance_threshold);
     config.inference.periodic_reset_interval = parseInt(periodic_reset_interval);
     config.inference.function_mode = parseInt(function_mode);
     config.inference.measurement_frequency = parseInt(measurement_frequency);

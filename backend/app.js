@@ -46,6 +46,7 @@ const mqttRoutes = require("./router/mqttRoute");
  const networkRoutes = require("./router/networkRoute");
  const inferenceRoutes = require("./router/inferenceRoute");
  const authRoutes = require("./router/authRoute")
+ const dashboardRoutes = require("./router/dashboardRoute")
  
  app.use(cookieParser());
  
@@ -60,6 +61,7 @@ const mqttRoutes = require("./router/mqttRoute");
   app.use("/api/v1/service", serviceRoutes);
  app.use("/api/v1/network", networkRoutes);
  app.use("/api/v1/inference", inferenceRoutes);
+ app.use("/api/v1/dashboard",  dashboardRoutes);
 
 
 //  app.get("/", (req, res) => {

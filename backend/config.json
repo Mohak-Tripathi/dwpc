@@ -30,10 +30,10 @@
 		"wifi_status": "disabled"
 	},
 	"inference": {
-		"aggregation_interval": 1,
-		"in_zone_distance_threhold": 2,
-		"out_zone_istance_threhold": 3,
-		"periodic_reset_interval": 4,
+		"aggregation_interval": 2,
+		"in_zone_distance_threshold": 11,
+		"out_zone_distance_threshold": 90,
+		"periodic_reset_interval": 9,
 		"function_mode": 5,
 		"measurement_frequency": 6,
 		"pixel_count_one_person_threshold": 7,
@@ -68,5 +68,11 @@
 		"static_ip_eth": "900000",
 		"static_ip_eth_pass": "777777",
 		"ntp_server": "ghhj@gmail.com"
+	},
+	"dashboard": {
+		"footfall_target": "101",
+		"footfall_today": "345",
+		"last_received_entry": "78",
+		"last_received_exit": "98"
 	}
 }
