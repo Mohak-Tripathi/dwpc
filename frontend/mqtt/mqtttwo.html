@@ -48,20 +48,20 @@
             <form action="" id="mqtt-broker-form">
                 <div class="row mb-3"> 
                     <p class="text-primary">Configure MQTT broker and port</p>
-                <div class="col-6 ">
+                <div class="col-md-6 ">
            
                     <p>Broker-2</p>
                 <div class="form">
-                    <input type="text" id="mqtt-broker-2" class="form-control form-control-sm" placeholder="mqtt-broker" />
+                    <input type="text" id="mqtt-broker-2" class="form-control form-control-sm" placeholder="Enter mqtt broker" />
             
                   </div>
                 </div>
       
-                <div class="col-6 ">
+                <div class="col-md-6 ">
     
                     <p>Port</p>
                   <div class="form">
-                    <input type="text" id="mqtt-port-2" class="form-control form-control-sm" placeholder="mqtt port" />
+                    <input type="text" id="mqtt-port-2" class="form-control form-control-sm" placeholder="Enter mqtt port" />
   
                   </div>
                 </div>
@@ -69,20 +69,20 @@
 
             <div class="row mb-3"> 
                 <p class="text-primary">Configure the topics to publish the data</p>
-                <div class="col-6">
+                <div class="col-md-6">
        
                     <p>Occupancy/People Count Topic</p>
                 <div class="form">
-                    <input type="text" id="mqtt-people-count-2" class="form-control form-control-sm" placeholder="mqtt-people-count" />
+                    <input type="text" id="mqtt-people-count-2" class="form-control form-control-sm" placeholder=" Enter mqtt people count" />
 
                   </div>
                 </div>
       
-                <div class="col-6">
+                <div class="col-md-6">
                     <!-- border -->
                     <p>Device Health Topic</p>
                   <div class="form">
-                    <input type="text" id="mqtt-device-health-2" class="form-control form-control-sm" placeholder="mqtt-device-health" />
+                    <input type="text" id="mqtt-device-health-2" class="form-control form-control-sm" placeholder="Enter mqtt device health" />
        
                   </div>
                 </div>
@@ -90,24 +90,36 @@
                 
             <div class="row mb-3"> 
                 <p class="text-primary">Configure the User name and password</p>
-                <div class="col-6">
+                <div class="col-md-6">
                     <!-- border -->
                     <p>Mqtt User Name</p>
                 <div class="form">
-                    <input type="text" id="mqtt-user-name-2" class="form-control form-control-sm" placeholder="mqtt-user-name" />
+                    <input type="text" id="mqtt-user-name-2" class="form-control form-control-sm" placeholder="Enter mqtt user name" />
 
                   </div>
                 </div>
       
-                <div class="col-6">
+                <div class="col-md-6">
                     <!-- border -->
                     <p> Password</p>
                   <div class="form">
-                    <input type="text" id="mqtt-user-password-2" class="form-control form-control-sm" placeholder="mqtt-user-password" />
+                    <input type="text" id="mqtt-user-password-2" class="form-control form-control-sm" placeholder="Enter mqtt user password" />
 
                   </div>
                 </div>
             </div>
+            <div class="row mb-3"> 
+              <p class="text-primary">Configure response time</p>
+              <div class="col-md-6">
+                  <!-- border -->
+                  <p>Response</p>
+              <div class="form">
+                  <input type="text" id="response-2" class="form-control form-control-sm" placeholder="Enter response time" />
+
+                </div>
+              </div>
+    
+          </div>
                 <div style="display:flex; justify-content:flex-end">
                     <button type="submit" class="btn bg-transparent bg-gradient text-primary border-margin">SAVE</button>
                     </div>
@@ -120,7 +132,7 @@
 
         <div class="row mb-5">
             <p class="text-primary">Configure Mqtt Certificate (Select MQTT Protocol)</p>
-<div class="col-4 "> 
+<div class="col-md-3 "> 
     <p> Select Protocol</p>
     <select name="" id="mqtt-protocol-2">
         <option value="TCP">MQTT/TCP</option>
@@ -131,13 +143,13 @@
         <button type="submit" id="mqtt-protocol-button-2" class="btn bg-transparent  bg-gradient text-primary border-margin">SAVE</button>
         </div>
 </div>
-<div class="col-4"> 
+<div class="col-md-3"> 
     
     <p>Mqtt Certification File</p>
     <form>
       <div class="form mb-2 w-50">
 
-        <input type="text" id="mqtt-cert-2" class="form-control  form-control-sm" placeholder="mqtt certification " readonly/>
+        <input type="text" id="mqtt-cert-2" class="form-control  form-control-sm" placeholder="Enter mqtt certification " readonly/>
 
       </div>
      
@@ -146,12 +158,12 @@
         </div> -->
     </form>
 </div>
-<div class="col-4"> 
+<div class="col-md-6" id="display-mqtt"> 
     <p>MQTT Certificate</p>
     <form encType='multipart/form-data' id="mqtt-cert-form" method="POST" action="/mqtt_one_cert_file">
         <div class="form mb-2 w-25">
   
-          <input type="file" name="mqtt_cert_file" id="upload-mqtt-certificate" class="form-control  form-control-sm" placeholder="Set OTA Update"/>
+          <input type="file" name="mqtt_cert_file" id="upload-mqtt-certificate" class="form-control  form-control-sm" placeholder="Enter set OTA Update"/>
   
         </div>
        

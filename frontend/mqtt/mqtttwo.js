@@ -1,7 +1,7 @@
 
 function getMqttDataTwo(){
 
-
+  let userRole = JSON.parse(localStorage.getItem("user") || null)
     let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
         fetch("http://localhost:8080/api/v1/mqtt/mqtt_two", {
             method: 'GET',
@@ -22,7 +22,13 @@ function getMqttDataTwo(){
             document.getElementById("mqtt-user-password-2").value = response.mqtt_password
             document.getElementById("mqtt-protocol-2").value = response.mqtt_protocol
             document.getElementById("mqtt-cert-2").value = response.ca
+            document.getElementById("response-2").value = response.response_time
+    
 
+            if(response.mqtt_protocol === "TCP"){
+              document.getElementById("display-mqtt").style.display="none"
+           
+            }
 
        
 
@@ -111,6 +117,7 @@ e.preventDefault()
   let mqttDeviceHealth= document.getElementById("mqtt-device-health-2").value
   let mqttUserName= document.getElementById("mqtt-user-name-2").value
   let mqttUserPassword = document.getElementById("mqtt-user-password-2").value
+  let mqttResponse = document.getElementById("response-2").value
 
 
 var mqttBrokerTwoData = JSON.stringify({
@@ -119,7 +126,8 @@ var mqttBrokerTwoData = JSON.stringify({
     "people_count_topic": mqttPeopleCount,
     "device_health_topic": mqttDeviceHealth,
     "mqtt_user_name": mqttUserName,
-    "mqtt_password": mqttUserPassword
+    "mqtt_password": mqttUserPassword,
+   "response_time" : mqttResponse
   });
 
   let BearerCheck = JSON.parse(localStorage.getItem("token") || null)

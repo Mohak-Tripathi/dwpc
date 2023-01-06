@@ -10,7 +10,7 @@ people_count_topic,
 device_health_topic,
 mqtt_user_name,
 mqtt_password,
-response
+response_time
   
     } = req.body;
     const config = JSON.parse(fs.readFileSync("./config.json"));
@@ -21,7 +21,7 @@ response
     config.mqtt_broker_one.device_health_topic = device_health_topic;
     config.mqtt_broker_one.mqtt_user_name =mqtt_user_name;
     config.mqtt_broker_one.mqtt_password = mqtt_password;
-    config.mqtt_broker_one.response = response;
+    config.mqtt_broker_one.response_time = response_time;
 
     fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
     res.status(200).json({ message: "mqtt destination one params saved" });
@@ -44,7 +44,7 @@ people_count_topic,
 device_health_topic,
 mqtt_user_name,
 mqtt_password,
-response
+response_time
   
     } = req.body;
     const config = JSON.parse(fs.readFileSync("./config.json"));
@@ -55,7 +55,7 @@ response
     config.mqtt_broker_two.device_health_topic = device_health_topic;
     config.mqtt_broker_two.mqtt_user_name =mqtt_user_name;
     config.mqtt_broker_two.mqtt_password = mqtt_password;
-    config.mqtt_broker_two.response = response;
+    config.mqtt_broker_two.response_time = response_time;
 
     fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
     res.status(200).json({ message: "mqtt destination two params saved" });

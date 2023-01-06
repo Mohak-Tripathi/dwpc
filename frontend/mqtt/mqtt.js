@@ -22,8 +22,13 @@ function getMqttData(){
             document.getElementById("mqtt-user-password").value = response.mqtt_password
             document.getElementById("mqtt-protocol").value = response.mqtt_protocol
             document.getElementById("mqtt-cert").value = response.ca
+            document.getElementById("response-1").value = response.response_time
 
-      
+            if(response.mqtt_protocol === "TCP"){
+              document.getElementById("display-mqtt-1").style.display="none"
+           
+            }
+
 
        
 
@@ -114,6 +119,7 @@ e.preventDefault()
   let mqttDeviceHealth= document.getElementById("mqtt-device-health").value
   let mqttUserName= document.getElementById("mqtt-user-name").value
   let mqttUserPassword = document.getElementById("mqtt-user-password").value
+  let mqttResponse = document.getElementById("response-1").value
 
 
 // console.log(aggregationInterval, InZoneDistanceThrehold )
@@ -124,7 +130,8 @@ var mqttBrokerOneData = JSON.stringify({
     "people_count_topic": mqttPeopleCount,
     "device_health_topic": mqttDeviceHealth,
     "mqtt_user_name": mqttUserName,
-    "mqtt_password": mqttUserPassword
+    "mqtt_password": mqttUserPassword,
+    "response_time" : mqttResponse
   });
 
   let BearerCheck = JSON.parse(localStorage.getItem("token") || null)

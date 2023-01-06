@@ -8,7 +8,8 @@
 		"device_health_topic": "13",
 		"mqtt_user_name": "34",
 		"mqtt_password": "14",
-		"mqtt_protocol": "TLS"
+		"mqtt_protocol": "TLS",
+		"response_time": "11"
 	},
 	"mqtt_broker_two": {
 		"broker": "14",
@@ -18,7 +19,8 @@
 		"device_health_topic": "4",
 		"mqtt_user_name": "0",
 		"mqtt_password": "-4",
-		"mqtt_protocol": "TCP"
+		"mqtt_protocol": "TCP",
+		"response_time": "90"
 	},
 	"admin": {
 		"variant": "TCP",
