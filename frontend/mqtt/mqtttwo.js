@@ -23,7 +23,6 @@ function getMqttDataTwo(){
             document.getElementById("mqtt-protocol-2").value = response.mqtt_protocol
             document.getElementById("mqtt-cert-2").value = response.ca
 
-      
 
        
 
@@ -33,7 +32,6 @@ function getMqttDataTwo(){
     
     
       getMqttDataTwo()
-
 
 
     //   function getMqttBrokerStatusTwo(){
@@ -62,44 +60,44 @@ function getMqttDataTwo(){
 
 
 
-document.getElementById("mqtt-broker-button").addEventListener("click", setMqttBrokerTwoValue)
+// document.getElementById("mqtt-broker-button").addEventListener("click", setMqttBrokerTwoValue)
 
 
-function setMqttBrokerTwoValue(){
-    let mqttBrokerValue =   document.getElementById("mqtt-broker-data").value
+// function setMqttBrokerTwoValue(){
+//     let mqttBrokerValue =   document.getElementById("mqtt-broker-data").value
 
 
-    var mqttBrokerSelectionTwo = JSON.stringify({
-        "mqttStatus":  mqttBrokerValue
-      });
+//     var mqttBrokerSelectionTwo = JSON.stringify({
+//         "mqttStatus":  mqttBrokerValue
+//       });
 
-      let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+//       let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
 
 
-    fetch("http://localhost:8080/api/v1/mqtt/mqtt_broker_status", {
-        method: "POST",
-        headers: {
-            "Accept": "application/json, text/plain, */*",
-            "Content-type": "application/json",
-        Authorization: `Bearer ${BearerCheck}`,
+//     fetch("http://localhost:8080/api/v1/mqtt/mqtt_broker_status", {
+//         method: "POST",
+//         headers: {
+//             "Accept": "application/json, text/plain, */*",
+//             "Content-type": "application/json",
+//         Authorization: `Bearer ${BearerCheck}`,
 
-        },
-        body: mqttBrokerSelectionTwo
-    })
-    .then((res)=> {
-    if(res.status === 200){
-        window.location.href="./mqtt.html"
-        return res.json()
+//         },
+//         body: mqttBrokerSelectionTwo
+//     })
+//     .then((res)=> {
+//     if(res.status === 200){
+//         window.location.href="./mqtt.html"
+//         return res.json()
 
-    }else{
-        alert("something went wrong")  ;
-    }})
-    .then((data)=>{
-      console.log(data) 
-    })
-    .catch(err => console.log(err))
+//     }else{
+//         alert("something went wrong")  ;
+//     }})
+//     .then((data)=>{
+//       console.log(data) 
+//     })
+//     .catch(err => console.log(err))
 
-}
+// }
 
 
 document.getElementById("mqtt-broker-form").addEventListener("submit",  setMqttBrokerTwoForm)

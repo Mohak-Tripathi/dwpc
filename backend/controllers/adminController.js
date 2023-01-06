@@ -64,10 +64,10 @@ exports.changeApModePassword = (req, res, next) => {
   
   };
 
-  exports.getVariant = (req, res, next) => {
-    const config = JSON.parse(fs.readFileSync("./config.json"));
-    res.status(200).json(config.admin.variant);
-  };
+  // exports.getVariant = (req, res, next) => {
+  //   const config = JSON.parse(fs.readFileSync("./config.json"));
+  //   res.status(200).json(config.admin.variant);
+  // };
   
 
   exports.setVariant = (req, res, next) => {
@@ -111,10 +111,10 @@ exports.changeApModePassword = (req, res, next) => {
   };
 
   
-  exports.getOtaUpdate = (req, res, next) => {
-    const config = JSON.parse(fs.readFileSync("./config.json"));
-    res.status(200).json(config.admin.ota);
-  };
+  // exports.getOtaUpdate = (req, res, next) => {
+  //   const config = JSON.parse(fs.readFileSync("./config.json"));
+  //   res.status(200).json(config.admin.ota);
+  // };
 
 
 
@@ -143,10 +143,10 @@ exports.setWifiStatusUpdate = (req, res, next) => {
 
 };
 
-exports.getWifiStatusUpdate= (req, res, next) => {
-  const config = JSON.parse(fs.readFileSync("./config.json"));
-  res.status(200).json(config.admin.wifi_status);
-};
+// exports.getWifiStatusUpdate= (req, res, next) => {
+//   const config = JSON.parse(fs.readFileSync("./config.json"));
+//   res.status(200).json(config.admin.wifi_status);
+// };
 
 
   

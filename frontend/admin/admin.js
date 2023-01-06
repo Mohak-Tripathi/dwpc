@@ -236,3 +236,20 @@ function getWifiValue(){
 }
 
 
+
+
+let userRole = JSON.parse(localStorage.getItem("user") || null)
+console.log(userRole, "hello")
+
+
+let x= document.getElementsByClassName("service-nav")
+console.log(x, "xv")
+
+if(userRole ==="Production"){
+//  document.getElementsByClassName("admin-nav").style.visibility = "hidden"
+ x[0].style.display= "none"
+ console.log(x)
+}
+
+
+

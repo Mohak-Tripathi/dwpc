@@ -26,14 +26,14 @@
         <div class="row mb-5 p-2 ">
 
          
-<div class="row mb-1 ">
+<!-- <div class="row mb-1 ">
 
     <p class="text-primary">Choose Broker-2</p>
    <div >
     <select name="" id="mqtt-data" class="mb-2 w-25">
 
       <!-- <option value="broker-1">Broker 1</option> -->
-      <option value="broker-2">Broker2</option>
+      <!-- <option value="broker-2">Broker2</option>
   </select>
   <div style="display:flex; justify-content:flex-end">
     <button type="submit" id="mqtt-button" class="btn bg-transparent bg-gradient text-primary border-margin">SAVE</button>
@@ -42,13 +42,13 @@
    </div>
 
 
-</div>
+</div> --> 
  
           
             <form action="" id="mqtt-form">
                 <div class="row mb-3"> 
                     <p class="text-primary">Configure MQTT broker and port</p>
-                <div class="col-6 ">
+                <div class="col-md-6 ">
            
                     <p>Broker-1</p>
                 <div class="form">
@@ -57,7 +57,7 @@
                   </div>
                 </div>
       
-                <div class="col-6 ">
+                <div class="col-md-6 ">
     
                     <p>Port</p>
                   <div class="form">
@@ -69,7 +69,7 @@
 
             <div class="row mb-3"> 
                 <p class="text-primary">Configure the topics to publish the data</p>
-                <div class="col-6">
+                <div class="col-md-6">
        
                     <p>Occupancy/People Count Topic</p>
                 <div class="form">
@@ -78,7 +78,7 @@
                   </div>
                 </div>
       
-                <div class="col-6">
+                <div class="col-md-6">
                     <!-- border -->
                     <p>Device Health Topic</p>
                   <div class="form">
@@ -90,7 +90,7 @@
                 
             <div class="row mb-3"> 
                 <p class="text-primary">Configure the User name and password</p>
-                <div class="col-6">
+                <div class="col-md-6">
                     <!-- border -->
                     <p>Mqtt User Name</p>
                 <div class="form">
@@ -99,7 +99,7 @@
                   </div>
                 </div>
       
-                <div class="col-6">
+                <div class="col-md-6">
                     <!-- border -->
                     <p> Password</p>
                   <div class="form">
@@ -120,7 +120,7 @@
 
         <div class="row mb-5">
             <p class="text-primary">Configure Mqtt Certificate (Select MQTT Protocol)</p>
-<div class="col-4 "> 
+<div class="col-md-3"> 
     <p> Select Protocol</p>
     <select name="" id="mqtt-protocol">
         <option value="TCP">MQTT/TCP</option>
@@ -131,7 +131,7 @@
         <button type="submit" id="mqtt-protocol-button" class="btn bg-transparent  bg-gradient text-primary border-margin">SAVE</button>
         </div>
 </div>
-<div class="col-4"> 
+<div class="col-md-3"> 
     
     <p>Mqtt Certification File</p>
     <form>
@@ -146,7 +146,7 @@
         </div> -->
     </form>
 </div>
-<div class="col-4"> 
+<div class="col-md-6"> 
     <p>MQTT Certificate</p>
     <form encType='multipart/form-data' id="mqtt-cert-form" method="POST" action="/mqtt_one_cert_file">
         <div class="form mb-2 w-25">
