@@ -1,7 +1,6 @@
 
 function getMqttDataTwo(){
 
-  let userRole = JSON.parse(localStorage.getItem("user") || null)
     let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
         fetch("http://localhost:8080/api/v1/mqtt/mqtt_two", {
             method: 'GET',
@@ -144,7 +143,7 @@ var mqttBrokerTwoData = JSON.stringify({
     if(res.status === 200){
         return res.json()
     }else{
-        alert("username and password does not match")  ;
+        alert("something went wrong")  ;
     }})
     .then((data)=>{
       console.log(data)  
@@ -247,6 +246,98 @@ fetch("http://localhost:8080/api/v1/mqtt/mqtt_one_cert_file", requestOptions)
 
 
     }
+
+
+    //apply
+document.getElementById("mqtt-two-button").addEventListener("click",  setMqttBrokerTwoApplyForm)
+
+
+function  setMqttBrokerTwoApplyForm(){
+
+  let mqttBroker = document.getElementById("mqtt-broker-2").value
+  let mqttPort= document.getElementById("mqtt-port-2").value
+  let mqttPeopleCount= document.getElementById("mqtt-people-count-2").value
+  let mqttDeviceHealth= document.getElementById("mqtt-device-health-2").value
+  let mqttUserName= document.getElementById("mqtt-user-name-2").value
+  let mqttUserPassword = document.getElementById("mqtt-user-password-2").value
+  let mqttResponse = document.getElementById("response-2").value
+
+
+var mqttBrokerTwoData = JSON.stringify({
+    "broker": mqttBroker,
+    "port":  mqttPort,
+    "people_count_topic": mqttPeopleCount,
+    "device_health_topic": mqttDeviceHealth,
+    "mqtt_user_name": mqttUserName,
+    "mqtt_password": mqttUserPassword,
+   "response_time" : mqttResponse
+  });
+
+  let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+    fetch("http://localhost:8080/api/v1/mqtt/mqtt_two_apply", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json, text/plain, */*",
+            "Content-type": "application/json",
+            Authorization: `Bearer ${BearerCheck}`,
+        },
+        body: mqttBrokerTwoData
+    })
+    .then((res)=> {
+    if(res.status === 200){
+        return res.json()
+    }else{
+        alert("something went wrong")  ;
+    }})
+    .then((data)=>{
+      console.log(data)  
+    })
+    .catch(err => console.log(err))
+
+
+    }
+
+    //apply
+
+    
+    document.getElementById("mqtt-protocol-apply-button-2").addEventListener("click", setMqttProtocolStatusApplyTwo)
+
+function setMqttProtocolStatusApplyTwo(){
+
+    let mqttProtocolTwo =   document.getElementById("mqtt-protocol-2").value
+
+  
+    var mqttProtocolSelectionTwoApply = JSON.stringify({
+        "mqttProtocolTwo" : mqttProtocolTwo
+      });
+
+      let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+
+
+    fetch("http://localhost:8080/api/v1/mqtt/mqtt_two_protocol_apply", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json, text/plain, */*",
+            "Content-type": "application/json",
+        Authorization: `Bearer ${BearerCheck}`,
+
+        },
+        body: mqttProtocolSelectionTwoApply
+    })
+    .then((res)=> {
+    if(res.status === 200){
+  
+        return res.json()
+    }else{
+        alert("something went wrong")  ;
+    }})
+    .then((data)=>{
+   
+      console.log(data) 
+    })
+    .catch(err => console.log(err))
+
+}
 
 
 

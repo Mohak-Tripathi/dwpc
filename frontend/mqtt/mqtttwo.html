@@ -26,24 +26,6 @@
         <div class="row mb-5 p-2 ">
 
          
-<!-- <div class="row mb-1 "> -->
-
-    <!-- <p class="text-primary">Choose Broker-1</p>
-   <div >
-    <select name="" id="mqtt-broker-data" class="mb-2 w-25">
-
-      <option value="broker-1">Broker 1</option>
-      <!-- <option value="broker-2">Broker2</option> -->
-  <!-- </select>
-  <div style="display:flex; justify-content:flex-end">
-    <button type="submit" id="mqtt-broker-button" class="btn bg-transparent bg-gradient text-primary border-margin">SAVE</button>
-    </div>
-
-   </div> -->
-
-
-<!-- </div> -->
- 
           
             <form action="" id="mqtt-broker-form">
                 <div class="row mb-3"> 
@@ -122,6 +104,7 @@
           </div>
                 <div style="display:flex; justify-content:flex-end">
                     <button type="submit" class="btn bg-transparent bg-gradient text-primary border-margin">SAVE</button>
+                    <button type="button" id="mqtt-two-button" class="btn bg-transparent bg-gradient text-primary border-margin">APPLY</button>
                     </div>
               
 
@@ -132,7 +115,7 @@
 
         <div class="row mb-5">
             <p class="text-primary">Configure Mqtt Certificate (Select MQTT Protocol)</p>
-<div class="col-md-3 "> 
+  <div class="col-md-7"> 
     <p> Select Protocol</p>
     <select name="" id="mqtt-protocol-2">
         <option value="TCP">MQTT/TCP</option>
@@ -141,9 +124,10 @@
 
      <div style="display:flex; justify-content:flex-end">
         <button type="submit" id="mqtt-protocol-button-2" class="btn bg-transparent  bg-gradient text-primary border-margin">SAVE</button>
-        </div>
+        <button type="button" id="mqtt-protocol-apply-button-2" class="btn bg-transparent  bg-gradient text-primary border-margin">APPLY</button>  
+      </div>
 </div>
-<div class="col-md-3"> 
+<div class="col-md-5"> 
     
     <p>Mqtt Certification File</p>
     <form>
@@ -153,12 +137,16 @@
 
       </div>
      
-      <!-- <div style="display:flex; justify-content:flex-end">
-        <button type="submit" class="btn bg-transparent  bg-gradient text-primary border-margin">SAVE</button>
-        </div> -->
+
     </form>
 </div>
-<div class="col-md-6" id="display-mqtt"> 
+</div>
+
+
+
+<div class="row mb-5"> 
+
+  <div class="col-md-7" id="display-mqtt"> 
     <p>MQTT Certificate</p>
     <form encType='multipart/form-data' id="mqtt-cert-form" method="POST" action="/mqtt_one_cert_file">
         <div class="form mb-2 w-25">
@@ -173,12 +161,20 @@
       </form>
 </div>
 
+
+
+</div>
+
+
+
+
+
         </div>
     
        
      
         </div>
-    </div> 
+
 
     
   <footer id="footer"> </footer>
