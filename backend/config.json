@@ -24,10 +24,10 @@
 	},
 	"admin": {
 		"variant": "TCP",
-		"ap_mode_ssid": "mohakshukla",
+		"ap_mode_ssid": "mohakshukl7",
 		"ap_mode_ssid_pass": "vvdv",
 		"ota": "ota-mohak",
-		"wifi_status": "disabled"
+		"wifi_status": "enabled"
 	},
 	"inference": {
 		"aggregation_interval": 2,

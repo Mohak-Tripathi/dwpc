@@ -8,8 +8,8 @@ e.preventDefault()
     let password = document.getElementById("password-login").value
 
     var loginData = JSON.stringify({
-        username: "Support_User",
-        password: "a3517876c46b72354b5c330bf57f5968"
+        username: "Production_User",
+        password: "f213ca89494ed2145819fd304ba0cee5"
       });
 
 

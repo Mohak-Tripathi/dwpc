@@ -40,10 +40,13 @@
       <option value="TLS">MQTT/TLS</option>
   </select>
   <div style="display:flex; justify-content:flex-end">
-    <button type="submit" id="variant-button" class="btn bg-transparent bg-gradient text-primary border-margin">SAVE</button>
-    </div>
+    <button type="submit" id="variant-button" class="btn bg-transparent bg-gradient text-primary border-margin">SAVE</button> 
+  
+    <button type="submit" id="variant-apply-button" class="btn bg-transparent bg-gradient text-primary border-margin">APPLY</button>
+  </div>
 
    </div>
+   
 
   <!-- </div> -->
 
@@ -61,7 +64,8 @@
         </div>
        
         <div style="display:flex; justify-content:flex-end">
-          <button  type="submit" class="btn bg-transparent  bg-gradient text-primary border-margin" onclick="">SAVE</button>
+          <button  type="submit" class="btn bg-transparent  bg-gradient text-primary border-margin" >SAVE</button>
+          <button  type="button" id="ap-mode-apply" class="btn bg-transparent  bg-gradient text-primary border-margin" >APPLY</button>
           </div>
       </form>
       
@@ -86,7 +90,8 @@
      
       <div style="display:flex; justify-content:flex-end">
         <button type="submit" class="btn bg-transparent  bg-gradient text-primary border-margin">SAVE</button>
-        </div>
+        <button type="button" id="ap-mode-pass-apply" class="btn bg-transparent  bg-gradient text-primary border-margin">APPLY</button> 
+      </div>
     </form>
     
 
@@ -109,7 +114,8 @@
      
       <div style="display:flex; justify-content:flex-end">
         <button type="submit" class="btn bg-transparent  bg-gradient text-primary border-margin">SAVE</button>
-        </div>
+        <button type="button" id="ota-apply-button" class="btn bg-transparent  bg-gradient text-primary border-margin">APPLY</button> 
+      </div>
     </form>
 
 
@@ -125,9 +131,10 @@
       <option value="enabled">Enabled</option>
       <option value="disabled">Disabled</option>
   </select>
-  <div style="display:flex; justify-content:flex-end">
-    <button type="submit" id="wifi-button" class="btn bg-transparent bg-gradient text-primary border-margin">SAVE</button>
-    </div>
+  <div style="display:flex" class="border">
+    <button type="submit" id="wifi-button" class="btn bg-transparent bg-gradient text-primary border-margin ">SAVE</button>
+    <button type="button" id="wifi-apply-button" class="btn bg-transparent bg-gradient text-primary border-margin">APPLY</button> 
+  </div>
 
    </div>
 

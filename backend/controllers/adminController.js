@@ -149,5 +149,135 @@ exports.setWifiStatusUpdate = (req, res, next) => {
 // };
 
 
+
+
+// apply logic
+exports.setApplyVariant = (req, res, next) => {
+  const { variantData } = req.body;
+
+if(variantData){
+
+  // const config = JSON.parse(fs.readFileSync("./config.json"));
+  // config.admin.variant = variantData;
+  // fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
+  res.status(200).json({
+    message: "Apply succesfully",
+  });
+}
+else{
+  res.status(200).json({
+    message: "variant set configuration failed",
+  });
+}
+  
+};
+
+
+
+exports.changeApModeSsidApply = (req, res, next) => {
+
+  let { ap_mode_ssid } = req.body;
+
+  if (ap_mode_ssid) {
+
+    // const config = JSON.parse(fs.readFileSync("./config.json"));
+
+    // config.admin.ap_mode_ssid = ap_mode_ssid;
+
+    // fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
+
+    res.status(200).json({
+      message: "apMode SSID apply is set",
+    });
+  }
+  else {
+    res.status(200).json({
+      message: "apMode SSID configration failed",
+    });
+  }
+}
+
+
+  //apply
+exports.changeApModeApplyPassword = (req, res, next) => {
+
+  let { ap_mode_ssid_pass} = req.body;
+
+  if (ap_mode_ssid_pass) {
+
+    // const config = JSON.parse(fs.readFileSync("./config.json"));
+
+    // config.admin.ap_mode_ssid_pass = ap_mode_ssid_pass;
+
+    // fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
+
+    res.status(200).json({
+      message: "apMode SSID Apply password is set",
+    });
+  }
+  else {
+    res.status(200).json({
+      message: "apMode SSID password configration failed",
+    });
+  }
+
+};
+
+
+//apply
+exports.setOtaApplyUpdate = (req, res, next) => {
+  const { otaData } = req.body;
+
+if( otaData){
+  // const config = JSON.parse(fs.readFileSync("./config.json"));
+  // config.admin.ota = otaData;
+  // fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
+  res.status(200).json({
+    message: "OTA Update Apply set succesfully",
+  });
+}
+else{
+  res.status(200).json({
+    message: "OTA Update set failed",
+  });
+}
+
+};
+
+
+
+
+
+    
+exports.setWifiStatusApplyUpdate = (req, res, next) => {
+
+  let { wifiStatus} = req.body;
+
+  if ( wifiStatus) {
+
+    // const config = JSON.parse(fs.readFileSync("./config.json"));
+
+    // config.admin.wifi_status = wifiStatus;
+
+    // fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
+
+    res.status(200).json({
+      message: {wifiStatus},
+    });
+  }
+  else {
+    res.status(200).json({
+      message: "wifi status set configration failed",
+    });
+  }
+
+};
+
+
+
+
+
+
+
   
   

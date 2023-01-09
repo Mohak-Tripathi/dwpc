@@ -86,7 +86,68 @@ var inferenceData = JSON.stringify({
     if(res.status === 200){
         return res.json()
     }else{
-        alert("username and password does not match")  ;
+        alert("something went wrong")  ;
+    }})
+    .then((data)=>{
+      console.log(data)  
+    })
+    .catch(err => console.log(err))
+
+
+    }
+
+
+    
+
+document.getElementById("inference-apply-button").addEventListener("click", getInferenceApplyForm)
+
+
+function  getInferenceApplyForm(){
+
+  let aggregationInterval = document.getElementById("aggregation-interval").value
+  let InZoneDistanceThreshold= document.getElementById("In-zone-distance-threshold").value
+  let OutZoneDistanceThreshold= document.getElementById("out-zone-distance-threshold").value
+  let PeriodicResetInterval= document.getElementById("periodic-reset-interval").value
+  let FunctionMode= document.getElementById("function-mode").value
+  let MeasurementFrequency = document.getElementById("measurement-frequency").value
+  let PixelCountOnePersonThreshold= document.getElementById("pixel-count-one-person-threshold").value
+  let PixelCountTwoPersonThreshold= document.getElementById("pixel-count-two-person-threshold").value
+  let RoomCapacity= document.getElementById("room-capacity").value
+  let OsTimerDelay= document.getElementById("os-timer-delay").value
+  let WaitTimer= document.getElementById("wait-timer").value
+  let SensingMode= document.getElementById("sensing-mode").value
+
+
+var inferenceApplyData = JSON.stringify({
+    "aggregation_interval":  aggregationInterval,
+    "in_zone_distance_threshold": InZoneDistanceThreshold,
+    "out_zone_distance_threshold": OutZoneDistanceThreshold,
+    "periodic_reset_interval":PeriodicResetInterval,
+    "function_mode":FunctionMode,
+    "measurement_frequency":  MeasurementFrequency ,
+    "pixel_count_one_person_threshold": PixelCountOnePersonThreshold,
+    "pixel_count_two_person_threshold": PixelCountTwoPersonThreshold,
+    "room_capacity": RoomCapacity,
+    "os_timer_delay": OsTimerDelay,
+    "wait_timer": WaitTimer,
+    "sensing_mode": SensingMode
+  });
+
+  let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+    fetch("http://localhost:8080/api/v1/inference/dwpc_params_apply", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json, text/plain, */*",
+            "Content-type": "application/json",
+            Authorization: `Bearer ${BearerCheck}`,
+        },
+        body: inferenceApplyData
+    })
+    .then((res)=> {
+    if(res.status === 200){
+        return res.json()
+    }else{
+        alert("something went wrong")  ;
     }})
     .then((data)=>{
       console.log(data)  

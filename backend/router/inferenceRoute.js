@@ -3,7 +3,7 @@
 const express= require('express');
 const router= express.Router();
 
-const {   saveInference, getInference } = require("../controllers/inferenceController")
+const {   saveInference, getInference,  saveApplyInference } = require("../controllers/inferenceController")
 
 const {isAuthenticated, isAuthorizeRoles} = require("../middleware/is-auth");
 
@@ -14,6 +14,13 @@ router.post(
     isAuthorizeRoles( "Production"),
 
     saveInference
+  );
+
+  router.post(
+    "/dwpc_params_apply", 
+    isAuthorizeRoles( "Production"),
+
+    saveApplyInference
   );
 
 

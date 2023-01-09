@@ -78,9 +78,12 @@ function getVariantValue(){
 
 
 
+
+
+
 document.getElementById("admin-apMode-form").addEventListener("submit", getAdminSsidValue)
 
-async function getAdminSsidValue(e){
+function getAdminSsidValue(e){
     e.preventDefault()
     let apModeSSID= document.getElementById("admin-apModeSSID").value
 
@@ -165,7 +168,7 @@ function getOtaValue(e){
     e.preventDefault()
     let otaValue = document.getElementById("otaUpdate").value
 
-    var apDataPass = JSON.stringify({
+    var OTAData= JSON.stringify({
         "otaData": otaValue
       });
 
@@ -180,7 +183,7 @@ function getOtaValue(e){
         Authorization: `Bearer ${BearerCheck}`,
 
         },
-        body: apDataPass
+        body: OTAData
     })
     .then((res)=> {
     if(res.status === 200){
@@ -234,6 +237,211 @@ function getWifiValue(){
     .catch(err => console.log(err))
 
 }
+
+
+
+
+// Apply buttons logic 
+
+document.getElementById("variant-apply-button").addEventListener("click", getVariantApplyValue)
+
+
+function getVariantApplyValue(){
+
+    let variantApplyValue =   document.getElementById("variant-data").value
+
+    
+    var variantSelection = JSON.stringify({
+        "variantData": variantApplyValue 
+      });
+
+      let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+
+
+    fetch("http://localhost:8080/api/v1/admin/variant_apply", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json, text/plain, */*",
+            "Content-type": "application/json",
+        Authorization: `Bearer ${BearerCheck}`,
+
+        },
+        body: variantSelection
+    })
+    .then((res)=> {
+    if(res.status === 200){
+        return res.json()
+    }else{
+        alert("something went wrong")  ;
+    }})
+    .then((data)=>{
+      console.log(data) 
+    })
+    .catch(err => console.log(err))
+
+}
+
+
+
+document.getElementById("ap-mode-apply").addEventListener("click", getAPmodeApplyValue)
+
+
+function getAPmodeApplyValue(){
+
+    let apModeApplyValue =   document.getElementById("admin-apModeSSID").value
+
+//    console.log(apModeApplyValue, "gto")
+    
+   var apData = JSON.stringify({
+    "ap_mode_ssid": apModeApplyValue
+  });
+
+  let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+
+
+fetch("http://localhost:8080/api/v1/admin/ap_mode_ssid_apply", {
+    method: "POST",
+    headers: {
+        "Accept": "application/json, text/plain, */*",
+        "Content-type": "application/json",
+    Authorization: `Bearer ${BearerCheck}`,
+
+    },
+    body: apData
+})
+.then((res)=> {
+if(res.status === 200){
+    return res.json()
+}else{
+    alert("something went wrong")  ;
+}})
+.then((data)=>{
+  console.log(data) 
+})
+.catch(err => console.log(err))
+
+}
+
+
+document.getElementById("ap-mode-pass-apply").addEventListener("click", getAPmodePassApplyValue)
+
+function getAPmodePassApplyValue(){
+
+    let apModePassApplyValue =   document.getElementById("admin-apModeSSIDPass").value
+
+   console.log(apModePassApplyValue, "gto")
+    
+   var apDataPass = JSON.stringify({
+    "ap_mode_ssid_pass":  apModePassApplyValue
+  });
+
+  let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+
+
+fetch("http://localhost:8080/api/v1/admin/ap_mode_ssid_pass_apply", {
+    method: "POST",
+    headers: {
+        "Accept": "application/json, text/plain, */*",
+        "Content-type": "application/json",
+    Authorization: `Bearer ${BearerCheck}`,
+
+    },
+    body: apDataPass
+})
+.then((res)=> {
+if(res.status === 200){
+    return res.json()
+}else{
+    alert("something went wrong")  ;
+}})
+.then((data)=>{
+  console.log(data) 
+})
+.catch(err => console.log(err))
+
+
+}
+
+
+
+
+document.getElementById("ota-apply-button").addEventListener("click", getOtaApplyValue)
+
+function getOtaApplyValue(e){
+
+    let otaApplyValue = document.getElementById("otaUpdate").value
+
+    var otaApplyData = JSON.stringify({
+        "otaData": otaApplyValue
+      });
+
+      let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+
+
+    fetch("http://localhost:8080/api/v1/admin/ota_apply", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json, text/plain, */*",
+            "Content-type": "application/json",
+        Authorization: `Bearer ${BearerCheck}`,
+
+        },
+        body: otaApplyData
+    })
+    .then((res)=> {
+    if(res.status === 200){
+        return res.json()
+    }else{
+        alert("something went wrong")  ;
+    }})
+    .then((data)=>{
+      console.log(data) 
+    })
+    .catch(err => console.log(err))
+
+}
+
+
+document.getElementById("wifi-apply-button").addEventListener("click", getWifiApplyValue)
+
+
+function getWifiApplyValue(){
+
+    let wifiApplyValue =   document.getElementById("wifi-admin-data").value
+
+    
+    var wifiSelection = JSON.stringify({
+        "wifiStatus": wifiApplyValue
+      });
+
+      let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+
+
+    fetch("http://localhost:8080/api/v1/admin/wifi-status_apply", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json, text/plain, */*",
+            "Content-type": "application/json",
+        Authorization: `Bearer ${BearerCheck}`,
+
+        },
+        body: wifiSelection
+    })
+    .then((res)=> {
+    if(res.status === 200){
+        return res.json()
+    }else{
+        alert("something went wrong")  ;
+    }})
+    .then((data)=>{
+      console.log(data) 
+    })
+    .catch(err => console.log(err))
+
+
+}
+
+
 
 
 
