@@ -1,4 +1,6 @@
 
+
+
 document.getElementById("login-form").addEventListener("submit", loginForm)
 
 
@@ -7,9 +9,12 @@ e.preventDefault()
     let username = document.getElementById("username-login").value
     let password = document.getElementById("password-login").value
 
+    const hashedPwd = CryptoJS.MD5(username + password).toString();
+
+    console.log(hashedPwd, "hashedpwd")
     var loginData = JSON.stringify({
-        username: "Production_User",
-        password: "f213ca89494ed2145819fd304ba0cee5"
+        username: username,
+        password: hashedPwd
       });
 
 
@@ -32,7 +37,17 @@ e.preventDefault()
 console.log(data)
                  localStorage.setItem("token", JSON.stringify(data.token));
                  localStorage.setItem("user", JSON.stringify(data.user.role));
-             window.location.href="../admin/admin.html"
+          
+                 if(data.user.role == "Production"){
+                    window.location.href="../admin/admin.html"
+                 }
+                 else if(data.user.role == "Support"){
+                    window.location.href="../service/service.html"
+                 }
+                 else{
+                    window.location.href="../dashboard/dashboard.html"
+                 }
+           
                 }   
         })
         .catch(err => console.log(err))

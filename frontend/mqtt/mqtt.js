@@ -209,12 +209,13 @@ document.getElementById("mqtt-cert-form").addEventListener("submit",  setMqttPro
 
 function  setMqttProtocolCert(e){
 e.preventDefault()
-
+let z =document.getElementById("upload-mqtt-certificate")
+console.log(z, "kl")
 const data= document.getElementById("upload-mqtt-certificate").value
 
 
 var formdata = new FormData();
-formdata.set("mqtt_cert_file", data );
+formdata.append("mqtt_cert_file","Screenshot (4).png");
 
 // fileInput.files[0]
 let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
@@ -223,7 +224,8 @@ var requestOptions = {
   method: 'POST',
   body: formdata,
   headers: {
-    "Accept": "application/json, text/plain, */*",
+    "Accept": "application/json, */*",
+  "Content-Type": "text/html; charset=utf-8",
 
 Authorization: `Bearer ${BearerCheck}`,
 
