@@ -65,7 +65,7 @@ var inferenceData = JSON.stringify({
     if(res.status === 200){
         return res.json()
     }else{
-        alert("username and password does not match")  ;
+        alert("something went wrong")  ;
     }})
     .then((data)=>{
       console.log(data)  
@@ -75,6 +75,47 @@ var inferenceData = JSON.stringify({
 
     }
 
+
+    //apply
+
+document.getElementById("wifi-cred-button").addEventListener("click", getWifiInferenceApplyForm)
+
+
+function  getWifiInferenceApplyForm(){
+
+  let networkSsid = document.getElementById("network-wifi-ssid").value
+  let networkPassword = document.getElementById("network-wifi-password").value
+
+
+var inferenceApplyData = JSON.stringify({
+    "SSID": networkSsid,
+    "password": networkPassword 
+  
+  });
+
+  let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+    fetch("http://localhost:8080/api/v1/network/cred_apply", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json, text/plain, */*",
+            "Content-type": "application/json",
+            Authorization: `Bearer ${BearerCheck}`,
+        },
+        body: inferenceApplyData
+    })
+    .then((res)=> {
+    if(res.status === 200){
+        return res.json()
+    }else{
+        alert("something went wrong")  ;
+    }})
+    .then((data)=>{
+      console.log(data)  
+    })
+    .catch(err => console.log(err))
+
+
+    }
 
 
     
@@ -109,7 +150,7 @@ var inferenceStaticWifiData = JSON.stringify({
     if(res.status === 200){
         return res.json()
     }else{
-        alert("username and password does not match")  ;
+        alert("something went wrong")  ;
     }})
     .then((data)=>{
       console.log(data)  
@@ -118,6 +159,49 @@ var inferenceStaticWifiData = JSON.stringify({
 
 
     }
+
+
+     //apply    
+document.getElementById("static-ip-button").addEventListener("click", getStaticIpWifiInferenceApplyForm)
+
+
+function  getStaticIpWifiInferenceApplyForm(e){
+
+  let networkStaticIpWifi = document.getElementById("network-static-ip-wifi").value
+  let networkGatewayIpWifi = document.getElementById("network-gateway-ip-wifi").value
+
+
+
+var inferenceStaticWifiData = JSON.stringify({
+    "static_ip": networkStaticIpWifi,
+    "gateway_ip": networkGatewayIpWifi
+  
+  });
+
+  let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+    fetch("http://localhost:8080/api/v1/network/static_ip_wifi_apply", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json, text/plain, */*",
+            "Content-type": "application/json",
+            Authorization: `Bearer ${BearerCheck}`,
+        },
+        body: inferenceStaticWifiData
+    })
+    .then((res)=> {
+    if(res.status === 200){
+        return res.json()
+    }else{
+        alert("something went wrong")  ;
+    }})
+    .then((data)=>{
+      console.log(data)  
+    })
+    .catch(err => console.log(err))
+
+
+    }
+
 
 
 
@@ -151,7 +235,7 @@ var inferenceStaticEthernetData = JSON.stringify({
     if(res.status === 200){
         return res.json()
     }else{
-        alert("username and password does not match")  ;
+        alert("something went wrong")  ;
     }})
     .then((data)=>{
       console.log(data)  
@@ -160,6 +244,51 @@ var inferenceStaticEthernetData = JSON.stringify({
 
 
     }
+
+
+
+          //apply  
+document.getElementById("static-ip-eth-button").addEventListener("click", getStaticIpEthernetInferenceApplyForm)
+
+
+function  getStaticIpEthernetInferenceApplyForm(){
+
+  let networkStaticIpEthernet = document.getElementById("network-static-ip-ethernet").value
+  let networkGatewayIpEthernet = document.getElementById("network-gateway-ip-ethernet").value
+
+
+var inferenceStaticEthernetApplyData = JSON.stringify({
+    "static_ip_ethernet": networkStaticIpEthernet ,
+    "gateway_ip_ethernet": networkGatewayIpEthernet
+  
+  });
+
+  let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+    fetch("http://localhost:8080/api/v1/network/static_ip_eth_apply", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json, text/plain, */*",
+            "Content-type": "application/json",
+            Authorization: `Bearer ${BearerCheck}`,
+        },
+        body: inferenceStaticEthernetApplyData
+    })
+    .then((res)=> {
+    if(res.status === 200){
+        return res.json()
+    }else{
+        alert("something went wrong")  ;
+    }})
+    .then((data)=>{
+      console.log(data)  
+    })
+    .catch(err => console.log(err))
+
+
+    }
+
+
+
 
 
     document.getElementById("ntp-form").addEventListener("submit", getNtpForm)
@@ -189,7 +318,48 @@ var ntpDataValue = JSON.stringify({
     if(res.status === 200){
         return res.json()
     }else{
-        alert("username and password does not match")  ;
+        alert("something went wrong")  ;
+    }})
+    .then((data)=>{
+      console.log(data)  
+    })
+    .catch(err => console.log(err))
+
+
+    }
+
+
+
+    //apply
+
+    document.getElementById("ntp-apply-button").addEventListener("click", getNtpApplyForm)
+
+
+function  getNtpApplyForm(){
+
+  let ntpApplyValue = document.getElementById("ntp-data").value
+
+var ntpDataValue = JSON.stringify({
+    "ntpServer": ntpApplyValue
+
+  
+  });
+
+  let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+    fetch("http://localhost:8080/api/v1/network/ntp_server_apply", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json, text/plain, */*",
+            "Content-type": "application/json",
+            Authorization: `Bearer ${BearerCheck}`,
+        },
+        body: ntpDataValue
+    })
+    .then((res)=> {
+    if(res.status === 200){
+        return res.json()
+    }else{
+        alert("something went wrong")  ;
     }})
     .then((data)=>{
       console.log(data)  
@@ -202,4 +372,5 @@ var ntpDataValue = JSON.stringify({
 
 
 
+   
 

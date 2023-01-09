@@ -62,11 +62,11 @@
 	],
 	"network_information": {
 		"wifi_cred_ssid": "sasasa",
-		"wifi_cred_pass": "mohaktripathi029@gmail.com",
-		"static_ip_wifi": "weret",
-		"static_ip_wifi_pass": "nmo29@gmail.com",
+		"wifi_cred_pass": "mohaktripathi029@gmail.comm",
+		"static_ip_wifi": "weretuk",
+		"static_ip_wifi_pass": "nmo29@gmail.comh",
 		"static_ip_eth": "900000",
-		"static_ip_eth_pass": "777777",
+		"static_ip_eth_pass": "SDS",
 		"ntp_server": "ghhj@gmail.com"
 	},
 	"dashboard": {

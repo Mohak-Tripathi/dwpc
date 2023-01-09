@@ -30,10 +30,15 @@
     'opsz' 48
   }
 
+ 
   .border-margin{
+    border: 1px solid #3B71CA;
+    padding: 6px 23px;
+    margin-right: 4px;
+    margin-top: 3px;
 
-    padding: 8px 40px
   }
+
 
   /* .mini-box{
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;

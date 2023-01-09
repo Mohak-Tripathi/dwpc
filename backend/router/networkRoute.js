@@ -3,7 +3,17 @@
 const express= require('express');
 const router= express.Router();
 
-const {changeNtpServer, staticIpEtherent,   wifiCredentials,   staticIpWifi,  getNetworkInfo, getNtpServer} = require("../controllers/networkController")
+const {changeNtpServer,
+   staticIpEtherent, 
+     wifiCredentials,  
+      staticIpWifi, 
+       getNetworkInfo, 
+       getNtpServer,  
+        wifiCredentialsApply, 
+        staticIpWifiApply,
+        staticIpEtherentApply,
+        changeNtpServerApply
+      } = require("../controllers/networkController")
 
 const {isAuthenticated, isAuthorizeRoles} = require("../middleware/is-auth.js");
 
@@ -12,14 +22,12 @@ router.use(isAuthenticated)
 router.post(
     "/ntp_server", 
     isAuthorizeRoles( "Production", "Support"),
-
     changeNtpServer
   );
 
 
   router.post(
     "/static_ip_eth",
-
     isAuthorizeRoles("Production", "Support"), 
     staticIpEtherent
   );
@@ -41,6 +49,31 @@ router.post(
 
 router.get("/nwk",   isAuthorizeRoles("Production", "Support"), getNetworkInfo);
 router.get("/get_ntp_server", isAuthorizeRoles("Production", "Support"),   getNtpServer);
+
+//apply
+router.post(
+  "/cred_apply",
+  isAuthorizeRoles("Production", "Support"), 
+  wifiCredentialsApply
+);
+
+router.post(
+  "/static_ip_wifi_apply",
+    isAuthorizeRoles("Production", "Support"), 
+  staticIpWifiApply
+);
+
+router.post(
+  "/static_ip_eth_apply",
+  isAuthorizeRoles("Production", "Support"), 
+  staticIpEtherentApply
+);
+
+router.post(
+  "/ntp_server_apply", 
+  isAuthorizeRoles( "Production", "Support"),
+  changeNtpServerApply
+);
 
 
 
