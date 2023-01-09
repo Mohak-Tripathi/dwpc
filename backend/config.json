@@ -19,7 +19,7 @@
 		"device_health_topic": "4",
 		"mqtt_user_name": "0",
 		"mqtt_password": "-4",
-		"mqtt_protocol": "TCP",
+		"mqtt_protocol": "TLS",
 		"response_time": "90"
 	},
 	"admin": {
