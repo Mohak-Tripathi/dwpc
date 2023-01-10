@@ -25,16 +25,17 @@ Auther: Mohak Tripathi
 
  
    const isAuthenticated = (req,res,next) => {
-
+    // console.log(req.url, "mt1")
     let token 
     //  console.log(req.headers, "reqmohak")
-
-
+    console.log(req.originalUrl, "mt2")
+    console.log(req.url, "mt2")
     if(req.headers.authorization && req.headers.authorization.startsWith("Bearer")){
-    console.log("check")
+    // console.log("check")
+   
       try{
          token = req.headers.authorization.split(" ")[1]
-          console.log(token, "klpop")
+          // console.log(token, "klpop")
           const decrypt =  jwt.verify(token, "DwpcProject@fTIoT");
 
             // console.log(decrypt, "jk")

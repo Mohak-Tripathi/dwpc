@@ -61,7 +61,7 @@
     
                     <p>Port</p>
                   <div class="form">
-                    <input type="text" id="mqtt-port" class="form-control form-control-sm" placeholder="Enter mqtt port" />
+                    <input type="number" id="mqtt-port" class="form-control form-control-sm" placeholder="Enter mqtt port" />
   
                   </div>
                 </div>
@@ -175,17 +175,17 @@
 
   <div class="col-md-7" id="display-mqtt-1"> 
     <p>MQTT Certificate</p>
-    <form encType='multipart/form-data' id="mqtt-cert-form" method="POST" action="/mqtt_one_cert_file">
+    <!-- <form encType='multipart/form-data' id="mqtt-cert-form" method="POST" action="/mqtt_one_cert_file"> -->
         <div class="form mb-2 w-25">
   
-          <input type="file" name="mqtt_cert_file" id="upload-mqtt-certificate" class="form-control  form-control-sm" placeholder="Set OTA Update"/>
+          <input type="file" name="mqtt_cert_file" id="mqtt_cert_file" class="form-control  form-control-sm" placeholder="upload mqtt certificate"/>
   
         </div>
        
     <div style="display:flex; justify-content:flex-end">
-          <button type="submit" id="upload-mqtt-cert-button" class="btn bg-transparent  bg-gradient text-primary border-margin">SAVE</button>
+          <button type="button" id="upload-cert-button" class="btn bg-transparent  bg-gradient text-primary border-margin">SAVE</button>
           </div>
-      </form>
+      <!-- </form> -->
 </div>
 
 

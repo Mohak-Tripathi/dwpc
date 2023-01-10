@@ -204,52 +204,48 @@ function setMqttProtocolStatus(){
 
 
 
-document.getElementById("mqtt-cert-form").addEventListener("submit",  setMqttProtocolCert)
+document.getElementById("upload-cert-button").addEventListener("click",  setMqttProtocolCert)
 
 
-function  setMqttProtocolCert(e){
-e.preventDefault()
-let z =document.getElementById("upload-mqtt-certificate")
-console.log(z, "kl")
-const data= document.getElementById("upload-mqtt-certificate").value
+function  setMqttProtocolCert(){
+  var formdata = new FormData();
+  formdata.append("mqtt_cert_file", mqtt_cert_file.files[0]);
+  
+
+  let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+  var requestOptions = {
+    method: 'POST',
+    body: formdata,
+    headers: {
+    //   "Accept": "application/json, */*",
+    // "Content-Type": "text/html; charset=utf-8",
+  
+  Authorization: `Bearer ${BearerCheck}`,
+  
+  }
+  };
+  
+  fetch("http://localhost:8080/api/v1/mqtt/mqtt_one_cert_file", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
 
 
-var formdata = new FormData();
-formdata.append("mqtt_cert_file","Screenshot (4).png");
-
-// fileInput.files[0]
-let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
-
-var requestOptions = {
-  method: 'POST',
-  body: formdata,
-  headers: {
-    "Accept": "application/json, */*",
-  "Content-Type": "text/html; charset=utf-8",
-
-Authorization: `Bearer ${BearerCheck}`,
-
-},
-  redirect: 'follow'
-};
-
-fetch("http://localhost:8080/api/v1/mqtt/mqtt_one_cert_file", requestOptions)
-
-.then((res)=> {
-    if(res.status === 200){
+// .then((res)=> {
+//     if(res.status === 200){
         
-        return res.text()
-    }else{
-        console.log(res);
-                console.log(res.status);
-                console.log(res.json());
-                console.log(res.text());
-        alert("something went wrong")  ;
-    }})
-    .then((data)=>{
-      console.log(data) 
-    })
-    .catch(err => console.log(err))
+//         return res.json()
+//     }else{
+//         console.log(res);
+//                 console.log(res.status);
+//                 console.log(res.json());
+//                 console.log(res.text());
+//         alert("something went wrong")  ;
+//     }})
+//     .then((data)=>{
+//       console.log(data) 
+//     })
+//     .catch(err => console.log(err))
 
 
     }

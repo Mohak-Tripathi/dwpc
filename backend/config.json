@@ -3,7 +3,7 @@
 	"mqtt_broker_one": {
 		"broker": "12",
 		"port": "12",
-		"ca": "Screenshot (6).png",
+		"ca": "Screenshot (7).png",
 		"people_count_topic": "34",
 		"device_health_topic": "13",
 		"mqtt_user_name": "34",
@@ -14,16 +14,16 @@
 	"mqtt_broker_two": {
 		"broker": "14",
 		"port": "10",
-		"ca": "Screenshot (13).png",
+		"ca": "Screenshot (6).png",
 		"people_count_topic": "6",
 		"device_health_topic": "4",
 		"mqtt_user_name": "0",
 		"mqtt_password": "-4",
-		"mqtt_protocol": "TLS",
+		"mqtt_protocol": "TCP",
 		"response_time": "90"
 	},
 	"admin": {
-		"variant": "MQTT",
+		"variant": "ZIGBEE",
 		"ap_mode_ssid": "mohakshukl7",
 		"ap_mode_ssid_pass": "vvdv",
 		"ota": "ota-mohak",
