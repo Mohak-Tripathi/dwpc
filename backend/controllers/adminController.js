@@ -92,21 +92,58 @@ exports.changeApModePassword = (req, res, next) => {
 
   
   exports.setOtaUpdate = (req, res, next) => {
-    const { otaData } = req.body;
 
-  if( otaData){
-    const config = JSON.parse(fs.readFileSync("./config.json"));
-    config.admin.ota = otaData;
-    fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
-    res.status(200).json({
-      message: "OTA Update set succesfully",
-    });
-  }
-  else{
-    res.status(200).json({
-      message: "OTA Update set failed",
-    });
-  }
+    const file = req.file;
+
+  
+    if (!file) {
+      console.log("file not choosen");
+      return res.status(404).json({
+        message: "No File Choosen",
+      });
+    } else {
+   
+      const fileName =  JSON.parse(fs.readFileSync("./config.json"));
+  
+      const directoryPath =  path.join(__dirname, "../ota_file" )
+    
+    
+      fs.unlink(directoryPath + "/" + fileName.admin.ota, (err) => {
+        if (err) {
+   
+          console.log(err)
+        }
+    
+      });
+  
+      const config = JSON.parse(fs.readFileSync("./config.json"));
+     
+  
+      let certPath =  file.originalname;
+      //* set the path
+      config.admin.ota = certPath;
+
+      fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
+      res.status(200).json({
+        message: "file upload success",
+        filename: file.originalname,
+      });
+    }
+  //   const { otaData } = req.body;
+
+  // if( otaData){
+  //   const config = JSON.parse(fs.readFileSync("./config.json"));
+  //   config.admin.ota = otaData;
+  //   fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
+  //   res.status(200).json({
+  //     message: "OTA Update set succesfully",
+  //   });
+  // }
+  // else{
+  //   res.status(200).json({
+  //     message: "OTA Update set failed",
+  //   });
+  // }
 
   };
 
@@ -225,24 +262,24 @@ exports.changeApModeApplyPassword = (req, res, next) => {
 
 
 //apply
-exports.setOtaApplyUpdate = (req, res, next) => {
-  const { otaData } = req.body;
+// exports.setOtaApplyUpdate = (req, res, next) => {
+//   const { otaData } = req.body;
 
-if( otaData){
-  // const config = JSON.parse(fs.readFileSync("./config.json"));
-  // config.admin.ota = otaData;
-  // fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
-  res.status(200).json({
-    message: "OTA Update Apply set succesfully",
-  });
-}
-else{
-  res.status(200).json({
-    message: "OTA Update set failed",
-  });
-}
+// if( otaData){
+//   // const config = JSON.parse(fs.readFileSync("./config.json"));
+//   // config.admin.ota = otaData;
+//   // fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
+//   res.status(200).json({
+//     message: "OTA Update Apply set succesfully",
+//   });
+// }
+// else{
+//   res.status(200).json({
+//     message: "OTA Update set failed",
+//   });
+// }
 
-};
+// };
 
 
 

@@ -19,14 +19,14 @@
 		"device_health_topic": "4",
 		"mqtt_user_name": "0",
 		"mqtt_password": "-4",
-		"mqtt_protocol": "TCP",
+		"mqtt_protocol": "TLS",
 		"response_time": "90"
 	},
 	"admin": {
 		"variant": "ZIGBEE",
 		"ap_mode_ssid": "mohakshukl7",
 		"ap_mode_ssid_pass": "vvdv",
-		"ota": "ota-mohak",
+		"ota": "Screenshot (14).png",
 		"wifi_status": "enabled"
 	},
 	"inference": {
@@ -68,7 +68,6 @@
 		"ntp_server": "ghhj@gmail.com"
 	},
 	"dashboard": {
-		"footfall_target": "101",
 		"footfall_today": "345",
 		"last_received_entry": "78",
 		"last_received_exit": "98",

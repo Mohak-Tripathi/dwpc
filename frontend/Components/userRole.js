@@ -1,5 +1,5 @@
 let userRole = JSON.parse(localStorage.getItem("user") || null)
-console.log(userRole, "hello")
+
 
 
 if(userRole ==="Support"){

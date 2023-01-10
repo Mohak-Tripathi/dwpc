@@ -97,8 +97,7 @@ response_time
   exports.fileUploadHandlerOne = (req, res, next) => {
 
     const file = req.file;
-    console.log("hello")
-    console.log("mt", req.file)
+
   
     if (!file) {
       console.log("file not choosen");

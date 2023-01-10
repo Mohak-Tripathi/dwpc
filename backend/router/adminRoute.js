@@ -1,7 +1,8 @@
 const express= require('express');
 const router= express.Router();
+const {upload3} = require("../middleware/upload");
 
-const { getAdminInfo, changeApModeSsid,  changeApModePassword, setVariant, setOtaUpdate,  setWifiStatusUpdate, setApplyVariant, changeApModeSsidApply, changeApModeApplyPassword, setOtaApplyUpdate, setWifiStatusApplyUpdate, dcUpdate} = require("../controllers/adminController")
+const { getAdminInfo, changeApModeSsid,  changeApModePassword, setVariant, setOtaUpdate,  setWifiStatusUpdate, setApplyVariant, changeApModeSsidApply, changeApModeApplyPassword,  setWifiStatusApplyUpdate} = require("../controllers/adminController")
 
 const {isAuthenticated, isAuthorizeRoles} = require("../middleware/is-auth.js");
 
@@ -22,10 +23,11 @@ router.post("/ap_mode_ssid_pass", isAuthorizeRoles("Production"),  changeApModeP
 //apply
 router.post("/ap_mode_ssid_pass_apply", isAuthorizeRoles("Production"),  changeApModeApplyPassword);
 
-router.post("/ota", isAuthorizeRoles("Production"),  setOtaUpdate);
+router.post("/ota", isAuthorizeRoles("Production"), upload3.single("ota_file"),  setOtaUpdate);
+
 
 //apply
-router.post("/ota_apply", isAuthorizeRoles("Production"),  setOtaApplyUpdate);
+// router.post("/ota_apply", isAuthorizeRoles("Production"),  setOtaApplyUpdate);
 
 // router.get("/ota", isAuthorizeRoles("Production"),  getOtaUpdate);
 

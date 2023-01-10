@@ -16,7 +16,7 @@ function getAdminData(){
           document.getElementById("variant-data").value = response.variant
           document.getElementById("admin-apModeSSID").value =  response.ap_mode_ssid
           document.getElementById("admin-apModeSSIDPass").value =  response.ap_mode_ssid_pass 
-          document.getElementById("otaUpdate").value = response.ota
+        //   document.getElementById("otaUpdate").value = response.ota
           document.getElementById("wifi-admin-data").value = response.wifi_status
        
         })
@@ -25,12 +25,6 @@ function getAdminData(){
     
     
       getAdminData()
-
-
-
-
-
-
 
 
 
@@ -119,10 +113,6 @@ function getAdminSsidValue(e){
 }
 
 
-
-
-
-
 document.getElementById("admin-apModePassword-form").addEventListener("submit", getAdminSsidPassValue)
 
 function getAdminSsidPassValue(e){
@@ -162,39 +152,27 @@ function getAdminSsidPassValue(e){
 
 
 
-document.getElementById("admin-ota-form").addEventListener("submit", getOtaValue)
+document.getElementById("ota-update-button").addEventListener("click", getOtaValue)
 
-function getOtaValue(e){
-    e.preventDefault()
-    let otaValue = document.getElementById("otaUpdate").value
+function getOtaValue(){
+    var formdata = new FormData();
+  formdata.append("ota_file", ota_file.files[0]);
+  
 
-    var OTAData= JSON.stringify({
-        "otaData": otaValue
-      });
+  let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
 
-      let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
-
-
-    fetch("http://localhost:8080/api/v1/admin/ota", {
-        method: "POST",
-        headers: {
-            "Accept": "application/json, text/plain, */*",
-            "Content-type": "application/json",
-        Authorization: `Bearer ${BearerCheck}`,
-
-        },
-        body: OTAData
-    })
-    .then((res)=> {
-    if(res.status === 200){
-        return res.json()
-    }else{
-        alert("something went wrong")  ;
-    }})
-    .then((data)=>{
-      console.log(data) 
-    })
-    .catch(err => console.log(err))
+  var requestOptions = {
+    method: 'POST',
+    body: formdata,
+    headers: {
+         Authorization: `Bearer ${BearerCheck}`
+     }
+  };
+  
+  fetch("http://localhost:8080/api/v1/admin/ota", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
 
 }
 
@@ -365,41 +343,41 @@ if(res.status === 200){
 
 
 
-document.getElementById("ota-apply-button").addEventListener("click", getOtaApplyValue)
+// document.getElementById("ota-apply-button").addEventListener("click", getOtaApplyValue)
 
-function getOtaApplyValue(e){
+// function getOtaApplyValue(e){
 
-    let otaApplyValue = document.getElementById("otaUpdate").value
+//     let otaApplyValue = document.getElementById("otaUpdate").value
 
-    var otaApplyData = JSON.stringify({
-        "otaData": otaApplyValue
-      });
+//     var otaApplyData = JSON.stringify({
+//         "otaData": otaApplyValue
+//       });
 
-      let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+//       let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
 
 
-    fetch("http://localhost:8080/api/v1/admin/ota_apply", {
-        method: "POST",
-        headers: {
-            "Accept": "application/json, text/plain, */*",
-            "Content-type": "application/json",
-        Authorization: `Bearer ${BearerCheck}`,
+//     fetch("http://localhost:8080/api/v1/admin/ota_apply", {
+//         method: "POST",
+//         headers: {
+//             "Accept": "application/json, text/plain, */*",
+//             "Content-type": "application/json",
+//         Authorization: `Bearer ${BearerCheck}`,
 
-        },
-        body: otaApplyData
-    })
-    .then((res)=> {
-    if(res.status === 200){
-        return res.json()
-    }else{
-        alert("something went wrong")  ;
-    }})
-    .then((data)=>{
-      console.log(data) 
-    })
-    .catch(err => console.log(err))
+//         },
+//         body: otaApplyData
+//     })
+//     .then((res)=> {
+//     if(res.status === 200){
+//         return res.json()
+//     }else{
+//         alert("something went wrong")  ;
+//     }})
+//     .then((data)=>{
+//       console.log(data) 
+//     })
+//     .catch(err => console.log(err))
 
-}
+// }
 
 
 document.getElementById("wifi-apply-button").addEventListener("click", getWifiApplyValue)

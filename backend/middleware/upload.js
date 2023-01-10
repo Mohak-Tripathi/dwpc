@@ -75,4 +75,28 @@ const storage2 = multer.diskStorage({
   limits: { fileSize: 1024 * 1024 * 1024}
   });
 
-module.exports = {upload, upload2};
+
+  const storage3 = multer.diskStorage({
+
+    //setting destination to save the file on the server
+    destination: (req, file, cb) => {
+  
+      //directory to the file
+      cb(null, "./ota_file");
+    },
+    //setting filename for the uploaded file
+    filename: (req, file, cb) => {
+  
+      cb(null, file.originalname);
+    },
+  });
+  
+  
+  
+  //multer configuration
+  const upload3 = multer({ storage: storage3, 
+  limits: { fileSize: 1024 * 1024 * 1024}
+  });
+
+
+module.exports = {upload, upload2, upload3};

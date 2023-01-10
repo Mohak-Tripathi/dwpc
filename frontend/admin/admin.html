@@ -101,22 +101,16 @@
 
 <div class="row mb-1 px-4 ">
 
-   <!-- <div class="col-3 mb-3 border">  -->
-
     <p class="text-primary">OTA Update</p>
-    <form id="admin-ota-form">
-      <div class="form mb-2 w-25">
-        <!-- outline -->
-        <input type="text" id="otaUpdate" class="form-control  form-control-sm" placeholder="Set OTA Update"/>
-        <!-- <label class="form-label" for="otaUpdate">Set AP Mode SSID Password</label> -->
-      </div>
-     
-      <div style="display:flex; justify-content:flex-end">
-        <button type="submit" class="btn bg-transparent  bg-gradient text-primary border-margin">SAVE</button>
-        <button type="button" id="ota-apply-button" class="btn bg-transparent  bg-gradient text-primary border-margin">APPLY</button> 
-      </div>
-    </form>
-
+    <div class="mb-2 w-25">
+      <input type="file" name="ota_file" id="ota_file"  placeholder="upload ota file"/>
+    
+    </div>
+   
+    <div style="display:flex; justify-content:flex-end">
+      <button type="button" id="ota-update-button" class="btn bg-transparent  bg-gradient text-primary border-margin">SAVE</button>
+      <button type="button" id="ota-update-apply-button" class="btn bg-transparent  bg-gradient text-primary border-margin">APPLY</button> 
+    </div>
 
 </div>
 
