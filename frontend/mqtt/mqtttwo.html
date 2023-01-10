@@ -30,7 +30,7 @@
                     <p class="text-primary">Configure MQTT broker and port</p>
                 <div class="col-md-6 ">
            
-                    <p>Broker-2</p>
+                    <p>Broker</p>
                 <div class="form">
                     <input type="text" id="mqtt-broker-2" class="form-control form-control-sm" placeholder="Enter mqtt broker" />
             
@@ -47,26 +47,6 @@
                 </div>
             </div>
 
-            <div class="row mb-3"> 
-                <p class="text-primary">Configure the topics to publish the data</p>
-                <div class="col-md-6">
-       
-                    <p>Occupancy/People Count Topic</p>
-                <div class="form">
-                    <input type="text" id="mqtt-people-count-2" class="form-control form-control-sm" placeholder=" Enter mqtt people count" />
-
-                  </div>
-                </div>
-      
-                <div class="col-md-6">
-                    <!-- border -->
-                    <p>Device Health Topic</p>
-                  <div class="form">
-                    <input type="text" id="mqtt-device-health-2" class="form-control form-control-sm" placeholder="Enter mqtt device health" />
-       
-                  </div>
-                </div>
-            </div>
                 
             <div class="row mb-3"> 
                 <p class="text-primary">Configure the User name and password</p>
@@ -88,11 +68,34 @@
                   </div>
                 </div>
             </div>
+
+            
             <div class="row mb-3"> 
-              <p class="text-primary">Configure response time</p>
+              <p class="text-primary">Configure the topics to publish the data</p>
+              <div class="col-md-6">
+     
+                  <p>Occupancy/People Count Topic</p>
+              <div class="form">
+                  <input type="text" id="mqtt-people-count-2" class="form-control form-control-sm" placeholder=" Enter mqtt people count" />
+
+                </div>
+              </div>
+    
               <div class="col-md-6">
                   <!-- border -->
-                  <p>Response</p>
+                  <p>Device Health Topic</p>
+                <div class="form">
+                  <input type="text" id="mqtt-device-health-2" class="form-control form-control-sm" placeholder="Enter mqtt device health" />
+     
+                </div>
+              </div>
+          </div>
+          
+            <div class="row mb-3"> 
+              <p class="text-primary">Configure topic to subscribe the data</p>
+              <div class="col-md-6">
+                  <!-- border -->
+                  <p>Response Topic</p>
               <div class="form">
                   <input type="text" id="response-2" class="form-control form-control-sm" placeholder="Enter response time" />
 
@@ -197,5 +200,6 @@
 
       </script>
       <script defer src="../Components/userRole.js"></script>
+      <script defer src="../Components/logout.js"></script>
 </body>
 </html>

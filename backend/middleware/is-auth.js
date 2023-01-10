@@ -24,50 +24,45 @@ Auther: Mohak Tripathi
  const path = require("path");
 
  
-   const isAuthenticated = async(req,res,next) => {
+   const isAuthenticated = (req,res,next) => {
 
     let token 
-    // console.log(req.headers, "reqmohak")
+    //  console.log(req.headers, "reqmohak")
 
 
     if(req.headers.authorization && req.headers.authorization.startsWith("Bearer")){
+    console.log("check")
+      try{
+         token = req.headers.authorization.split(" ")[1]
+          console.log(token, "klpop")
+          const decrypt =  jwt.verify(token, "DwpcProject@fTIoT");
 
-try{
+            // console.log(decrypt, "jk")
 
-    token = req.headers.authorization.split(" ")[1]
-// console.log(token, "klpop")
-    const decrypt = await jwt.verify(token, "DwpcProject@fTIoT");
-
-    console.log(decrypt, "jk")
-
-     const config = JSON.parse(fs.readFileSync("./config.json"));
+           const config = JSON.parse(fs.readFileSync("./config.json"));
  
-     let targetObject = config.credentials.filter((elem) => {
-       return elem.app_user === decrypt.username;
-     });
+            let targetObject = config.credentials.filter((elem) => {
+                  return elem.app_user === decrypt.username;
+                  });
  
-     req.username = targetObject[0];
- console.log(req.username, "kkl")
-
-
-
-    next()
-}
-catch(error){
-console.log(error)
-res.status(401)
-throw new Error ("Token failed, bad token ")
-
-
+                req.username = targetObject[0];
+                   next()
+        }
+        catch(error){
+        console.log(error)
+            res.status(401)
+              throw new Error ("Token failed, bad token ")
 }
 
+    }else{
+      if(!token){
+        console.log(token, "helloMT")
+         res.status(401)
+
+          throw new Error ("Not authorized, no Token ")
     }
 
-    if(!token){
-
-        res.status(401)
-
-        throw new Error ("Not authorized, no Token ")
+           
     }
 
 

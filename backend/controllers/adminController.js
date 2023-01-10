@@ -277,6 +277,26 @@ exports.setWifiStatusApplyUpdate = (req, res, next) => {
 
 
 
+// exports.dcUpdate = (req, res, next) => {
+
+//   let { dc_data } = req.body;
+
+//   if ( dc_data) {
+// console.log(dc_data)
+
+//     res.status(200).json({
+//       message: {dc_data}
+
+//     });
+//   }
+//   else {
+//     res.status(200).json({
+//       message: "dc_data failed",
+//     });
+//   }
+// }
+
+
 
 
   

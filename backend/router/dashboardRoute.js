@@ -5,7 +5,7 @@ const router= express.Router();
 
 const {getDashboardInfo} = require("../controllers/dashboardController")
 
-const {isAuthenticated, isAuthorizeRoles} = require("../middleware/is-auth.js");
+const {isAuthenticated} = require("../middleware/is-auth.js");
 
 router.use(isAuthenticated)
 

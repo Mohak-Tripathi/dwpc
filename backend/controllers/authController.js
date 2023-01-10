@@ -27,7 +27,7 @@ const path = require("path");
         }
       );
   
-console.log(token , "papapap")
+
       return res
         .status(200).json({
           user: targetObject[0],
@@ -43,15 +43,15 @@ console.log(token , "papapap")
 
 
 
-  exports.logout = async (req, res, next) => {
-    res.cookie('jwt', null, {
-      // expires: new Date(Date.now()),
-      httpOnly: true
-    })
+  // exports.logout = async (req, res, next) => {
+  //   res.cookie('jwt', null, {
+  //     // expires: new Date(Date.now()),
+  //     httpOnly: true
+  //   })
   
-    res.status(200).json({
-      success: true,
-      message: 'Logged out'
-    })
-  }
+  //   res.status(200).json({
+  //     success: true,
+  //     message: 'Logged out'
+  //   })
+  // }
   

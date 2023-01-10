@@ -36,7 +36,7 @@ function Navbar() {
           <a class="btn btn-primary px-3 me-2" id="dashboard-nav" href="../dashboard/dashboard.html" role="button"> <span class="material-symbols-outlined me-2">
             space_dashboard
             </span>Dashboard</a>
-          <a class="btn btn-primary px-3 me-2" id="logout-nav" href="../login/login.html" role="button"> <span class="material-symbols-outlined me-2">
+          <a class="btn btn-primary px-3 me-2" id="logout-nav" role="button"> <span class="material-symbols-outlined me-2">
             logout
             </span>Logout</a>
    

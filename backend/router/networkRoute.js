@@ -4,14 +4,12 @@ const express= require('express');
 const router= express.Router();
 
 const {changeNtpServer,
-   staticIpEtherent, 
      wifiCredentials,  
       staticIpWifi, 
        getNetworkInfo, 
        getNtpServer,  
         wifiCredentialsApply, 
         staticIpWifiApply,
-        staticIpEtherentApply,
         changeNtpServerApply
       } = require("../controllers/networkController")
 
@@ -26,11 +24,11 @@ router.post(
   );
 
 
-  router.post(
-    "/static_ip_eth",
-    isAuthorizeRoles("Production", "Support"), 
-    staticIpEtherent
-  );
+  // router.post(
+  //   "/static_ip_eth",
+  //   isAuthorizeRoles("Production", "Support"), 
+  //   staticIpEtherent
+  // );
 
 
   router.post(
@@ -42,7 +40,7 @@ router.post(
 
 
   router.post(
-  "/static_ip_wifi",
+  "/static_ip",
     isAuthorizeRoles("Production", "Support"), 
   staticIpWifi
 );
@@ -63,11 +61,11 @@ router.post(
   staticIpWifiApply
 );
 
-router.post(
-  "/static_ip_eth_apply",
-  isAuthorizeRoles("Production", "Support"), 
-  staticIpEtherentApply
-);
+// router.post(
+//   "/static_ip_eth_apply",
+//   isAuthorizeRoles("Production", "Support"), 
+//   staticIpEtherentApply
+// );
 
 router.post(
   "/ntp_server_apply", 

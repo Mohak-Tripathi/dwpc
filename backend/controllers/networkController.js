@@ -4,7 +4,6 @@ const path = require("path");
 
 
 exports.getNetworkInfo = (req, res, next) => {
-  console.log("At getNetworkInfo");
   const config = JSON.parse(fs.readFileSync("./config.json"));
   res.status(200).json(config.network_information);
 };
@@ -22,21 +21,21 @@ exports.changeNtpServer= (req, res, next) => {
   };
 
 
-  exports.staticIpEtherent = (req, res, next) => {
+  // exports.staticIpEtherent = (req, res, next) => {
 
-    const {
-      static_ip_ethernet,
-      gateway_ip_ethernet
-    } = req.body;
+  //   const {
+  //     static_ip_ethernet,
+  //     gateway_ip_ethernet
+  //   } = req.body;
   
-    const config = JSON.parse(fs.readFileSync("./config.json"));
+  //   const config = JSON.parse(fs.readFileSync("./config.json"));
   
-    config.network_information.static_ip_eth = static_ip_ethernet;
-    config.network_information.static_ip_eth_pass = gateway_ip_ethernet
+  //   config.network_information.static_ip_eth = static_ip_ethernet;
+  //   config.network_information.static_ip_eth_pass = gateway_ip_ethernet
   
-    fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
-    res.status(200).json({ message: "static ip ethernet is saved" });
-  };
+  //   fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
+  //   res.status(200).json({ message: "static ip ethernet is saved" });
+  // };
 
 
   exports.wifiCredentials = (req, res, next) => {
@@ -69,8 +68,8 @@ exports.staticIpWifi = (req, res, next) => {
 
   const config = JSON.parse(fs.readFileSync("./config.json"));
 
-  config.network_information.static_ip_wifi = static_ip;
-  config.network_information.static_ip_wifi_pass = gateway_ip
+  config.network_information.static_ip = static_ip;
+  config.network_information.static_ip_gateway = gateway_ip
 
   fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
   res.status(200).json({ message: "static ip wifi is saved" });
@@ -115,7 +114,6 @@ exports.staticIpWifiApply = (req, res, next) => {
     gateway_ip
   } = req.body;
 
-
   // const config = JSON.parse(fs.readFileSync("./config.json"));
 
   // config.network_information.static_ip_wifi = static_ip;
@@ -128,21 +126,21 @@ exports.staticIpWifiApply = (req, res, next) => {
 //apply 
 
 
-exports.staticIpEtherentApply = (req, res, next) => {
+// exports.staticIpEtherentApply = (req, res, next) => {
 
-  const {
-    static_ip_ethernet,
-    gateway_ip_ethernet
-  } = req.body;
+//   const {
+//     static_ip_ethernet,
+//     gateway_ip_ethernet
+//   } = req.body;
 
-  // const config = JSON.parse(fs.readFileSync("./config.json"));
+//   // const config = JSON.parse(fs.readFileSync("./config.json"));
 
-  // config.network_information.static_ip_eth = static_ip_ethernet;
-  // config.network_information.static_ip_eth_pass = gateway_ip_ethernet
+//   // config.network_information.static_ip_eth = static_ip_ethernet;
+//   // config.network_information.static_ip_eth_pass = gateway_ip_ethernet
 
-  // fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
-  res.status(200).json({ message: "static ip ethernet Apply is saved" });
-};
+//   // fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
+//   res.status(200).json({ message: "static ip ethernet Apply is saved" });
+// };
 
 //apply 
 
