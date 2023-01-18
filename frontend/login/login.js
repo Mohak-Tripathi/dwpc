@@ -28,12 +28,16 @@ e.preventDefault()
         .then((res)=> {
         if(res.status === 200){
             return res.json()
-        }else{
+        }
+        else if(res.status === 401){
+            window.location.href="../login/login.html"
+          }
+        else{
             alert("username and password does not match")  ;
         }})
         .then((data)=>{
             if(data){
-console.log(data)
+                console.log(data)
                  localStorage.setItem("token", JSON.stringify(data.token));
                  localStorage.setItem("user", JSON.stringify(data.user.role));
           
@@ -42,7 +46,7 @@ console.log(data)
                  }
                  else if(data.user.role === "Support"){
                     // window.location.href="../service/service.html"
-                    window.location.href=  "http://127.0.0.1:5500/frontend/service/service.html"
+                    window.location.href=  "../service/service.html"
                  }
                  else{
                     window.location.href="../dashboard/dashboard.html"

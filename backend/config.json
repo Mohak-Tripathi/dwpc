@@ -24,13 +24,13 @@
 	},
 	"admin": {
 		"variant": "ZIGBEE",
-		"ap_mode_ssid": "mohakshukl7",
+		"ap_mode_ssid": "mohakshukl72",
 		"ap_mode_ssid_pass": "vvdv",
 		"ota": "Screenshot (14).png",
 		"wifi_status": "enabled"
 	},
 	"inference": {
-		"aggregation_interval": 2,
+		"aggregation_interval": 1,
 		"in_zone_distance_threshold": 11,
 		"out_zone_distance_threshold": 90,
 		"periodic_reset_interval": 9,

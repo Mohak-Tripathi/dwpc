@@ -6,18 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
   <!-- MDB -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.css" rel="stylesheet"
 />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+  
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <link     rel="stylesheet" href="inference.css"  />
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary"> </nav>
-    <div class=" container mt-4 mb-4 pb-1 admin-container" >
+    <div class="container mt-4 mb-4 pb-1 admin-container" >
        
         <div class="text-center pt-5 pb-4 fst-italic opacity-99 sub-heading"> Model input parameters for optimal performance during inference, should be configured by the production team before the product is shipped from the factory.
         </div>
@@ -31,7 +33,7 @@
                 <div class="col-md-6 ">
                     <p> Aggregation Interval</p>
                 <div class="form">
-                    <input type="number" id="aggregation-interval" class="form-control form-control-sm"  value="" placeholder="Enter aggregation interval" />
+                    <input type="number" id="aggregation-interval" class="form-control form-control-sm"  value="" placeholder="Enter aggregation interval"/>
 
                   </div>
                 </div>
@@ -40,7 +42,7 @@
                     <!-- border -->
                     <p>In-zone Distance threshold</p>
                   <div class="form">
-                    <input type="number" id="In-zone-distance-threshold" class="form-control form-control-sm" placeholder="Enter In-zone Distance threshold" />
+                    <input type="number" id="In-zone-distance-threshold" class="form-control form-control-sm" placeholder="Enter In-zone Distance threshold"/>
      
                   </div>
                 </div>
@@ -61,7 +63,7 @@
                     <!-- border -->
                     <p>Periodic Reset Interval</p>
                   <div class="form">
-                    <input type="number" id="periodic-reset-interval" class="form-control form-control-sm" placeholder= "Enter Periodic Reset Interval" />
+                    <input type="number" id="periodic-reset-interval" class="form-control form-control-sm" placeholder= "Enter Periodic Reset Interval"/>
                     <!-- <label class="form-label" for="form1Example1">Email address</label> -->
                   </div>
                 </div>
@@ -73,7 +75,7 @@
                     <!-- border -->
                     <p>Function Mode</p>
                 <div class="form">
-                    <input type="number" id="function-mode" class="form-control form-control-sm" placeholder="Enter Function Mode" />
+                    <input type="number" id="function-mode" class="form-control form-control-sm" placeholder="Enter Function Mode"/>
               
                   </div>
                 </div>
@@ -82,7 +84,7 @@
                     <!-- border -->
                     <p> Measurement Frequency</p>
                   <div class="form">
-                    <input type="number" id="measurement-frequency" class="form-control form-control-sm" placeholder="Enter Measurement Frequency" />
+                    <input type="number" id="measurement-frequency" class="form-control form-control-sm" placeholder="Enter Measurement Frequency"/>
 
                   </div>
                 </div>
@@ -93,7 +95,7 @@
                     <!-- border -->
                     <p>Pixel Count 1 Person Threshold</p>
                 <div class="form">
-                    <input type="number" id="pixel-count-one-person-threshold" class="form-control form-control-sm" placeholder="Enter Pixel Count 1 Person Threshold" />
+                    <input type="number" id="pixel-count-one-person-threshold" class="form-control form-control-sm" placeholder="Enter Pixel Count 1 Person Threshold"/>
               
                   </div>
                 </div>
@@ -102,7 +104,7 @@
                     <!-- border -->
                     <p>Pixel Count 2 Person Threshold</p>
                   <div class="form">
-                    <input type="number" id="pixel-count-two-person-threshold" class="form-control form-control-sm" placeholder="Enter Pixel Count 2 Person Threshold" />
+                    <input type="number" id="pixel-count-two-person-threshold" class="form-control form-control-sm" placeholder="Enter Pixel Count 2 Person Threshold"/>
 
                   </div>
                 </div>
@@ -114,7 +116,7 @@
                     <!-- border -->
                     <p>Room Capacity</p>
                 <div class="form">
-                    <input type="number" id="room-capacity" class="form-control form-control-sm" placeholder="Enter Room Capacity" />
+                    <input type="number" id="room-capacity" class="form-control form-control-sm" placeholder="Enter Room Capacity"/>
               
                   </div>
                 </div>
@@ -123,7 +125,7 @@
                   <!-- border -->
                   <p>OS Timer Delay</p>
                 <div class="form">
-                  <input type="number" id="os-timer-delay" class="form-control form-control-sm" placeholder="Enter OS Timer Delay" />
+                  <input type="number" id="os-timer-delay" class="form-control form-control-sm" placeholder="Enter OS Timer Delay"/>
 
                 </div>
               </div>
@@ -136,7 +138,7 @@
                   <!-- border -->
                   <p>Wait Timer</p>
               <div class="form">
-                  <input type="number" id="wait-timer" class="form-control form-control-sm" placeholder="Enter Wait Timer" />
+                  <input type="number" id="wait-timer" class="form-control form-control-sm" placeholder="Enter Wait Timer"/>
             
                 </div>
               </div>
@@ -145,7 +147,7 @@
                 <!-- border -->
                 <p>Sensing Mode</p>
               <div class="form">
-                <input type="number" id="sensing-mode" class="form-control form-control-sm" placeholder="Enter Sensing Mode" />
+                <input type="number" id="sensing-mode" class="form-control form-control-sm" placeholder="Enter Sensing Mode"/>
 
               </div>
             </div>
@@ -183,5 +185,6 @@
 
 <script defer src="../Components/userRole.js"></script>
 <script defer src="../Components/logout.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>
 </html>

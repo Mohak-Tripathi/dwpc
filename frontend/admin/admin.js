@@ -267,7 +267,6 @@ document.getElementById("variant-apply-button").addEventListener("click", getVar
 function getVariantApplyValue(){
 
     let variantApplyValue =   document.getElementById("variant-data").value
-
     
     var variantSelection = JSON.stringify({
         "variantData": variantApplyValue 
@@ -465,7 +464,7 @@ function getWifiApplyValue(){
         window.location.href="../login/login.html"
       }
     else{
-        alert("something went wrong")  ;
+        alert("something went wrong") ;
     }})
     .then((data)=>{
       console.log(data) 

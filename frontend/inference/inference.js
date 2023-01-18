@@ -45,6 +45,22 @@ let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
 
   getInferenceData()
 
+ 
+
+
+  // function showToast(val){
+  //   Toastify({
+
+  //     text: "val",
+      
+  //     duration: 5000
+      
+  //     }).showToast();
+  
+  // }
+ 
+
+
 
 
 
@@ -96,7 +112,11 @@ var inferenceData = JSON.stringify({
     .then((res)=> {
   
     if(res.status === 200){
-        return res.json()
+ 
+    
+    return res.json()
+
+  
     }
     else if(res.status === 401){
       window.location.href="../login/login.html"
@@ -105,7 +125,8 @@ var inferenceData = JSON.stringify({
         alert("something went wrong")  ;
     }})
     .then((data)=>{
-      console.log(data)  
+      console.log(data) 
+
     })
     .catch(err => console.log(err))
 
@@ -176,3 +197,13 @@ var inferenceApplyData = JSON.stringify({
 
 
     }
+
+
+
+
+//     const nav= document.querySelector(".nav")
+// fetch("../Components/stylesheetlinks.html")
+// .then(res=> res.text())
+// .then(data=> {
+//     nav.innerHTML = data;
+// })

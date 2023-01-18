@@ -158,7 +158,7 @@ var mqttBrokerOneData = JSON.stringify({
     if(res.status === 200){
         return res.json()
     }
-    else if(response.status === 401){
+    else if(res.status === 401){
       window.location.href="../login/login.html"
     }
     else{
@@ -204,7 +204,7 @@ function setMqttProtocolStatus(){
     if(res.status === 200){
      return res.json()
     }
-    else if(response.status === 401){
+    else if(res.status === 401){
       window.location.href="../login/login.html"
     }
     else{
