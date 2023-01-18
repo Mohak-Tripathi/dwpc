@@ -11,7 +11,18 @@ let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
       Authorization: `Bearer ${BearerCheck}`,
 		},
 	})
-		.then(response => response.json())
+  .then((response)=> {
+  
+    if(response.status === 200){
+        return response.json()
+    }
+    else if(response.status === 401){
+      window.location.href="../login/login.html"
+    }
+    else{
+        alert("something went wrong")  ;
+    }})
+
 		.then(response => {
       console.log(response)
 
@@ -151,7 +162,11 @@ var inferenceApplyData = JSON.stringify({
     .then((res)=> {
     if(res.status === 200){
         return res.json()
-    }else{
+    }
+    else if(res.status === 401){
+      window.location.href="../login/login.html"
+    }
+    else{
         alert("something went wrong")  ;
     }})
     .then((data)=>{

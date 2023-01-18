@@ -8,7 +8,18 @@ function getMqttDataTwo(){
           Authorization: `Bearer ${BearerCheck}`,
             },
         })
-            .then(response => response.json())
+       
+            .then((response)=> {
+  
+              if(response.status === 200){
+                  return response.json()
+              }
+              else if(response.status === 401){
+                window.location.href="../login/login.html"
+              }
+              else{
+                  alert("something went wrong")  ;
+              }})
             .then(response => {
           console.log(response)
     
@@ -142,14 +153,16 @@ var mqttBrokerTwoData = JSON.stringify({
     .then((res)=> {
     if(res.status === 200){
         return res.json()
-    }else{
+    } else if(res.status === 401){
+      window.location.href="../login/login.html"
+    }
+    else{
         alert("something went wrong")  ;
     }})
     .then((data)=>{
       console.log(data)  
     })
     .catch(err => console.log(err))
-
 
     }
 
@@ -184,7 +197,11 @@ function setMqttProtocolStatusTwo(){
     if(res.status === 200){
   
         return res.json()
-    }else{
+    }
+    else if(res.status === 401){
+      window.location.href="../login/login.html"
+    }
+    else{
         alert("something went wrong")  ;
     }})
     .then((data)=>{
@@ -222,26 +239,28 @@ function  setMqttProtocolCert(){
   };
   
   fetch("http://localhost:8080/api/v1/mqtt/mqtt_two_cert_file", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+    // .then(response => response.text())
+    // .then(result => console.log(result))
+    // .catch(error => console.log('error', error));
 
 
-// .then((res)=> {
-//     if(res.status === 200){
-        
-//         return res.json()
-//     }else{
-//         console.log(res);
-//                 console.log(res.status);
-//                 console.log(res.json());
-//                 console.log(res.text());
-//         alert("something went wrong")  ;
-//     }})
-//     .then((data)=>{
-//       console.log(data) 
-//     })
-//     .catch(err => console.log(err))
+
+    .then((res)=> {
+      if(res.status === 200){  
+          return res.text()
+      }
+      else if(res.status === 401){
+        window.location.href="../login/login.html"
+      }
+      else{
+    
+          alert("something went wrong")  ;
+      }})
+      .then((data)=>{
+        console.log(data) 
+      })
+      .catch(err => console.log(err))
+  
 
 
     }
@@ -285,7 +304,11 @@ var mqttBrokerTwoData = JSON.stringify({
     .then((res)=> {
     if(res.status === 200){
         return res.json()
-    }else{
+    }
+    else if(res.status === 401){
+      window.location.href="../login/login.html"
+    }
+    else{
         alert("something went wrong")  ;
     }})
     .then((data)=>{
@@ -327,7 +350,10 @@ function setMqttProtocolStatusApplyTwo(){
     if(res.status === 200){
   
         return res.json()
-    }else{
+    }  else if(res.status === 401){
+      window.location.href="../login/login.html"
+    }
+    else{
         alert("something went wrong")  ;
     }})
     .then((data)=>{

@@ -11,7 +11,18 @@ function getDashboardData(){
           Authorization: `Bearer ${BearerCheck}`,
         },
       })
-        .then(response => response.json())
+        // .then(response => response.json())
+        .then((response)=> {
+  
+          if(response.status === 200){
+              return response.json()
+          }
+          else if(response.status === 401){
+            window.location.href="../login/login.html"
+          }
+          else{
+              alert("something went wrong")  ;
+          }})
         .then(response => {
           console.log(response)
        

@@ -37,11 +37,12 @@ console.log(data)
                  localStorage.setItem("token", JSON.stringify(data.token));
                  localStorage.setItem("user", JSON.stringify(data.user.role));
           
-                 if(data.user.role == "Production"){
-                    window.location.href="../admin/admin.html"
+                 if(data.user.role === "Production"){
+                    window.location.href= "../admin/admin.html"
                  }
-                 else if(data.user.role == "Support"){
-                    window.location.href="../service/service.html"
+                 else if(data.user.role === "Support"){
+                    // window.location.href="../service/service.html"
+                    window.location.href=  "http://127.0.0.1:5500/frontend/service/service.html"
                  }
                  else{
                     window.location.href="../dashboard/dashboard.html"

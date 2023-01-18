@@ -23,7 +23,7 @@ const path = require("path");
         { username },
         "DwpcProject@fTIoT",
         {
-          expiresIn: "10h", // expires in 1 hours
+          expiresIn: "20s", // expires in 1 hours
         }
       );
   
