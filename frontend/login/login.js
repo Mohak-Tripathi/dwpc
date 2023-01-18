@@ -17,12 +17,11 @@ e.preventDefault()
         password: hashedPwd
       });
 
-
         fetch("http://localhost:8080/api/v1/login", {
             method: "POST",
             headers: {
                 "Accept": "application/json, text/plain, */*",
-                "Content-type": "application/json"
+                "Content-type": "application/json",
             },
             body: loginData
         })

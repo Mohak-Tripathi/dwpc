@@ -83,9 +83,14 @@ var inferenceData = JSON.stringify({
         body: inferenceData
     })
     .then((res)=> {
+  
     if(res.status === 200){
         return res.json()
-    }else{
+    }
+    else if(res.status === 401){
+      window.location.href="../login/login.html"
+    }
+    else{
         alert("something went wrong")  ;
     }})
     .then((data)=>{

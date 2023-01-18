@@ -14,7 +14,6 @@ const path = require("path");
 
 
 
-
   exports.changeApModeSsid = (req, res, next) => {
 
     let { ap_mode_ssid } = req.body;
