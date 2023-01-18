@@ -20,7 +20,7 @@ let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
       window.location.href="../login/login.html"
     }
     else{
-        alert("something went wrong")  ;
+        alert("something went wrong");
     }})
 
 		.then(response => {

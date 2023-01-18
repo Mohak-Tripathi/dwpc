@@ -9,7 +9,18 @@ function getAdminData(){
           Authorization: `Bearer ${BearerCheck}`,
             },
         })
-            .then(response => response.json())
+            // .then(response => response.json())
+            .then((response)=> {
+  
+                if(response.status === 200){
+                    return response.json()
+                }
+                else if(response.status === 401){
+                  window.location.href="../login/login.html"
+                }
+                else{
+                    alert("something went wrong");
+                }})
             .then(response => {
           console.log(response)
 
@@ -57,7 +68,11 @@ function getVariantValue(){
     .then((res)=> {
     if(res.status === 200){
         return res.json()
-    }else{
+    }
+    else if(res.status === 401){
+        window.location.href="../login/login.html"
+      }
+    else{
         alert("something went wrong")  ;
     }})
     .then((data)=>{
@@ -101,7 +116,11 @@ function getAdminSsidValue(e){
     .then((res)=> {
     if(res.status === 200){
         return res.json()
-    }else{
+    }
+    else if(res.status === 401){
+        window.location.href="../login/login.html"
+      }
+    else{
         alert("something went wrong")  ;
     }})
     .then((data)=>{
@@ -139,7 +158,11 @@ function getAdminSsidPassValue(e){
     .then((res)=> {
     if(res.status === 200){
         return res.json()
-    }else{
+    }
+    else if(res.status === 401){
+        window.location.href="../login/login.html"
+      }
+    else{
         alert("something went wrong")  ;
     }})
     .then((data)=>{
@@ -170,13 +193,26 @@ function getOtaValue(){
   };
   
   fetch("http://localhost:8080/api/v1/admin/ota", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+    // .then(response => response.text())
+    // .then(result => console.log(result))
+    // .catch(error => console.log('error', error));
+    .then((res)=> {
+        if(res.status === 200){  
+            return res.text()
+        }
+        else if(res.status === 401){
+          window.location.href="../login/login.html"
+        }
+        else{
+      
+            alert("something went wrong")  ;
+        }})
+        .then((data)=>{
+          console.log(data) 
+        })
+        .catch(err => console.log(err))
 
 }
-
-
 
 
 document.getElementById("wifi-button").addEventListener("click", getWifiValue)
@@ -206,7 +242,11 @@ function getWifiValue(){
     .then((res)=> {
     if(res.status === 200){
         return res.json()
-    }else{
+    }
+    else if(res.status === 401){
+        window.location.href="../login/login.html"
+      }
+    else{
         alert("something went wrong")  ;
     }})
     .then((data)=>{
@@ -249,7 +289,11 @@ function getVariantApplyValue(){
     .then((res)=> {
     if(res.status === 200){
         return res.json()
-    }else{
+    }
+    else if(res.status === 401){
+        window.location.href="../login/login.html"
+      }
+    else{
         alert("something went wrong")  ;
     }})
     .then((data)=>{
@@ -290,7 +334,11 @@ fetch("http://localhost:8080/api/v1/admin/ap_mode_ssid_apply", {
 .then((res)=> {
 if(res.status === 200){
     return res.json()
-}else{
+}
+else if(res.status === 401){
+    window.location.href="../login/login.html"
+  }
+else{
     alert("something went wrong")  ;
 }})
 .then((data)=>{
@@ -329,7 +377,11 @@ fetch("http://localhost:8080/api/v1/admin/ap_mode_ssid_pass_apply", {
 .then((res)=> {
 if(res.status === 200){
     return res.json()
-}else{
+}
+else if(res.status === 401){
+    window.location.href="../login/login.html"
+  }
+else{
     alert("something went wrong")  ;
 }})
 .then((data)=>{
@@ -408,7 +460,11 @@ function getWifiApplyValue(){
     .then((res)=> {
     if(res.status === 200){
         return res.json()
-    }else{
+    }
+    else if(res.status === 401){
+        window.location.href="../login/login.html"
+      }
+    else{
         alert("something went wrong")  ;
     }})
     .then((data)=>{

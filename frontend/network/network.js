@@ -11,7 +11,18 @@ function getNetworkData(){
         Authorization: `Bearer ${BearerCheck}`,
       },
     })
-      .then(response => response.json())
+      // .then(response => response.json())
+      .then((response)=> {
+  
+        if(response.status === 200){
+            return response.json()
+        }
+        else if(response.status === 401){
+          window.location.href= "../login/login.html"
+        }
+        else{
+            alert("something went wrong");
+        }})
       .then(response => {
         console.log(response)
 
@@ -64,7 +75,10 @@ var inferenceData = JSON.stringify({
     .then((res)=> {
     if(res.status === 200){
         return res.json()
-    }else{
+    }   else if(res.status === 401){
+      window.location.href="../login/login.html"
+    }
+    else{
         alert("something went wrong")  ;
     }})
     .then((data)=>{
@@ -106,7 +120,10 @@ var inferenceApplyData = JSON.stringify({
     .then((res)=> {
     if(res.status === 200){
         return res.json()
-    }else{
+    }     else if(res.status === 401){
+      window.location.href="../login/login.html"
+    }
+    else{
         alert("something went wrong")  ;
     }})
     .then((data)=>{
@@ -149,8 +166,12 @@ var inferenceStaticData = JSON.stringify({
     .then((res)=> {
     if(res.status === 200){
         return res.json()
-    }else{
-        alert("something went wrong")  ;
+    }
+    else if(res.status === 401){
+      window.location.href="../login/login.html"
+    }
+    else{
+        alert("something went wrong");
     }})
     .then((data)=>{
       console.log(data)  
@@ -167,8 +188,8 @@ document.getElementById("static-ip-button").addEventListener("click", getStaticI
 
 function  getStaticIpWifiInferenceApplyForm(e){
 
-  let networkStaticIpWifi = document.getElementById("network-static-ip-wifi").value
-  let networkGatewayIpWifi = document.getElementById("network-gateway-ip-wifi").value
+  let networkStaticIpWifi = document.getElementById("network-static-ip").value
+  let networkGatewayIpWifi = document.getElementById("network-gateway-ip").value
 
 
 
@@ -191,7 +212,10 @@ var inferenceStaticWifiData = JSON.stringify({
     .then((res)=> {
     if(res.status === 200){
         return res.json()
-    }else{
+    }  else if(res.status === 401){
+      window.location.href="../login/login.html"
+    }
+    else{
         alert("something went wrong")  ;
     }})
     .then((data)=>{
@@ -317,7 +341,11 @@ var ntpDataValue = JSON.stringify({
     .then((res)=> {
     if(res.status === 200){
         return res.json()
-    }else{
+    }
+    else if(res.status === 401){
+      window.location.href="../login/login.html"
+    }
+    else{
         alert("something went wrong")  ;
     }})
     .then((data)=>{
@@ -358,8 +386,12 @@ var ntpDataValue = JSON.stringify({
     .then((res)=> {
     if(res.status === 200){
         return res.json()
-    }else{
-        alert("something went wrong")  ;
+    }
+    else if(res.status === 401){
+      window.location.href="../login/login.html"
+    }
+    else{
+        alert("something went wrong");
     }})
     .then((data)=>{
       console.log(data)  
