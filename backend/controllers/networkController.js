@@ -97,10 +97,10 @@ exports.wifiCredentialsApply = (req, res, next) => {
     const data = yaml.load(fileContents);
     console.log(data);
   
-    // data.customer.first_name= "shara2"
-    // const yamlString = yaml.dump(data);
-    // console.log(yamlString, "kokok")
-    // fs.writeFileSync(directoryPath , yamlString, 'utf8');
+    data.config_schema[5][1]= "shara"
+    const yamlString = yaml.dump(data);
+    console.log(yamlString, "kokok")
+    fs.writeFileSync(directoryPath , yamlString, 'utf8');
   } catch (e) {
     console.log(e);
   }

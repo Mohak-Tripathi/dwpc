@@ -50,8 +50,11 @@ exports.saveInference = (req, res, next) => {
       const fileContents = fs.readFileSync('data.yaml', 'utf8');
       const data = yaml.load(fileContents);
       console.log(data);
-    
-      data.customer.first_name= "shara"
+      // data.config_schema.map(()=>{
+      //   if()
+      // })
+
+      data.config_schema[5][1]= "shara"
       const yamlString = yaml.dump(data);
       fs.writeFileSync('data.yaml', yamlString, 'utf8');
     } catch (e) {
