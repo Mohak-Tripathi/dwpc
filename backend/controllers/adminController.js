@@ -333,6 +333,26 @@ exports.setWifiStatusApplyUpdate = (req, res, next) => {
 // }
 
 
+const fs = require('fs');
+const yaml = require('js-yaml');
+
+// Read YAML file
+try {
+  const fileContents = fs.readFileSync('path/to/file.yml', 'utf8');
+  const data = yaml.safeLoad(fileContents);
+  console.log(data);
+} catch (e) {
+  console.log(e);
+}
+
+// Write YAML file
+const dataToWrite = { key: 'value' };
+try {
+  const yamlString = yaml.safeDump(dataToWrite);
+  fs.writeFileSync('path/to/file.yml', yamlString, 'utf8');
+} catch (e) {
+  console.log(e);
+}
 
 
   
