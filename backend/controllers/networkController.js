@@ -1,7 +1,7 @@
 
 const fs = require("fs");
 const path = require("path");
-
+const yaml = require('js-yaml');
 
 exports.getNetworkInfo = (req, res, next) => {
   const config = JSON.parse(fs.readFileSync("./config.json"));
@@ -89,19 +89,22 @@ exports.getNtpServer = (req, res, next) => {
 
 exports.wifiCredentialsApply = (req, res, next) => {
 
-  const {
-    SSID,
-    password
-  } = req.body;
+  try {
+    const directoryPath =  path.join(__dirname, "./mos.yaml" )
 
-
-  // const config = JSON.parse(fs.readFileSync("./config.json"));
-
-  // config.network_information.wifi_cred_ssid = SSID;
-  // config.network_information.wifi_cred_pass = password;
-
-  // fs.writeFileSync("./config.json", JSON.stringify(config, null, "\t"));
-  res.status(200).json({ message: "wifi credentials Apply  saved" });
+    console.log(directoryPath, "ko")
+    const fileContents = fs.readFileSync(directoryPath, 'utf8');
+    const data = yaml.load(fileContents);
+    console.log(data);
+  
+    // data.customer.first_name= "shara2"
+    // const yamlString = yaml.dump(data);
+    // console.log(yamlString, "kokok")
+    // fs.writeFileSync(directoryPath , yamlString, 'utf8');
+  } catch (e) {
+    console.log(e);
+  }
+  
 };
 
 

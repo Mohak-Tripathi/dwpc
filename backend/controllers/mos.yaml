@@ -1,0 +1,146 @@
+author: mongoose-os
+description: A Mongoose OS app skeleton
+version: 1.0
+
+libs_version: ${mos.version}
+modules_version: ${mos.version}
+mongoose_os_version: ${mos.version}
+
+# Optional. List of tags for online search.
+tags:
+  - c
+
+# List of files / directories with C sources. No slashes at the end of dir names.
+sources:
+  - src
+  # Including required sensor and driver libraries
+  - drivers
+  - drivers/VL53L1X
+  - drivers/TLC59731
+  - drivers/BUZZER
+  - drivers/PCA9543A
+  - drivers/BLINK
+  - drivers/KTD202X
+  - drivers/VL53L5CX
+
+# List of dirs. Files from these dirs will be copied to the device filesystem
+filesystem:
+  - fs
+
+# Custom configuration entries, settable via "device configuration"
+# Below is a custom firmware configuration example.
+# Uncomment and modify according to your needs:
+
+config_schema:
+  - ["i2c.enable", true]
+  - ["i2c.freq", 100000]
+  - ["i2c.sda_gpio", 33]
+  - ["i2c.scl_gpio", 32]
+
+  - ["wifi.sta.enable", true]
+  - ["wifi.sta.ssid", "INBLRFTWIFI"]
+  - ["wifi.sta.pass", "Flamenco#abcd)"]
+  - ["wifi.sta.ip", ""]
+  - ["wifi.sta.netmask", ""]
+  - ["wifi.sta.gw", ""]
+  - ["wifi.ap.enable", false]
+  # - ["wifi.ap.ssid", "SPAZIO_DWPC"]
+  # - ["wifi.ap.pass", "12345678"]
+  # - ["wifi.ap.ip", "192.168.1.1"]
+  # - ["wifi.ap.gw", "192.168.1.1"]
+  # - ["wifi.ap.dhcp_start", "192.168.1.2"]
+  # - ["wifi.ap.dhcp_end", "192.168.1.10"]
+  # - ["wifi.ap.netmask", "255.255.255.0"]
+  # - ["wifi.ap.channel", 6]
+  # - ["wifi.ap.trigger_on_gpio", -1]
+  # - ["wifi.ap.max_connections", 10]
+  # Config schema for MQTT parameters
+  - ["mqtt.enable", true]
+  - ["mqtt.server", "test.mosquitto.org"]
+  - ["mqtt.pub", "s", "/test", { title: "Publish topic" }]
+  - ["mqtt.sub", "s", "", { tilte: "Subscription topic" }]
+  - ["mqtt.user", ""]
+  - ["mqtt.pass", ""]
+  - ["mqtt.keep_alive", 60]
+  - ["mqtt.clean_session", true]
+  - ["mqtt.max_qos", 0]
+  - ["mqtt.ssl_ca_cert", ""]
+
+  # Config schema for NTP Server Parameters
+  - ["sntp.server", "time.google.com"]
+  - ["sntp.retry_min", 1]
+  - ["sntp.retry_max", 30]
+  - ["sntp.update_interval", 7200]
+    # Config schema for RPC Over MQTT
+  - ["rpc.mqtt.pub_topic", "%.*s"]
+  - ["rpc.mqtt.sub_topic", "/%.*s/rpc"]
+  - ["rpc.mqtt.sub_wc", true]
+  - ["rpc.mqtt.qos", 1]
+
+  - ["eth.enable", true]
+  - ["eth.clk_mode", 3]
+  - ["eth.ip", "s", { title: "Static IP Address" }]
+  - ["eth.netmask", "s", { title: "Static Netmask" }]
+  - ["eth.gw", "s", { title: "Static Default Gateway" }]
+  # - ["eth.nameserver", "s", {title: "Static DNS Server"}]
+
+  # Config schema for Htpp Server authentication
+  - ["http.auth_domain", "admin"]
+  - ["http.auth_file", "auth.txt"]
+  - ["http.upload_acl", "acl.json"]
+
+  # dwpc configuration
+  - ["dwpc", "o", { title: "DWPC parameters" }]
+  - ["dwpc.interval", "i", 60, { title: "Interval value" }]
+  - ["dwpc.distance", "i", 1500, { title: "Distance value" }]
+  - ["dwpc.capacity", "i", 2, { title: "Capacity" }]    
+  - ["dwpc.buzzer_frequency", "i", 5000, { title: "Buzzer frequency" }]
+  - ["dwpc.buzzer_delay", "i", 100, { title: "Buzzer delay" }]
+  - ["dwpc.buzzer_off_time", "i", 5000, { title: "Buzzer off time" }]
+  - ["dwpc.periodic_reset", "i", 45, { title: "Periodic Reset" }]
+  - ["dwpc.function_mode", "i", 2, { title: "Function mode" }] 
+  - ["dwpc.sensor_freq", "i", 12, {title: "Sensor Frequency "}]
+  - ["dwpc.Inzonecount_threshold", "i", 2, {title: "Inzonecount Threshold "}]
+  - ["dwpc.outzonecount_threshold", "i", 2, {title: "Outzonecount Threshold "}]
+  
+  - ["diagnostic", "o", { title: "Diagnostic Parameters" }]
+  - ["diagnostic.topic", "s", "/DB-Occusenz-PC", { title: "Diagnostic Topic" }]
+  
+
+# These settings get compiled into the C structure, and can be accessed
+# from the C code this way:
+#
+# printf("Hello from %s!\n", mgos_sys_config_get_device_id());
+#
+# Settings are cool: can be modified remotely without full firmware upgrade!
+#
+# To see all available compiled settings, buid the firmware and open
+# build/gen/mgos_config.h file.
+#
+# Also, in this config_schema section, you can override existing
+# settings that has been created by other libraries. For example, debug log
+# level is 2 by default. For this firmware we can override it to 3:
+#
+# config_schema:
+#  - ["debug.level", 3]
+
+libs:
+  - origin: https://github.com/mongoose-os-libs/boards
+  - origin: https://github.com/mongoose-os-libs/rpc-service-config
+  - origin: https://github.com/mongoose-os-libs/rpc-service-fs
+  - origin: https://github.com/mongoose-os-libs/rpc-uart
+  - origin: https://github.com/mongoose-os-libs/rpc-common
+  - origin: https://github.com/mongoose-os-libs/i2c
+  - origin: https://github.com/mongoose-os-libs/wifi
+  - origin: https://github.com/mongoose-os-libs/rpc-mqtt
+  - origin: https://github.com/mongoose-os-libs/mqtt
+  - origin: https://github.com/mongoose-os-libs/sntp
+  - origin: https://github.com/mongoose-os-libs/http-server
+  - origin: https://github.com/mongoose-os-libs/ota-http-server
+  - origin: https://github.com/mongoose-os-libs/vfs-common
+  - origin: https://github.com/mongoose-os-libs/pwm
+  - origin: https://github.com/mongoose-os-libs/ethernet
+  - origin: https://github.com/mongoose-os-libs/rpc-service-i2c
+
+# Used by the mos tool to catch mos binaries incompatible with this file format
+manifest_version: 2017-09-29

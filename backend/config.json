@@ -3,7 +3,7 @@
 	"mqtt_broker_one": {
 		"broker": "12",
 		"port": "12",
-		"ca": "Screenshot (8).png",
+		"ca": "Screenshot (6).png",
 		"people_count_topic": "34",
 		"device_health_topic": "13",
 		"mqtt_user_name": "34",
@@ -26,7 +26,7 @@
 		"variant": "ZIGBEE",
 		"ap_mode_ssid": "mohakshukl72",
 		"ap_mode_ssid_pass": "vvdv",
-		"ota": "Screenshot (14).png",
+		"ota": "Screenshot (5).png",
 		"wifi_status": "enabled"
 	},
 	"inference": {

@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "pca9543a.h": "c",
+        "vl53l5cx.h": "c",
+        "platform.h": "c",
+        "vl53l5cx_api.h": "c",
+        "vl53l5cx_buffers.h": "c",
+        "stdio.h": "c"
+    }
+}
