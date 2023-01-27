@@ -47,7 +47,6 @@ function getVariantValue(){
 
     let variantValue =   document.getElementById("variant-data").value
 
-    console.log(variantValue, "jojjo")
     var variantSelection = JSON.stringify({
         "variantData": variantValue
       });
