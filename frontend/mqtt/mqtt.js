@@ -3,6 +3,7 @@ function getMqttData(){
 
 
     let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+    
         fetch("http://localhost:8080/api/v1/mqtt/mqtt_one", {
             method: 'GET',
             headers: {
