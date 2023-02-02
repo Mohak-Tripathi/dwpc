@@ -1,20 +1,20 @@
 {
-	"mqtt_broker_status": "broker-2",
-	"mqtt_broker_one": {
-		"broker": "12",
-		"port": "12",
-		"ca": "Screenshot (6).png",
-		"people_count_topic": "34",
-		"device_health_topic": "13",
-		"mqtt_user_name": "34",
-		"mqtt_password": "14",
-		"mqtt_protocol": "TLS",
-		"response_time": "11"
+	mqtt_broker_status: "broker-2",
+	mqtt_broker_one: {
+		broker: 12,
+		port: 12,
+		ca: "Screenshot (6).png",
+		people_count_topic: "34",
+		device_health_topic: "13",
+		mqtt_user_name: "34",
+		mqtt_password: "14",
+		mqtt_protocol: "TLS",
+		response_time: "11"
 	},
-	"mqtt_broker_two": {
-		"broker": "14",
-		"port": "10",
-		"ca": "Screenshot (5).png",
+	mqtt_broker_two: {
+		broker: 14,
+		port: 10,
+		ca: "Screenshot (5).png",
 		"people_count_topic": "6",
 		"device_health_topic": "4",
 		"mqtt_user_name": "0",

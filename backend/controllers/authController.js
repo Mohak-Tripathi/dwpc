@@ -7,7 +7,7 @@ const path = require("path");
 
  exports.login = (req, res, next) => {
     const { username, password } = req.body;
-    console.log(username, password, "hj")
+    // console.log(username, password, "hj")
 
     const config = JSON.parse(fs.readFileSync("./config.json"));
   

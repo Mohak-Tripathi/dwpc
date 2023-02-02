@@ -1,4 +1,9 @@
 
+// import fs from "fs" 
+import * as fs from 'fs';
+const fs = require("fs");
+// const path = require("path");
+//  const jwt = require("jsonwebtoken");
 
 
 document.getElementById("login-form").addEventListener("submit", loginForm)
@@ -11,52 +16,78 @@ e.preventDefault()
 
     const hashedPwd = CryptoJS.MD5(username + password).toString();
 
-    console.log(hashedPwd, "hashedpwd")
-    var loginData = JSON.stringify({
-        username: username,
-        password: hashedPwd
+    // console.log(hashedPwd, "hashedpwd")
+    // var loginData = JSON.stringify({
+    //     username: username,
+    //     password: hashedPwd
+    //   });
+
+      const config = JSON.parse(fs.readFileSync("./config.json"));
+  
+      let targetObject = config.credentials.filter((elem) => {
+        return elem.app_user === username;
       });
-
-        fetch("http://localhost:8080/api/v1/login", {
-            method: "POST",
-            headers: {
-                "Accept": "application/json, text/plain, */*",
-                "Content-type": "application/json",
-            },
-            body: loginData
-        })
-        .then((res)=> {
-        if(res.status === 200){
-            return res.json()
-        }
-        else if(res.status === 401){
-            window.location.href="../login/login.html"
+    
+      if (
+        username === targetObject[0].app_user &&
+        hashedPwd === targetObject[0].app_password
+      ) {
+        alert("hurray")
+        const token =     jwt.sign(
+          { username },
+          "DwpcProject@fTIoT",
+          {
+            expiresIn: "15m", // expires in 1 hours
           }
-        else{
-            alert("username and password does not match")  ;
-        }})
-        .then((data)=>{
-            if(data){
-                console.log(data)
-                 localStorage.setItem("token", JSON.stringify(data.token));
-                 localStorage.setItem("user", JSON.stringify(data.user.role));
-          
-                 if(data.user.role === "Production"){
-                    window.location.href= "../admin/admin.html"
-                 }
-                 else if(data.user.role === "Support"){
-                    // window.location.href="../service/service.html"
-                    window.location.href=  "../service/service.html"
-                 }
-                 else{
-                    window.location.href="../dashboard/dashboard.html"
-                 }
-           
-                }   
-        })
-        .catch(err => console.log(err))
+        );
+        localStorage.setItem("token", JSON.stringify(token));
+        localStorage.setItem("user", JSON.stringify(targetObject[0].role));
+        }
 
-}
+
+
+
+    }
+        // fetch("http://localhost:8080/api/v1/login", {
+        //     method: "POST",
+        //     headers: {
+        //         "Accept": "application/json, text/plain, */*",
+        //         "Content-type": "application/json",
+        //     },
+        //     body: loginData
+        // })
+        // .then((res)=> {
+        // if(res.status === 200){
+        //     return res.json()
+        // }
+        // else if(res.status === 401){
+        //     window.location.href="../login/login.html"
+        //   }
+        // else{
+        //     alert("username and password does not match")  ;
+        // }})
+        // .then((data)=>{
+        //     if(data){
+        //         console.log(data)
+        //          localStorage.setItem("token", JSON.stringify(data.token));
+        //          localStorage.setItem("user", JSON.stringify(data.user.role));
+          
+        //          if(data.user.role === "Production"){
+        //             window.location.href= "../admin/admin.html"
+        //          }
+        //          else if(data.user.role === "Support"){
+        //             // window.location.href="../service/service.html"
+        //             window.location.href=  "../service/service.html"
+        //          }
+        //          else{
+        //             window.location.href="../dashboard/dashboard.html"
+        //          }
+           
+        //         }   
+        // })
+        // .catch(err => console.log(err))
+
+
 
 // async function loginDetails(username, password){
 
