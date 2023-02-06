@@ -1,11 +1,10 @@
 
-// import fs from "fs" 
-import * as fs from 'fs';
-const fs = require("fs");
-// const path = require("path");
+
 //  const jwt = require("jsonwebtoken");
+import { data} from "../config.js"
 
 
+console.log(data, "kl")
 document.getElementById("login-form").addEventListener("submit", loginForm)
 
 
@@ -22,27 +21,27 @@ e.preventDefault()
     //     password: hashedPwd
     //   });
 
-      const config = JSON.parse(fs.readFileSync("./config.json"));
+      const config = data
   
-      let targetObject = config.credentials.filter((elem) => {
-        return elem.app_user === username;
-      });
+      // let targetObject = config.credentials.filter((elem) => {
+      //   return elem.app_user === username;
+      // });
     
-      if (
-        username === targetObject[0].app_user &&
-        hashedPwd === targetObject[0].app_password
-      ) {
-        alert("hurray")
-        const token =     jwt.sign(
-          { username },
-          "DwpcProject@fTIoT",
-          {
-            expiresIn: "15m", // expires in 1 hours
-          }
-        );
-        localStorage.setItem("token", JSON.stringify(token));
-        localStorage.setItem("user", JSON.stringify(targetObject[0].role));
-        }
+      // if (
+      //   username === targetObject[0].app_user &&
+      //   hashedPwd === targetObject[0].app_password
+      // ) {
+      //   alert("hurray")
+      //   const token =     jwt.sign(
+      //     { username },
+      //     "DwpcProject@fTIoT",
+      //     {
+      //       expiresIn: "15m", // expires in 1 hours
+      //     }
+      //   );
+      //   localStorage.setItem("token", JSON.stringify(token));
+      //   localStorage.setItem("user", JSON.stringify(targetObject[0].role));
+      //   }
 
 
 
