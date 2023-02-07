@@ -1,13 +1,13 @@
 
 function getAdminData(){
+  // http://localhost:8080/api/v1/admin/admin_info
 
-
-    let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
-        fetch("http://localhost:8080/api/v1/admin/admin_info", {
+    // let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+        fetch("/rpc/Config.Get", { 
             method: 'GET',
-            headers: {
-          Authorization: `Bearer ${BearerCheck}`,
-            },
+          //   headers: {
+          // Authorization: `Bearer ${BearerCheck}`,
+          //   },
         })
             // .then(response => response.json())
             .then((response)=> {

@@ -26,15 +26,15 @@ let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
 		.then(response => {
       console.log(response)
 
-      document.getElementById("aggregation-interval").value =  response.aggregation_interval
-      document.getElementById("In-zone-distance-threshold").value  =  response.in_zone_distance_threshold
-      document.getElementById("out-zone-distance-threshold").value  =  response.out_zone_distance_threshold
-      document.getElementById("periodic-reset-interval").value  =  response.periodic_reset_interval
+      document.getElementById("aggregation-interval").value =  response.interval
+      document.getElementById("In-zone-distance-threshold").value  =  response.distance
+      document.getElementById("out-zone-distance-threshold").value  =  response.distance
+      document.getElementById("periodic-reset-interval").value  =  response.periodic_reset
       document.getElementById("function-mode").value  =  response.function_mode
-      document.getElementById("measurement-frequency").value  =  response.measurement_frequency
-      document.getElementById("pixel-count-one-person-threshold").value  =  response.pixel_count_one_person_threshold
-      document.getElementById("pixel-count-two-person-threshold").value  =  response.pixel_count_two_person_threshold
-      document.getElementById("room-capacity").value  =  response.room_capacity
+      document.getElementById("measurement-frequency").value  =  response.sensor_freq
+      document.getElementById("pixel-count-one-person-threshold").value  =  response.Inzonecount_threshold
+      document.getElementById("pixel-count-two-person-threshold").value  =  response.outzonecount_threshold
+      document.getElementById("room-capacity").value  =  response.capacity
       document.getElementById("os-timer-delay").value  =  response.os_timer_delay
       document.getElementById("wait-timer").value  =  response.wait_timer
       document.getElementById("sensing-mode").value  =  response.sensing_mode

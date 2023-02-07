@@ -1,3 +1,5 @@
+
+
 let data =  [
 	{
 		mqtt_broker_status: "broker-2"
@@ -94,5 +96,9 @@ let data =  [
 
 ]
 
+//  function displayData(){
+// 	return data
+// }
 
+// module.exports = {displayData}
 export {data}

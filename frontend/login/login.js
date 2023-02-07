@@ -1,10 +1,29 @@
 
 
 //  const jwt = require("jsonwebtoken");
-import { data} from "../config.js"
 
 
-console.log(data, "kl")
+const credentials=  [
+  {
+    app_user: "Production_User",
+    app_password: "f213ca89494ed2145819fd304ba0cee5",
+    role: "Production"
+  },
+  {
+    app_user: "Support_User",
+    app_password: "a3517876c46b72354b5c330bf57f5968",
+    role: "Support"
+  },
+  {
+    app_user: "Demo_User",
+    app_password: "faeb5fa19d257ec2303cb3b4ca41759e",
+    role: "Demo"
+  }
+]
+
+
+
+
 document.getElementById("login-form").addEventListener("submit", loginForm)
 
 
@@ -16,32 +35,36 @@ e.preventDefault()
     const hashedPwd = CryptoJS.MD5(username + password).toString();
 
     // console.log(hashedPwd, "hashedpwd")
-    // var loginData = JSON.stringify({
-    //     username: username,
-    //     password: hashedPwd
-    //   });
 
-      const config = data
-  
-      // let targetObject = config.credentials.filter((elem) => {
-      //   return elem.app_user === username;
-      // });
+
+      let targetObject = credentials.filter((elem) => {
+        return elem.app_user === username;
+      });
     
-      // if (
-      //   username === targetObject[0].app_user &&
-      //   hashedPwd === targetObject[0].app_password
-      // ) {
-      //   alert("hurray")
-      //   const token =     jwt.sign(
-      //     { username },
-      //     "DwpcProject@fTIoT",
-      //     {
-      //       expiresIn: "15m", // expires in 1 hours
-      //     }
-      //   );
-      //   localStorage.setItem("token", JSON.stringify(token));
-      //   localStorage.setItem("user", JSON.stringify(targetObject[0].role));
-      //   }
+      if (
+        username === targetObject[0].app_user &&
+        hashedPwd === targetObject[0].app_password
+      ) {
+        // const token =     jwt.sign(
+        //   { username },
+        //   "DwpcProject@fTIoT",
+        //   {
+        //     expiresIn: "15m", // expires in 1 hours
+        //   }
+        // );
+        // localStorage.setItem("token", JSON.stringify(token));
+        localStorage.setItem("user", JSON.stringify(targetObject[0].role));
+
+        if(targetObject[0].role === "Production"){
+                      window.location.href= "../admin/admin.html"
+          }
+         else if(targetObject[0].role === "Support"){
+                      window.location.href=  "../service/service.html"
+          }
+          else{
+                      window.location.href="../dashboard/dashboard.html"
+         }
+        }
 
 
 
