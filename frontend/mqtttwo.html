@@ -13,7 +13,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.css" rel="stylesheet"
 />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <link     rel="stylesheet" href="mqtt.css"  />
+  <link     rel="stylesheet" href="mqtttwo.css"  />
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary"> </nav>
@@ -25,34 +25,14 @@
 
         <div class="row mt-3 mb-4 me-2 ms-2 p-2">
 
-         
-<!-- <div class="row mb-1 ">
-
-    <p class="text-primary">Choose Broker-2</p>
-   <div >
-    <select name="" id="mqtt-data" class="mb-2 w-25">
-
-      <!-- <option value="broker-1">Broker 1</option> -->
-      <!-- <option value="broker-2">Broker2</option>
-  </select>
-  <div style="display:flex; justify-content:flex-end">
-    <button type="submit" id="mqtt-button" class="btn bg-transparent bg-gradient text-primary border-margin">SAVE</button>
-    </div>
-
-   </div>
-
-
-</div> --> 
- 
-          
-            <form action="" id="mqtt-form">
-                <div class="row mb-2"> 
+            <form action="" id="mqtt-broker-form">
+                <div class="row mb-3"> 
                     <p class="text-primary">Configure MQTT broker and port</p>
                 <div class="col-md-6 ">
            
                     <p>Broker</p>
                 <div class="form">
-                    <input type="text" id="mqtt-broker" class="form-control form-control-sm" placeholder="Enter mqtt broker" />
+                    <input type="text" id="mqtt-broker-2" class="form-control form-control-sm" placeholder="Enter mqtt broker" />
             
                   </div>
                 </div>
@@ -61,7 +41,7 @@
     
                     <p>Port</p>
                   <div class="form">
-                    <input type="number" id="mqtt-port" class="form-control form-control-sm" placeholder="Enter mqtt port" />
+                    <input type="number" id="mqtt-port-2" class="form-control form-control-sm" placeholder="Enter mqtt port" />
   
                   </div>
                 </div>
@@ -74,7 +54,7 @@
                     <!-- border -->
                     <p>Mqtt User Name</p>
                 <div class="form">
-                    <input type="text" id="mqtt-user-name" class="form-control form-control-sm" placeholder="Enter mqtt user name" />
+                    <input type="text" id="mqtt-user-name-2" class="form-control form-control-sm" placeholder="Enter mqtt user name" />
 
                   </div>
                 </div>
@@ -83,12 +63,11 @@
                     <!-- border -->
                     <p> Password</p>
                   <div class="form">
-                    <input type="text" id="mqtt-user-password" class="form-control form-control-sm" placeholder="Enter mqtt user password" />
+                    <input type="text" id="mqtt-user-password-2" class="form-control form-control-sm" placeholder="Enter mqtt user password" />
 
                   </div>
                 </div>
             </div>
-
 
             
             <div class="row mb-3"> 
@@ -97,7 +76,7 @@
      
                   <p>Occupancy/People Count Topic</p>
               <div class="form">
-                  <input type="text" id="mqtt-people-count" class="form-control form-control-sm" placeholder="Enter mqtt people count" />
+                  <input type="text" id="mqtt-people-count-2" class="form-control form-control-sm" placeholder=" Enter mqtt people count" />
 
                 </div>
               </div>
@@ -106,7 +85,7 @@
                   <!-- border -->
                   <p>Device Health Topic</p>
                 <div class="form">
-                  <input type="text" id="mqtt-device-health" class="form-control form-control-sm" placeholder="Enter mqtt device health" />
+                  <input type="text" id="mqtt-device-health-2" class="form-control form-control-sm" placeholder="Enter mqtt device health" />
      
                 </div>
               </div>
@@ -118,7 +97,7 @@
                   <!-- border -->
                   <p>Response Topic</p>
               <div class="form">
-                  <input type="text" id="response-1" class="form-control form-control-sm" placeholder="Enter response time" />
+                  <input type="text" id="response-2" class="form-control form-control-sm" placeholder="Enter response time" />
 
                 </div>
               </div>
@@ -126,8 +105,8 @@
           </div>
                 <div style="display:flex; justify-content:flex-end">
                     <button type="submit" class="btn bg-transparent bg-gradient text-primary border-margin">SAVE</button>
-                    <button type="button" id="mqtt-one-button" class="btn bg-transparent bg-gradient text-primary border-margin">APPLY</button>
-                  </div>
+                    <button type="button" id="mqtt-two-button" class="btn bg-transparent bg-gradient text-primary border-margin">APPLY</button>
+                    </div>
               
 
             </form>
@@ -135,65 +114,63 @@
      
         </div>
 
-
-
-
         <div class="row mt-3 mb-4 me-2 ms-2 p-2">
             <p class="text-primary">Configure Mqtt Certificate (Select MQTT Protocol)</p>
-<div class="col-md-7"> 
+  <div class="col-md-7"> 
     <p> Select Protocol</p>
-    <select name="" id="mqtt-protocol">
+    <select name="" id="mqtt-protocol-2">
         <option value="TCP">MQTT/TCP</option>
         <option value="TLS">MQTT/TLS</option>
     </select>
 
      <div style="display:flex; justify-content:flex-end">
-        <button type="submit" id="mqtt-protocol-button" class="btn bg-transparent  bg-gradient text-primary border-margin">SAVE</button>
-        <button type="button" id="mqtt-protocol-apply-button" class="btn bg-transparent  bg-gradient text-primary border-margin">APPLY</button>
-      
+        <button type="submit" id="mqtt-protocol-button-2" class="btn bg-transparent  bg-gradient text-primary border-margin">SAVE</button>
+        <button type="button" id="mqtt-protocol-apply-button-2" class="btn bg-transparent  bg-gradient text-primary border-margin">APPLY</button>  
       </div>
 </div>
 <div class="col-md-5"> 
     
     <p>Mqtt Certification File</p>
     <form>
-      <div class="form  w-50">
+      <div class="form mb-2 w-50">
 
-        <input type="text" id="mqtt-cert" class="form-control  form-control-sm" placeholder="mqtt certification " readonly/>
+        <input type="text" id="mqtt-cert-2" class="form-control  form-control-sm" placeholder="Enter mqtt certification " readonly/>
 
       </div>
      
-  
+
     </form>
 </div>
-
 </div>
 
 
 
 <div class="row mt-3 mb-5 me-2 ms-2 p-2"> 
 
-  <div class="col-md-7" id="display-mqtt-1"> 
+  <div class="col-md-7" id="display-mqtt"> 
     <p>MQTT Certificate</p>
     <!-- <form encType='multipart/form-data' id="mqtt-cert-form" method="POST" action="/mqtt_one_cert_file"> -->
         <div class="mb-2 w-25">
   
-          <input type="file" name="mqtt_cert_file" id="mqtt_cert_file"  placeholder="upload mqtt certificate"/>
+          <input type="file" name="mqtt_certificate_file_two" id="mqtt_certificate_file_two" placeholder="upload mqtt certificate"/>
   
         </div>
        
     <div style="display:flex; justify-content:flex-end">
-          <button type="button" id="upload-cert-button" class="btn bg-transparent  bg-gradient text-primary border-margin">SAVE</button>
+          <button type="button" id="upload-cert-2-button" class="btn bg-transparent  bg-gradient text-primary border-margin">SAVE</button>
           </div>
       <!-- </form> -->
 </div>
 
 
+
 </div>
 
 
 
-   
+
+
+        </div>
     
        
      
@@ -203,19 +180,26 @@
     
   <footer id="footer"> </footer>
 
-  <script defer src="./mqtt.js"></script>
+
+  
+  <script defer src="./mqtttwo.js"></script>
 
     <script type="module">
-      import {Navbar} from '../Components/navbar.js';
+      import {Navbar} from './navbar.js';
       let navbar=document.querySelector('.navbar');
       navbar.innerHTML =Navbar()
 
       
-  import {Footer} from '../Components/footer.js';
+  import {Footer} from './footer.js';
   let footer=document.getElementById('footer');
   footer.innerHTML = Footer()
+
+
+  
+
+
       </script>
-      <script defer src="../Components/userRole.js"></script>
-      <script defer src="../Components/logout.js"></script>
+      <script defer src="./userRole.js"></script>
+      <script defer src="./logout.js"></script>
 </body>
 </html>

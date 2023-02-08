@@ -2,10 +2,10 @@
 
 
 function getInferenceData(){
-
+  // http://localhost:8080/api/v1/inference/dwpc_params
 
 let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
-    fetch("http://localhost:8080/api/v1/inference/dwpc_params", {
+    fetch("/rpc/Config.Get", {
 		method: 'GET',
 		headers: {
       Authorization: `Bearer ${BearerCheck}`,
@@ -17,7 +17,7 @@ let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
         return response.json()
     }
     else if(response.status === 401){
-      window.location.href="../login/login.html"
+      window.location.href="./login.html"
     }
     else{
         alert("something went wrong");
@@ -100,12 +100,11 @@ var inferenceData = JSON.stringify({
   });
 
   let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
-    fetch("http://localhost:8080/api/v1/inference/dwpc_params", {
+    fetch("/api/v1/inference/dwpc_params", {
         method: "POST",
         headers: {
             "Accept": "application/json, text/plain, */*",
-            "Content-type": "application/json",
-            Authorization: `Bearer ${BearerCheck}`,
+            "Content-type": "application/json"
         },
         body: inferenceData
     })

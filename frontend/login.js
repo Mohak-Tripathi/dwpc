@@ -56,13 +56,13 @@ e.preventDefault()
         localStorage.setItem("user", JSON.stringify(targetObject[0].role));
 
         if(targetObject[0].role === "Production"){
-                      window.location.href= "../admin/admin.html"
+                      window.location.href= "admin.html"
           }
          else if(targetObject[0].role === "Support"){
-                      window.location.href=  "../service/service.html"
+                      window.location.href=  "service.html"
           }
           else{
-                      window.location.href="../dashboard/dashboard.html"
+                      window.location.href="dashboard.html"
          }
         }
 
