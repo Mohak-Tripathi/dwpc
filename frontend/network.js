@@ -4,12 +4,12 @@
 function getNetworkData(){
 
 
-  let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
-      fetch("http://localhost:8080/api/v1/network/nwk", {
+  // let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+      fetch("/rpc/Config.Get", {
       method: 'GET',
-      headers: {
-        Authorization: `Bearer ${BearerCheck}`,
-      },
+      // headers: {
+      //   Authorization: `Bearer ${BearerCheck}`,
+      // },
     })
       // .then(response => response.json())
       .then((response)=> {
@@ -18,7 +18,7 @@ function getNetworkData(){
             return response.json()
         }
         else if(response.status === 401){
-          window.location.href= "../login/login.html"
+          window.location.href= "./login.html"
         }
         else{
             alert("something went wrong");
@@ -57,13 +57,18 @@ e.preventDefault()
 
 
 var inferenceData = JSON.stringify({
-    "SSID": networkSsid,
-    "password": networkPassword 
+  config:{
+      dwpc: {
+      "SSID": networkSsid,
+      "password": networkPassword 
+}
+  }
+    
   
   });
 
   let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
-    fetch("http://localhost:8080/api/v1/network/cred", {
+    fetch("/rpc/Config.Set", {
         method: "POST",
         headers: {
             "Accept": "application/json, text/plain, */*",
@@ -76,7 +81,7 @@ var inferenceData = JSON.stringify({
     if(res.status === 200){
         return res.json()
     }   else if(res.status === 401){
-      window.location.href="../login/login.html"
+      window.location.href="./login.html"
     }
     else{
         alert("something went wrong")  ;
@@ -92,47 +97,47 @@ var inferenceData = JSON.stringify({
 
     //apply
 
-document.getElementById("wifi-cred-button").addEventListener("click", getWifiInferenceApplyForm)
+// document.getElementById("wifi-cred-button").addEventListener("click", getWifiInferenceApplyForm)
 
 
-function  getWifiInferenceApplyForm(){
+// function  getWifiInferenceApplyForm(){
 
-  let networkSsid = document.getElementById("network-wifi-ssid").value
-  let networkPassword = document.getElementById("network-wifi-password").value
+//   let networkSsid = document.getElementById("network-wifi-ssid").value
+//   let networkPassword = document.getElementById("network-wifi-password").value
 
 
-var inferenceApplyData = JSON.stringify({
-    "SSID": networkSsid,
-    "password": networkPassword 
+// var inferenceApplyData = JSON.stringify({
+//     "SSID": networkSsid,
+//     "password": networkPassword 
   
-  });
+//   });
 
-  let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
-    fetch("http://localhost:8080/api/v1/network/cred_apply", {
-        method: "POST",
-        headers: {
-            "Accept": "application/json, text/plain, */*",
-            "Content-type": "application/json",
-            Authorization: `Bearer ${BearerCheck}`,
-        },
-        body: inferenceApplyData
-    })
-    .then((res)=> {
-    if(res.status === 200){
-        return res.json()
-    }     else if(res.status === 401){
-      window.location.href="../login/login.html"
-    }
-    else{
-        alert("something went wrong")  ;
-    }})
-    .then((data)=>{
-      console.log(data)  
-    })
-    .catch(err => console.log(err))
+//   let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+//     fetch("http://localhost:8080/api/v1/network/cred_apply", {
+//         method: "POST",
+//         headers: {
+//             "Accept": "application/json, text/plain, */*",
+//             "Content-type": "application/json",
+//             Authorization: `Bearer ${BearerCheck}`,
+//         },
+//         body: inferenceApplyData
+//     })
+//     .then((res)=> {
+//     if(res.status === 200){
+//         return res.json()
+//     }     else if(res.status === 401){
+//       window.location.href="../login/login.html"
+//     }
+//     else{
+//         alert("something went wrong")  ;
+//     }})
+//     .then((data)=>{
+//       console.log(data)  
+//     })
+//     .catch(err => console.log(err))
 
 
-    }
+//     }
 
 
     
@@ -148,18 +153,23 @@ e.preventDefault()
 // console.log(aggregationInterval, InZoneDistanceThrehold )
 
 var inferenceStaticData = JSON.stringify({
-    "static_ip": networkStaticIp,
-    "gateway_ip": networkGatewayIp
+  config:{
+    dwpc:{
+      "static_ip": networkStaticIp,
+      "gateway_ip": networkGatewayIp
+    }
+  }
+ 
   
   });
 
-  let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
-    fetch("http://localhost:8080/api/v1/network/static_ip", {
+  // let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+    fetch("/rpc/Config.Set", {
         method: "POST",
         headers: {
             "Accept": "application/json, text/plain, */*",
-            "Content-type": "application/json",
-            Authorization: `Bearer ${BearerCheck}`,
+            "Content-type": "application/json"
+
         },
         body: inferenceStaticData
     })
@@ -183,48 +193,48 @@ var inferenceStaticData = JSON.stringify({
 
 
      //apply    
-document.getElementById("static-ip-button").addEventListener("click", getStaticIpWifiInferenceApplyForm)
+// document.getElementById("static-ip-button").addEventListener("click", getStaticIpWifiInferenceApplyForm)
 
 
-function  getStaticIpWifiInferenceApplyForm(e){
+// function  getStaticIpWifiInferenceApplyForm(e){
 
-  let networkStaticIpWifi = document.getElementById("network-static-ip").value
-  let networkGatewayIpWifi = document.getElementById("network-gateway-ip").value
+//   let networkStaticIpWifi = document.getElementById("network-static-ip").value
+//   let networkGatewayIpWifi = document.getElementById("network-gateway-ip").value
 
 
 
-var inferenceStaticWifiData = JSON.stringify({
-    "static_ip": networkStaticIpWifi,
-    "gateway_ip": networkGatewayIpWifi
+// var inferenceStaticWifiData = JSON.stringify({
+//     "static_ip": networkStaticIpWifi,
+//     "gateway_ip": networkGatewayIpWifi
   
-  });
+//   });
 
-  let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
-    fetch("http://localhost:8080/api/v1/network/static_ip_wifi_apply", {
-        method: "POST",
-        headers: {
-            "Accept": "application/json, text/plain, */*",
-            "Content-type": "application/json",
-            Authorization: `Bearer ${BearerCheck}`,
-        },
-        body: inferenceStaticWifiData
-    })
-    .then((res)=> {
-    if(res.status === 200){
-        return res.json()
-    }  else if(res.status === 401){
-      window.location.href="../login/login.html"
-    }
-    else{
-        alert("something went wrong")  ;
-    }})
-    .then((data)=>{
-      console.log(data)  
-    })
-    .catch(err => console.log(err))
+//   let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+//     fetch("http://localhost:8080/api/v1/network/static_ip_wifi_apply", {
+//         method: "POST",
+//         headers: {
+//             "Accept": "application/json, text/plain, */*",
+//             "Content-type": "application/json",
+//             Authorization: `Bearer ${BearerCheck}`,
+//         },
+//         body: inferenceStaticWifiData
+//     })
+//     .then((res)=> {
+//     if(res.status === 200){
+//         return res.json()
+//     }  else if(res.status === 401){
+//       window.location.href="../login/login.html"
+//     }
+//     else{
+//         alert("something went wrong")  ;
+//     }})
+//     .then((data)=>{
+//       console.log(data)  
+//     })
+//     .catch(err => console.log(err))
 
 
-    }
+//     }
 
 
 
@@ -360,46 +370,46 @@ var ntpDataValue = JSON.stringify({
 
     //apply
 
-    document.getElementById("ntp-apply-button").addEventListener("click", getNtpApplyForm)
+//     document.getElementById("ntp-apply-button").addEventListener("click", getNtpApplyForm)
 
 
-function  getNtpApplyForm(){
+// function  getNtpApplyForm(){
 
-  let ntpApplyValue = document.getElementById("ntp-data").value
+//   let ntpApplyValue = document.getElementById("ntp-data").value
 
-var ntpDataValue = JSON.stringify({
-    "ntpServer": ntpApplyValue
+// var ntpDataValue = JSON.stringify({
+//     "ntpServer": ntpApplyValue
 
   
-  });
+//   });
 
-  let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
-    fetch("http://localhost:8080/api/v1/network/ntp_server_apply", {
-        method: "POST",
-        headers: {
-            "Accept": "application/json, text/plain, */*",
-            "Content-type": "application/json",
-            Authorization: `Bearer ${BearerCheck}`,
-        },
-        body: ntpDataValue
-    })
-    .then((res)=> {
-    if(res.status === 200){
-        return res.json()
-    }
-    else if(res.status === 401){
-      window.location.href="../login/login.html"
-    }
-    else{
-        alert("something went wrong");
-    }})
-    .then((data)=>{
-      console.log(data)  
-    })
-    .catch(err => console.log(err))
+//   let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+//     fetch("http://localhost:8080/api/v1/network/ntp_server_apply", {
+//         method: "POST",
+//         headers: {
+//             "Accept": "application/json, text/plain, */*",
+//             "Content-type": "application/json",
+//             Authorization: `Bearer ${BearerCheck}`,
+//         },
+//         body: ntpDataValue
+//     })
+//     .then((res)=> {
+//     if(res.status === 200){
+//         return res.json()
+//     }
+//     else if(res.status === 401){
+//       window.location.href="../login/login.html"
+//     }
+//     else{
+//         alert("something went wrong");
+//     }})
+//     .then((data)=>{
+//       console.log(data)  
+//     })
+//     .catch(err => console.log(err))
 
 
-    }
+//     }
 
 
 

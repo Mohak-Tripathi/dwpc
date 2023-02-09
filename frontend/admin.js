@@ -16,13 +16,13 @@ function getAdminData(){
                     return response.json()
                 }
                 else if(response.status === 401){
-                  window.location.href="../login/login.html"
+                  window.location.href="./login.html"
                 }
                 else{
                     alert("something went wrong");
                 }})
             .then(response => {
-          console.log(response)
+
 
           document.getElementById("variant-data").value = response.variant
           document.getElementById("admin-apModeSSID").value =  response.ap_mode_ssid
@@ -48,18 +48,23 @@ function getVariantValue(){
     let variantValue =   document.getElementById("variant-data").value
 
     var variantSelection = JSON.stringify({
-        "variantData": variantValue
+      config:{
+        dwpc: {
+          "variantData": variantValue
+        }
+      }
+     
       });
 
-      let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+      // let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
 
 
-    fetch("http://localhost:8080/api/v1/admin/variant", {
+    fetch("/rpc/Config.Set", {
         method: "POST",
         headers: {
             "Accept": "application/json, text/plain, */*",
-            "Content-type": "application/json",
-        Authorization: `Bearer ${BearerCheck}`,
+            "Content-type": "application/json"
+        // Authorization: `Bearer ${BearerCheck}`,
 
         },
         body: variantSelection
@@ -69,7 +74,7 @@ function getVariantValue(){
         return res.json()
     }
     else if(res.status === 401){
-        window.location.href="../login/login.html"
+        window.location.href="./login.html"
       }
     else{
         alert("something went wrong")  ;
@@ -96,18 +101,23 @@ function getAdminSsidValue(e){
     let apModeSSID= document.getElementById("admin-apModeSSID").value
 
     var apData = JSON.stringify({
-        "ap_mode_ssid": apModeSSID
+      config:{
+        dwpc:{
+          "ap_mode_ssid": apModeSSID
+        }
+      }
+      
       });
 
-      let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+      // let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
 
 
-    fetch("http://localhost:8080/api/v1/admin/ap_mode_ssid", {
+    fetch("/rpc/Config.Set", {
         method: "POST",
         headers: {
             "Accept": "application/json, text/plain, */*",
             "Content-type": "application/json",
-        Authorization: `Bearer ${BearerCheck}`,
+        // Authorization: `Bearer ${BearerCheck}`,
 
         },
         body: apData
@@ -117,7 +127,7 @@ function getAdminSsidValue(e){
         return res.json()
     }
     else if(res.status === 401){
-        window.location.href="../login/login.html"
+        window.location.href="./login.html"
       }
     else{
         alert("something went wrong")  ;
@@ -138,18 +148,23 @@ function getAdminSsidPassValue(e){
     let apModeSSIDPass= document.getElementById("admin-apModeSSIDPass").value
 
     var apDataPass = JSON.stringify({
-        "ap_mode_ssid_pass": apModeSSIDPass
+      config:{
+        dwpc: {
+          "ap_mode_ssid_pass": apModeSSIDPass
+        }
+      }
+       
       });
 
-      let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+      // let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
 
 
-    fetch("http://localhost:8080/api/v1/admin/ap_mode_ssid_pass", {
+    fetch("/rpc/Config.Set", {
         method: "POST",
         headers: {
             "Accept": "application/json, text/plain, */*",
-            "Content-type": "application/json",
-        Authorization: `Bearer ${BearerCheck}`,
+            "Content-type": "application/json"
+        // Authorization: `Bearer ${BearerCheck}`,
 
         },
         body: apDataPass
@@ -181,17 +196,18 @@ function getOtaValue(){
   formdata.append("ota_file", ota_file.files[0]);
   
 
-  let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+  // let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
 
   var requestOptions = {
     method: 'POST',
-    body: formdata,
-    headers: {
-         Authorization: `Bearer ${BearerCheck}`
-     }
+    body: formdata
+    // headers: {
+    //      Authorization: `Bearer ${BearerCheck}`
+    //  }
   };
+  // http://localhost:8080/api/v1/admin/ota
   
-  fetch("http://localhost:8080/api/v1/admin/ota", requestOptions)
+  fetch("/rpc/FS.Put", requestOptions)
     // .then(response => response.text())
     // .then(result => console.log(result))
     // .catch(error => console.log('error', error));
@@ -200,7 +216,7 @@ function getOtaValue(){
             return res.text()
         }
         else if(res.status === 401){
-          window.location.href="../login/login.html"
+          window.location.href="./login.html"
         }
         else{
       
@@ -222,18 +238,23 @@ function getWifiValue(){
     let wifiValue =   document.getElementById("wifi-admin-data").value
 
     var wifiSelection = JSON.stringify({
-        "wifiStatus": wifiValue
+      config: {
+        dwpc: {
+          "wifi_status": wifiValue
+        }
+      }
+       
       });
 
-      let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+      // let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
 
 
-    fetch("http://localhost:8080/api/v1/admin/wifi-status", {
+    fetch("/rpc/Config.Set", {
         method: "POST",
         headers: {
             "Accept": "application/json, text/plain, */*",
-            "Content-type": "application/json",
-        Authorization: `Bearer ${BearerCheck}`,
+            "Content-type": "application/json"
+        // Authorization: `Bearer ${BearerCheck}`,
 
         },
         body: wifiSelection
@@ -243,7 +264,7 @@ function getWifiValue(){
         return res.json()
     }
     else if(res.status === 401){
-        window.location.href="../login/login.html"
+        window.location.href="./login.html"
       }
     else{
         alert("something went wrong")  ;
@@ -260,135 +281,135 @@ function getWifiValue(){
 
 // Apply buttons logic 
 
-document.getElementById("variant-apply-button").addEventListener("click", getVariantApplyValue)
+// document.getElementById("variant-apply-button").addEventListener("click", getVariantApplyValue)
 
 
-function getVariantApplyValue(){
+// function getVariantApplyValue(){
 
-    let variantApplyValue =   document.getElementById("variant-data").value
+//     let variantApplyValue =   document.getElementById("variant-data").value
     
-    var variantSelection = JSON.stringify({
-        "variantData": variantApplyValue 
-      });
+//     var variantSelection = JSON.stringify({
+//         "variantData": variantApplyValue 
+//       });
 
-      let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
-
-
-    fetch("http://localhost:8080/api/v1/admin/variant_apply", {
-        method: "POST",
-        headers: {
-            "Accept": "application/json, text/plain, */*",
-            "Content-type": "application/json",
-        Authorization: `Bearer ${BearerCheck}`,
-
-        },
-        body: variantSelection
-    })
-    .then((res)=> {
-    if(res.status === 200){
-        return res.json()
-    }
-    else if(res.status === 401){
-        window.location.href="../login/login.html"
-      }
-    else{
-        alert("something went wrong")  ;
-    }})
-    .then((data)=>{
-      console.log(data) 
-    })
-    .catch(err => console.log(err))
-
-}
+//       let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
 
 
+//     fetch("http://localhost:8080/api/v1/admin/variant_apply", {
+//         method: "POST",
+//         headers: {
+//             "Accept": "application/json, text/plain, */*",
+//             "Content-type": "application/json",
+//         Authorization: `Bearer ${BearerCheck}`,
 
-document.getElementById("ap-mode-apply").addEventListener("click", getAPmodeApplyValue)
+//         },
+//         body: variantSelection
+//     })
+//     .then((res)=> {
+//     if(res.status === 200){
+//         return res.json()
+//     }
+//     else if(res.status === 401){
+//         window.location.href="../login/login.html"
+//       }
+//     else{
+//         alert("something went wrong")  ;
+//     }})
+//     .then((data)=>{
+//       console.log(data) 
+//     })
+//     .catch(err => console.log(err))
+
+// }
 
 
-function getAPmodeApplyValue(){
 
-    let apModeApplyValue =   document.getElementById("admin-apModeSSID").value
+// document.getElementById("ap-mode-apply").addEventListener("click", getAPmodeApplyValue)
 
-//    console.log(apModeApplyValue, "gto")
+
+// function getAPmodeApplyValue(){
+
+//     let apModeApplyValue =   document.getElementById("admin-apModeSSID").value
+
+// //    console.log(apModeApplyValue, "gto")
     
-   var apData = JSON.stringify({
-    "ap_mode_ssid": apModeApplyValue
-  });
+//    var apData = JSON.stringify({
+//     "ap_mode_ssid": apModeApplyValue
+//   });
 
-  let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
-
-
-fetch("http://localhost:8080/api/v1/admin/ap_mode_ssid_apply", {
-    method: "POST",
-    headers: {
-        "Accept": "application/json, text/plain, */*",
-        "Content-type": "application/json",
-    Authorization: `Bearer ${BearerCheck}`,
-
-    },
-    body: apData
-})
-.then((res)=> {
-if(res.status === 200){
-    return res.json()
-}
-else if(res.status === 401){
-    window.location.href="../login/login.html"
-  }
-else{
-    alert("something went wrong")  ;
-}})
-.then((data)=>{
-  console.log(data) 
-})
-.catch(err => console.log(err))
-
-}
+//   let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
 
 
-document.getElementById("ap-mode-pass-apply").addEventListener("click", getAPmodePassApplyValue)
+// fetch("http://localhost:8080/api/v1/admin/ap_mode_ssid_apply", {
+//     method: "POST",
+//     headers: {
+//         "Accept": "application/json, text/plain, */*",
+//         "Content-type": "application/json",
+//     Authorization: `Bearer ${BearerCheck}`,
 
-function getAPmodePassApplyValue(){
+//     },
+//     body: apData
+// })
+// .then((res)=> {
+// if(res.status === 200){
+//     return res.json()
+// }
+// else if(res.status === 401){
+//     window.location.href="../login/login.html"
+//   }
+// else{
+//     alert("something went wrong")  ;
+// }})
+// .then((data)=>{
+//   console.log(data) 
+// })
+// .catch(err => console.log(err))
 
-    let apModePassApplyValue =   document.getElementById("admin-apModeSSIDPass").value
+// }
 
-   console.log(apModePassApplyValue, "gto")
+
+// document.getElementById("ap-mode-pass-apply").addEventListener("click", getAPmodePassApplyValue)
+
+// function getAPmodePassApplyValue(){
+
+//     let apModePassApplyValue =   document.getElementById("admin-apModeSSIDPass").value
+
+//    console.log(apModePassApplyValue, "gto")
     
-   var apDataPass = JSON.stringify({
-    "ap_mode_ssid_pass":  apModePassApplyValue
-  });
+//    var apDataPass = JSON.stringify({
+//     "ap_mode_ssid_pass":  apModePassApplyValue
+//   });
 
-  let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
-
-
-fetch("http://localhost:8080/api/v1/admin/ap_mode_ssid_pass_apply", {
-    method: "POST",
-    headers: {
-        "Accept": "application/json, text/plain, */*",
-        "Content-type": "application/json",
-    Authorization: `Bearer ${BearerCheck}`,
-
-    },
-    body: apDataPass
-})
-.then((res)=> {
-if(res.status === 200){
-    return res.json()
-}
-else if(res.status === 401){
-    window.location.href="../login/login.html"
-  }
-else{
-    alert("something went wrong")  ;
-}})
-.then((data)=>{
-  console.log(data) 
-})
-.catch(err => console.log(err))
+//   let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
 
 
-}
+// fetch("http://localhost:8080/api/v1/admin/ap_mode_ssid_pass_apply", {
+//     method: "POST",
+//     headers: {
+//         "Accept": "application/json, text/plain, */*",
+//         "Content-type": "application/json",
+//     Authorization: `Bearer ${BearerCheck}`,
+
+//     },
+//     body: apDataPass
+// })
+// .then((res)=> {
+// if(res.status === 200){
+//     return res.json()
+// }
+// else if(res.status === 401){
+//     window.location.href="../login/login.html"
+//   }
+// else{
+//     alert("something went wrong")  ;
+// }})
+// .then((data)=>{
+//   console.log(data) 
+// })
+// .catch(err => console.log(err))
+
+
+// }
 
 
 
@@ -430,48 +451,48 @@ else{
 // }
 
 
-document.getElementById("wifi-apply-button").addEventListener("click", getWifiApplyValue)
+// document.getElementById("wifi-apply-button").addEventListener("click", getWifiApplyValue)
 
 
-function getWifiApplyValue(){
+// function getWifiApplyValue(){
 
-    let wifiApplyValue =   document.getElementById("wifi-admin-data").value
+//     let wifiApplyValue =   document.getElementById("wifi-admin-data").value
 
     
-    var wifiSelection = JSON.stringify({
-        "wifiStatus": wifiApplyValue
-      });
+//     var wifiSelection = JSON.stringify({
+//         "wifiStatus": wifiApplyValue
+//       });
 
-      let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
-
-
-    fetch("http://localhost:8080/api/v1/admin/wifi-status_apply", {
-        method: "POST",
-        headers: {
-            "Accept": "application/json, text/plain, */*",
-            "Content-type": "application/json",
-        Authorization: `Bearer ${BearerCheck}`,
-
-        },
-        body: wifiSelection
-    })
-    .then((res)=> {
-    if(res.status === 200){
-        return res.json()
-    }
-    else if(res.status === 401){
-        window.location.href="../login/login.html"
-      }
-    else{
-        alert("something went wrong") ;
-    }})
-    .then((data)=>{
-      console.log(data) 
-    })
-    .catch(err => console.log(err))
+//       let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
 
 
-}
+//     fetch("http://localhost:8080/api/v1/admin/wifi-status_apply", {
+//         method: "POST",
+//         headers: {
+//             "Accept": "application/json, text/plain, */*",
+//             "Content-type": "application/json",
+//         Authorization: `Bearer ${BearerCheck}`,
+
+//         },
+//         body: wifiSelection
+//     })
+//     .then((res)=> {
+//     if(res.status === 200){
+//         return res.json()
+//     }
+//     else if(res.status === 401){
+//         window.location.href="../login/login.html"
+//       }
+//     else{
+//         alert("something went wrong") ;
+//     }})
+//     .then((data)=>{
+//       console.log(data) 
+//     })
+//     .catch(err => console.log(err))
+
+
+// }
 
 
 

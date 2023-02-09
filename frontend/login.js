@@ -34,8 +34,6 @@ e.preventDefault()
 
     const hashedPwd = CryptoJS.MD5(username + password).toString();
 
-    // console.log(hashedPwd, "hashedpwd")
-
 
       let targetObject = credentials.filter((elem) => {
         return elem.app_user === username;

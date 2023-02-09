@@ -59,12 +59,29 @@ config_schema:
   - ["mqtt.server", "test.mosquitto.org"]
   - ["mqtt.pub", "s", "/test", { title: "Publish topic" }]
   - ["mqtt.sub", "s", "", { tilte: "Subscription topic" }]
+  - ["mqtt.protocol", ""]
+  - ["mqtt.device_health", ""]
   - ["mqtt.user", ""]
   - ["mqtt.pass", ""]
   - ["mqtt.keep_alive", 60]
   - ["mqtt.clean_session", true]
   - ["mqtt.max_qos", 0]
   - ["mqtt.ssl_ca_cert", ""]
+
+    # Config schema for MQTT-2 parameters
+  - ["mqtt_two.enable", true]
+  - ["mqtt_two.server", "test.mosquitto.org"]
+  - ["mqtt_two.pub", "s", "/test", { title: "Publish topic" }]
+  - ["mqtt_two.sub", "s", "", { title: "Subscription topic" }]
+  - ["mqtt_two.protocol", ""]
+  - ["mqtt_two.device_health", ""]
+  - ["mqtt_two.user", ""]
+  - ["mqtt_two.pass", ""]
+  - ["mqtt_two.ca", ""]
+  - ["mqtt_two.keep_alive", 60]
+  - ["mqtt_two.clean_session", true]
+  - ["mqtt_two.max_qos", 0]
+  - ["mqtt_two.ssl_ca_cert", ""]
 
   # Config schema for NTP Server Parameters
   - ["sntp.server", "time.google.com"]
@@ -89,6 +106,12 @@ config_schema:
   - ["http.auth_file", "auth.txt"]
   - ["http.upload_acl", "acl.json"]
 
+    # Config schema for admin
+  - ["admin.variant", "admin"]
+  - ["admin.ap_mode_ssid", "auth.txt"]
+  - ["admin.ap_mode_ssid_pass", "acl.json"]
+  - ["admin.wifi_status", "acl.json"]
+
   # dwpc configuration
   - ["dwpc", "o", { title: "DWPC parameters" }]
   - ["dwpc.interval", "i", 60, { title: "Interval value" }]
@@ -102,6 +125,9 @@ config_schema:
   - ["dwpc.sensor_freq", "i", 12, {title: "Sensor Frequency "}]
   - ["dwpc.Inzonecount_threshold", "i", 2, {title: "Inzonecount Threshold "}]
   - ["dwpc.outzonecount_threshold", "i", 2, {title: "Outzonecount Threshold "}]
+  - ["dwpc.os_timer_delay", "i", 1, {title: "OS Timer Delay"}]
+  - ["dwpc.wait-timer", "i", 1, {title: "Wait Timer"}]
+  - ["dwpc.sensing-mode", "i", 1, {title: "Sensing Mode"}]
   
   - ["diagnostic", "o", { title: "Diagnostic Parameters" }]
   - ["diagnostic.topic", "s", "/DB-Occusenz-PC", { title: "Diagnostic Topic" }]
