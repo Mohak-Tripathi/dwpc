@@ -25,13 +25,13 @@ function getMqttDataTwo(){
   
             document.getElementById("mqtt-broker-2").value = response.mqtt_two.server   //broker
             document.getElementById("mqtt-port-2").value = response.mqtt_two.port
-            document.getElementById("mqtt-people-count-2").value = response.mqtt_two.people_count_topic
-             document.getElementById("mqtt-device-health-2").value = response.mqtt_two.device_health_topic
-           document.getElementById("mqtt-user-name-2").value = response.mqtt_two.mqtt_user_name
-            document.getElementById("mqtt-user-password-2").value = response.mqtt_two.mqtt_password
-            document.getElementById("mqtt-protocol-2").value = response.mqtt_two.mqtt_protocol
+            document.getElementById("mqtt-people-count-2").value = response.mqtt_two.pub
+             document.getElementById("mqtt-device-health-2").value = response.mqtt_two.device_health
+           document.getElementById("mqtt-user-name-2").value = response.mqtt_two.user
+            document.getElementById("mqtt-user-password-2").value = response.mqtt_two.pass
+            document.getElementById("mqtt-protocol-2").value = response.mqtt_two.protocol
             document.getElementById("mqtt-cert-2").value = response.mqtt_two.ca
-            document.getElementById("response-2").value = response.mqtt_two.response_time
+            document.getElementById("response-2").value = response.mqtt_two.sub
     
 
             if(response.mqtt_protocol === "TCP"){
@@ -131,7 +131,7 @@ e.preventDefault()
 
 var mqttBrokerTwoData = JSON.stringify({
   config:{
-    dwpc:{
+    mqtt_two:{
       "broker": mqttBroker,
       "port":  mqttPort,
       "people_count_topic": mqttPeopleCount,
@@ -182,8 +182,8 @@ function setMqttProtocolStatusTwo(){
   
     var mqttProtocolSelectionTwo = JSON.stringify({
       config:{
-        dwpc:{
-          "mqttProtocolTwo" : mqttProtocolTwo
+        mqtt_two:{
+          "protocol" : mqttProtocolTwo
         }
       }
         
@@ -192,7 +192,7 @@ function setMqttProtocolStatusTwo(){
       // let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
 
 
-    fetch("http://localhost:8080/api/v1/mqtt/mqtt_two_protocol", {
+    fetch("/rpc/Config.Set", {
         method: "POST",
         headers: {
             "Accept": "application/json, text/plain, */*",
@@ -247,7 +247,7 @@ function  setMqttProtocolCert(){
   }
   };
   
-  fetch("http://localhost:8080/api/v1/mqtt/mqtt_two_cert_file", requestOptions)
+  fetch("/rpc/FS.Put", requestOptions)
     // .then(response => response.text())
     // .then(result => console.log(result))
     // .catch(error => console.log('error', error));
@@ -259,7 +259,7 @@ function  setMqttProtocolCert(){
           return res.text()
       }
       else if(res.status === 401){
-        window.location.href="../login/login.html"
+        window.location.href="./login.html"
       }
       else{
     

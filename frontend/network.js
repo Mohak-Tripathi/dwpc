@@ -26,13 +26,14 @@ function getNetworkData(){
       .then(response => {
         console.log(response)
 
-        document.getElementById("network-wifi-ssid").value = response.wifi_cred_ssid
-        document.getElementById("network-wifi-password").value =  response.wifi_cred_pass
-        document.getElementById("network-static-ip").value = response.static_ip
-        document.getElementById("network-gateway-ip").value = response.static_ip_gateway
+        document.getElementById("network-wifi-ssid").value = response.wifi.sta.ssid
+        document.getElementById("network-wifi-password").value =  response.wifi.sta.pass
+        document.getElementById("network-static-ip").value = response.wifi.sta.ip
+        document.getElementById("network-gateway-ip").value = response.wifi.sta.gw
+        document.getElementById("network-netmask").value = response.wifi.sta.netmask
         // document.getElementById("network-static-ip-ethernet").value = response.static_ip_eth
         // document.getElementById("network-gateway-ip-ethernet").value = response.static_ip_eth_pass
-         document.getElementById("ntp-data").value = response.ntp_server
+         document.getElementById("ntp-data").value = response.sntp.server
 
       })
       .catch(err => console.error(err));
@@ -58,22 +59,22 @@ e.preventDefault()
 
 var inferenceData = JSON.stringify({
   config:{
-      dwpc: {
-      "SSID": networkSsid,
-      "password": networkPassword 
+      wifi: {
+      "sta.ssid": networkSsid,
+      "sta.pass": networkPassword 
 }
   }
     
   
   });
 
-  let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+  // let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
     fetch("/rpc/Config.Set", {
         method: "POST",
         headers: {
             "Accept": "application/json, text/plain, */*",
             "Content-type": "application/json",
-            Authorization: `Bearer ${BearerCheck}`,
+            // Authorization: `Bearer ${BearerCheck}`,
         },
         body: inferenceData
     })
@@ -148,15 +149,20 @@ function  getStaticIpWifiInferenceForm(e){
 e.preventDefault()
   let networkStaticIp = document.getElementById("network-static-ip").value
   let networkGatewayIp = document.getElementById("network-gateway-ip").value
+  let networkNetmask = document.getElementById("network-netmask").value
+
+
 
 
 // console.log(aggregationInterval, InZoneDistanceThrehold )
 
 var inferenceStaticData = JSON.stringify({
   config:{
-    dwpc:{
-      "static_ip": networkStaticIp,
-      "gateway_ip": networkGatewayIp
+    wifi:{
+      "sta.ip": networkStaticIp,
+      "sta.gw": networkGatewayIp,
+      "sta.netmask": networkNetmask,
+
     }
   }
  
@@ -178,7 +184,7 @@ var inferenceStaticData = JSON.stringify({
         return res.json()
     }
     else if(res.status === 401){
-      window.location.href="../login/login.html"
+      window.location.href="./login.html"
     }
     else{
         alert("something went wrong");
@@ -333,18 +339,23 @@ e.preventDefault()
   let ntpValue = document.getElementById("ntp-data").value
 
 var ntpDataValue = JSON.stringify({
-    "ntpServer": ntpValue
+  config:{
+    sntp:{
+      "server": ntpValue
+    }
+  }
+   
 
   
   });
 
-  let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
-    fetch("http://localhost:8080/api/v1/network/ntp_server", {
+  // let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+    fetch("/rpc/Config.Set", {
         method: "POST",
         headers: {
             "Accept": "application/json, text/plain, */*",
             "Content-type": "application/json",
-            Authorization: `Bearer ${BearerCheck}`,
+            // Authorization: `Bearer ${BearerCheck}`,
         },
         body: ntpDataValue
     })
@@ -353,7 +364,7 @@ var ntpDataValue = JSON.stringify({
         return res.json()
     }
     else if(res.status === 401){
-      window.location.href="../login/login.html"
+      window.location.href="./login.html"
     }
     else{
         alert("something went wrong")  ;

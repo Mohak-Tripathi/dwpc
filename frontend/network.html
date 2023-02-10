@@ -60,6 +60,7 @@
             <p class="text-primary">Configure the Static IP (CIDR Format)</p>
             <form action="" id="network-staticip-form">
                 <div class="row"> 
+                  <div class="row">  
                 <div class="col-md-6 ">
                     <!-- border -->
                     <p>Static IP</p>
@@ -77,6 +78,18 @@
      
                   </div>
                 </div>
+                </div>
+                  <div class="row mt-2">   
+                <div class="col-md-6 ">
+                  <!-- border -->
+                  <p> Netmask </p>
+                <div class="form w-50">
+                  <input type="text" id="network-netmask" class="form-control form-control-sm" placeholder="Enter Netmask" />
+   
+                </div>
+              </div>
+            </div>
+
                 <div style="display:flex; justify-content:flex-end">
                     <button type="submit" class="btn bg-transparent bg-gradient text-primary border-margin">SAVE</button>
                     <!-- <button type="button" id="static-ip-button" class="btn bg-transparent bg-gradient text-primary border-margin">APPLY</button>   -->
@@ -127,7 +140,7 @@
              
                     <p>NTP Server Address</p>
                 <div class="form w-50">
-                    <input type="email" id="ntp-data" class="form-control form-control-sm" placeholder="Email NTP Server Address" />
+                    <input type="text" id="ntp-data" class="form-control form-control-sm" placeholder=" Enter NTP Server" />
            
                   </div>
                 </div>

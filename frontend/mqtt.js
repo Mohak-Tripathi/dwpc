@@ -138,7 +138,7 @@ e.preventDefault()
 
 var mqttBrokerOneData = JSON.stringify({
   config:{
-    dwpc: {
+    mqtt: {
       "server": mqttBroker,
       "port":  mqttPort,
       "pub": mqttPeopleCount,
@@ -191,7 +191,7 @@ function setMqttProtocolStatus(){
   
     var mqttProtocolSelection = JSON.stringify({
       config:{
-        dwpc:{
+        mqtt:{
           "protocol" :  mqttProtocol 
         }
       }
@@ -255,7 +255,7 @@ function  setMqttProtocolCert(){
   // }
   };
   
-  fetch("http://localhost:8080/api/v1/mqtt/mqtt_one_cert_file", requestOptions)
+  fetch("/rpc/FS.Put", requestOptions)
     // .then(response => response.text())
     // .then(result => console.log(result))
     // .catch(error => console.log('error', error));
@@ -266,7 +266,7 @@ function  setMqttProtocolCert(){
         return res.text()
     }
     else if(res.status === 401){
-      window.location.href="../login/login.html"
+      window.location.href="./login.html"
     }
     else{
   

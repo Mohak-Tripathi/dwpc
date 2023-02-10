@@ -24,11 +24,11 @@ function getAdminData(){
             .then(response => {
 
 
-          document.getElementById("variant-data").value = response.variant
-          document.getElementById("admin-apModeSSID").value =  response.ap_mode_ssid
-          document.getElementById("admin-apModeSSIDPass").value =  response.ap_mode_ssid_pass 
+          document.getElementById("variant-data").value = response.admin.variant
+          document.getElementById("admin-apModeSSID").value =  response.admin.ap_mode_ssid
+          document.getElementById("admin-apModeSSIDPass").value =  response.admin.ap_mode_ssid_pass 
         //   document.getElementById("otaUpdate").value = response.ota
-          document.getElementById("wifi-admin-data").value = response.wifi_status
+          document.getElementById("wifi-admin-data").value = response.admin.wifi_status
        
         })
             .catch(err => console.error(err));
@@ -49,8 +49,8 @@ function getVariantValue(){
 
     var variantSelection = JSON.stringify({
       config:{
-        dwpc: {
-          "variantData": variantValue
+        admin: {
+          "variant": variantValue
         }
       }
      
@@ -102,7 +102,7 @@ function getAdminSsidValue(e){
 
     var apData = JSON.stringify({
       config:{
-        dwpc:{
+        admin:{
           "ap_mode_ssid": apModeSSID
         }
       }
@@ -149,7 +149,7 @@ function getAdminSsidPassValue(e){
 
     var apDataPass = JSON.stringify({
       config:{
-        dwpc: {
+        admin: {
           "ap_mode_ssid_pass": apModeSSIDPass
         }
       }
@@ -239,7 +239,7 @@ function getWifiValue(){
 
     var wifiSelection = JSON.stringify({
       config: {
-        dwpc: {
+        admin: {
           "wifi_status": wifiValue
         }
       }
