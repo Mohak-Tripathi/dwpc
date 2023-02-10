@@ -46,29 +46,29 @@ document.getElementById("reset-button").addEventListener("click", getResetValue)
 
 function getResetValue(){
 
-    var factoryResetData = JSON.stringify({
-        "factoryReset": "hello"
-      });
+    // var factoryResetData = JSON.stringify({
+    //     "factoryReset": "hello"
+    //   });
 
       
-      let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+      // let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
 
 
-    fetch("http://localhost:8080/api/v1/service/factory-reset", {
-        method: "POST",
-        headers: {
-            "Accept": "application/json, text/plain, */*",
-            "Content-type": "application/json",
-        Authorization: `Bearer ${BearerCheck}`,
+    fetch("/rpc/resetCount", {
+        method: "GET",
+        // headers: {
+        //     "Accept": "application/json, text/plain, */*",
+        //     "Content-type": "application/json",
+        // // Authorization: `Bearer ${BearerCheck}`,
 
-        },
-        body: factoryResetData
+        // },
+        // body: factoryResetData
     })
     .then((res)=> {
     if(res.status === 200){
         return res.json()
     }else if(res.status === 401){
-        window.location.href="../login/login.html"
+        window.location.href="./login.html"
       }
     else{
         alert("something went wrong")  ;
@@ -87,29 +87,29 @@ document.getElementById("reboot-button").addEventListener("click", getRebootValu
 
 function getRebootValue(){
 
-    var rebootData = JSON.stringify({
-        "reboot": "reboot-start"
-      });
+    // var rebootData = JSON.stringify({
+    //     "reboot": "reboot-start"
+    //   });
 
       
-      let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+    //   let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
 
 
-    fetch("http://localhost:8080/api/v1/service/reboot", {
-        method: "POST",
-        headers: {
-            "Accept": "application/json, text/plain, */*",
-            "Content-type": "application/json",
-        Authorization: `Bearer ${BearerCheck}`,
+    fetch("/rpc/rebootSensor", {
+        method: "GET",
+        // headers: {
+        //     "Accept": "application/json, text/plain, */*",
+        //     "Content-type": "application/json",
+        // Authorization: `Bearer ${BearerCheck}`,
 
-        },
-        body: rebootData
+        // },
+        // body: rebootData
     })
     .then((res)=> {
     if(res.status === 200){
         return res.json()
     }else if(res.status === 401){
-        window.location.href="../login/login.html"
+        window.location.href="./login.html"
       }
     else{
         alert("something went wrong")  ;
