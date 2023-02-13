@@ -22,12 +22,14 @@ function getMqttData(){
             .then(response => {
           // console.log(response)
     console.log(response.mqtt.pass, "kl")
+    console.log(response.mqtt.user, "kl2")
+    console.log(response.mqtt.device_health, "kl3")
 
             document.getElementById("mqtt-broker").value = response.mqtt.server
             document.getElementById("mqtt-port").value = response.mqtt.port
             document.getElementById("mqtt-people-count").value = response.mqtt.pub
             document.getElementById("response-1").value = response.mqtt.sub
-            document.getElementById("mqtt-protocol").value = response.mqtt.protocol
+            // document.getElementById("mqtt-protocol").value = response.mqtt.protocol
             document.getElementById("mqtt-device-health").value = response.mqtt.device_health
            document.getElementById("mqtt-user-name").value = response.mqtt.user
             document.getElementById("mqtt-user-password").value = response.mqtt.pass

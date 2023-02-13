@@ -29,7 +29,7 @@ function getMqttDataTwo(){
              document.getElementById("mqtt-device-health-2").value = response.mqtt1.device_health
            document.getElementById("mqtt-user-name-2").value = response.mqtt1.user
             document.getElementById("mqtt-user-password-2").value = response.mqtt1.pass
-            document.getElementById("mqtt-protocol-2").value = response.mqtt1.protocol
+            // document.getElementById("mqtt-protocol-2").value = response.mqtt1.protocol
             // document.getElementById("mqtt-cert-2").value = response.mqtt1.ca
             document.getElementById("response-2").value = response.mqtt1.sub
     

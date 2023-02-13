@@ -12,6 +12,7 @@
   const serverUrl = currentUrl.match(serverUrlRegex);
   //  The match is in the 0th element of the array.
   console.log(`The server URL is ${serverUrl[0]}`);
+  console.log(`The server URL is ${serverUrl}`);
   //  Comment this for static URI.
   let ws = new WebSocket(`ws://${serverUrl}`);
   ws.onopen = () => {
