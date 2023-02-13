@@ -1,7 +1,7 @@
 let userRole = JSON.parse(localStorage.getItem("user") || null)
 
 
-
+console.log(userRole, "jo")
 if(userRole ==="Support"){
  document.getElementById("inference-nav").style.display= "none"
  
