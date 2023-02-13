@@ -30,7 +30,7 @@ function getMqttDataTwo(){
            document.getElementById("mqtt-user-name-2").value = response.mqtt1.user
             document.getElementById("mqtt-user-password-2").value = response.mqtt1.pass
             document.getElementById("mqtt-protocol-2").value = response.mqtt1.protocol
-            document.getElementById("mqtt-cert-2").value = response.mqtt1.ca
+            // document.getElementById("mqtt-cert-2").value = response.mqtt1.ca
             document.getElementById("response-2").value = response.mqtt1.sub
     
 
@@ -164,62 +164,86 @@ var mqttBrokerTwoData = JSON.stringify({
         alert("something went wrong")  ;
     }})
     .then((data)=>{
-      console.log(data)  
-    })
-    .catch(err => console.log(err))
-
-    }
-
-
-
-
-    document.getElementById("mqtt-protocol-button-2").addEventListener("click", setMqttProtocolStatusTwo)
-
-function setMqttProtocolStatusTwo(){
-
-    let mqttProtocolTwo =   document.getElementById("mqtt-protocol-2").value
-
-  
-    var mqttProtocolSelectionTwo = JSON.stringify({
-      config:{
-        mqtt_two:{
-          "protocol" : mqttProtocolTwo
-        }
-      }
-        
-      });
-
-      // let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
-
-
-    fetch("/rpc/Config.Set", {
+      let new_data = JSON.stringify({ reboot: true })
+      fetch("/rpc/Config.Save", {
         method: "POST",
         headers: {
             "Accept": "application/json, text/plain, */*",
-            "Content-type": "application/json",
-        // Authorization: `Bearer ${BearerCheck}`,
-
+            "Content-type": "application/json"
         },
-        body: mqttProtocolSelectionTwo
+        body: new_data 
+
     })
     .then((res)=> {
-    if(res.status === 200){
-  
-        return res.json()
-    }
-    else if(res.status === 401){
-      window.location.href="./login.html"
-    }
-    else{
-        alert("something went wrong")  ;
-    }})
-    .then((data)=>{
-   
-      console.log(data) 
+      if(res.status === 200){
+      return res.json()
+      }
+      else if(res.status === 401){
+        window.location.href="./login.html"
+      }
+      else{
+          alert("something went wrong")  ;
+      }})
+      .then((data)=>{
+        console.log(data) 
+        alert("MQTT parameters is set sucessfully");
+      })
+      .catch(err => console.log(err))
     })
     .catch(err => console.log(err))
 
-}
+    }
+
+
+
+
+//     document.getElementById("mqtt-protocol-button-2").addEventListener("click", setMqttProtocolStatusTwo)
+
+// function setMqttProtocolStatusTwo(){
+
+//     let mqttProtocolTwo =   document.getElementById("mqtt-protocol-2").value
+
+  
+//     var mqttProtocolSelectionTwo = JSON.stringify({
+//       config:{
+//         mqtt_two:{
+//           "protocol" : mqttProtocolTwo
+//         }
+//       }
+        
+//       });
+
+//       // let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+
+
+//     fetch("/rpc/Config.Set", {
+//         method: "POST",
+//         headers: {
+//             "Accept": "application/json, text/plain, */*",
+//             "Content-type": "application/json",
+//         // Authorization: `Bearer ${BearerCheck}`,
+
+//         },
+//         body: mqttProtocolSelectionTwo
+//     })
+//     .then((res)=> {
+//     if(res.status === 200){
+  
+//         return res.json()
+//     }
+//     else if(res.status === 401){
+//       window.location.href="./login.html"
+//     }
+//     else{
+//         alert("something went wrong")  ;
+//     }})
+//     .then((data)=>{
+   
+//       console.log(data) 
+//     })
+//     .catch(err => console.log(err))
+
+// }
 
 
 

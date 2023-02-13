@@ -12,7 +12,7 @@ function getCalliberateValue(){
       let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
 
 
-    fetch("http://localhost:8080/api/v1/service/calliberate", {
+    fetch("/api/v1/service/calliberate", {
         method: "POST",
         headers: {
             "Accept": "application/json, text/plain, */*",
@@ -87,12 +87,7 @@ document.getElementById("reboot-button").addEventListener("click", getRebootValu
 
 function getRebootValue(){
 
-    // var rebootData = JSON.stringify({
-    //     "reboot": "reboot-start"
-    //   });
-
-      
-    //   let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+ 
 
 
     fetch("/rpc/rebootSensor", {

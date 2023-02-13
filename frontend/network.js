@@ -57,7 +57,7 @@ e.preventDefault()
   let networkPassword = document.getElementById("network-wifi-password").value
 
 
-var inferenceData = JSON.stringify({
+var networkData = JSON.stringify({
   config:{
       wifi: {
       "sta.ssid": networkSsid,
@@ -76,7 +76,7 @@ var inferenceData = JSON.stringify({
             "Content-type": "application/json",
             // Authorization: `Bearer ${BearerCheck}`,
         },
-        body: inferenceData
+        body: networkData
     })
     .then((res)=> {
     if(res.status === 200){
@@ -88,7 +88,32 @@ var inferenceData = JSON.stringify({
         alert("something went wrong")  ;
     }})
     .then((data)=>{
-      console.log(data)  
+
+      let new_data = JSON.stringify({ reboot: true })
+      fetch("/rpc/Config.Save", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json, text/plain, */*",
+            "Content-type": "application/json"
+        },
+        body: new_data 
+
+    })
+    .then((res)=> {
+      if(res.status === 200){
+      return res.json()
+      }
+      else if(res.status === 401){
+        window.location.href="./login.html"
+      }
+      else{
+          alert("something went wrong")  ;
+      }})
+      .then((data)=>{
+        console.log(data) 
+        alert("Wifi credentials parameter is set sucessfully");
+      })
+      .catch(err => console.log(err))
     })
     .catch(err => console.log(err))
 
@@ -190,7 +215,33 @@ var inferenceStaticData = JSON.stringify({
         alert("something went wrong");
     }})
     .then((data)=>{
-      console.log(data)  
+  
+      let new_data = JSON.stringify({ reboot: true })
+      fetch("/rpc/Config.Save", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json, text/plain, */*",
+            "Content-type": "application/json"
+        },
+        body: new_data 
+
+    })
+    .then((res)=> {
+      if(res.status === 200){
+      return res.json()
+      }
+      else if(res.status === 401){
+        window.location.href="./login.html"
+      }
+      else{
+          alert("something went wrong")  ;
+      }})
+      .then((data)=>{
+        console.log(data) 
+        alert("Static Ip  parameter is set sucessfully");
+      })
+      .catch(err => console.log(err))
+      
     })
     .catch(err => console.log(err))
 
@@ -371,6 +422,32 @@ var ntpDataValue = JSON.stringify({
     }})
     .then((data)=>{
       console.log(data)  
+      
+      let new_data = JSON.stringify({ reboot: true })
+      fetch("/rpc/Config.Save", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json, text/plain, */*",
+            "Content-type": "application/json"
+        },
+        body: new_data 
+
+    })
+    .then((res)=> {
+      if(res.status === 200){
+      return res.json()
+      }
+      else if(res.status === 401){
+        window.location.href="./login.html"
+      }
+      else{
+          alert("something went wrong")  ;
+      }})
+      .then((data)=>{
+        console.log(data) 
+        alert("NTP parameter is set sucessfully");
+      })
+      .catch(err => console.log(err))
     })
     .catch(err => console.log(err))
 

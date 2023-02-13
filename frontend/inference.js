@@ -115,12 +115,8 @@ e.preventDefault()
         body: inferenceData
     })
     .then((res)=> {
-  
     if(res.status === 200){
- 
-    
     return res.json()
-
   
     }
     else if(res.status === 401){
@@ -130,7 +126,33 @@ e.preventDefault()
         alert("something went wrong")  ;
     }})
     .then((data)=>{
-      console.log(data) 
+
+      let new_data = JSON.stringify({ reboot: true })
+      fetch("/rpc/Config.Save", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json, text/plain, */*",
+            "Content-type": "application/json"
+        },
+        body: new_data 
+
+    })
+    .then((res)=> {
+      if(res.status === 200){
+      return res.json()
+      }
+      else if(res.status === 401){
+        window.location.href="./login.html"
+      }
+      else{
+          alert("something went wrong")  ;
+      }})
+      .then((data)=>{
+        console.log(data) 
+        alert("Inference Parameters is set sucessfully");
+      })
+      .catch(err => console.log(err))
+
 
     })
     .catch(err => console.log(err))

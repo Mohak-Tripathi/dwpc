@@ -1,6 +1,5 @@
 
 function getAdminData(){
-  // http://localhost:8080/api/v1/admin/admin_info
 
     // let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
         fetch("/rpc/Config.Get", { 
@@ -22,10 +21,10 @@ function getAdminData(){
                     alert("something went wrong");
                 }})
             .then(response => {
-              console.log(response.wifi.ap.ssid,1 )
-              console.log(response.admin.variant,2 )
-              console.log( response.wifi.ap.pass, 3)
-              console.log( response.wifi.sta.enable, 4)
+              // console.log(response.wifi.ap.ssid,1 )
+              // console.log(response.admin.variant,2 )
+              // console.log( response.wifi.ap.pass, 3)
+              // console.log( response.wifi.sta.enable, 4)
              
           document.getElementById("variant-data").value = response.admin.variant
           document.getElementById("admin-apModeSSID").value =  response.wifi.ap.ssid
@@ -83,7 +82,32 @@ function getVariantValue(){
         alert("something went wrong")  ;
     }})
     .then((data)=>{
-      console.log(data) 
+      // console.log(data) 
+      let new_data = JSON.stringify({ reboot: true })
+      fetch("/rpc/Config.Save", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json, text/plain, */*",
+            "Content-type": "application/json"
+        },
+        body: new_data 
+
+    })
+    .then((res)=> {
+      if(res.status === 200){
+      return res.json()
+      }
+      else if(res.status === 401){
+        window.location.href="./login.html"
+      }
+      else{
+          alert("something went wrong")  ;
+      }})
+      .then((data)=>{
+ 
+        alert("Variant Parameters is set sucessfully");
+      })
+      .catch(err => console.log(err))
     })
     .catch(err => console.log(err))
 
@@ -136,7 +160,31 @@ function getAdminSsidValue(e){
         alert("something went wrong")  ;
     }})
     .then((data)=>{
-      console.log(data) 
+      let new_data = JSON.stringify({ reboot: true })
+      fetch("/rpc/Config.Save", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json, text/plain, */*",
+            "Content-type": "application/json"
+        },
+        body: new_data 
+
+    })
+    .then((res)=> {
+      if(res.status === 200){
+      return res.json()
+      }
+      else if(res.status === 401){
+        window.location.href="./login.html"
+      }
+      else{
+          alert("something went wrong")  ;
+      }})
+      .then((data)=>{
+        console.log(data) 
+        alert("Ap Mode SSID Parameter is set sucessfully");
+      })
+      .catch(err => console.log(err))
     })
     .catch(err => console.log(err))
 
@@ -183,7 +231,31 @@ function getAdminSsidPassValue(e){
         alert("something went wrong")  ;
     }})
     .then((data)=>{
-      console.log(data) 
+      let new_data = JSON.stringify({ reboot: true })
+      fetch("/rpc/Config.Save", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json, text/plain, */*",
+            "Content-type": "application/json"
+        },
+        body: new_data 
+
+    })
+    .then((res)=> {
+      if(res.status === 200){
+      return res.json()
+      }
+      else if(res.status === 401){
+        window.location.href="./login.html"
+      }
+      else{
+          alert("something went wrong")  ;
+      }})
+      .then((data)=>{
+        console.log(data) 
+        alert("AP Mode SSID password parameter is set sucessfully");
+      })
+      .catch(err => console.log(err))
     })
     .catch(err => console.log(err))
 
@@ -226,7 +298,8 @@ function getOtaValue(){
             alert("something went wrong")  ;
         }})
         .then((data)=>{
-          console.log(data) 
+          // console.log(data) 
+          alert("Firmware flash is updated sucessfully");
         })
         .catch(err => console.log(err))
 
@@ -273,7 +346,32 @@ function getWifiValue(){
         alert("something went wrong")  ;
     }})
     .then((data)=>{
-      console.log(data) 
+
+      let new_data = JSON.stringify({ reboot: true })
+      fetch("/rpc/Config.Save", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json, text/plain, */*",
+            "Content-type": "application/json"
+        },
+        body: new_data 
+
+    })
+    .then((res)=> {
+      if(res.status === 200){
+      return res.json()
+      }
+      else if(res.status === 401){
+        window.location.href="./login.html"
+      }
+      else{
+          alert("something went wrong")  ;
+      }})
+      .then((data)=>{
+
+        alert("Wifi status parameter is set sucessfully");
+      })
+      .catch(err => console.log(err))
     })
     .catch(err => console.log(err))
 
