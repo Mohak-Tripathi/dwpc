@@ -161,9 +161,9 @@ var inferenceStaticData = JSON.stringify({
     wifi:{
       "sta.ip": networkStaticIp,
       "sta.gw": networkGatewayIp,
-      "sta.netmask": networkNetmask,
+      "sta.netmask": networkNetmask
 
-    }
+    },
   }
  
   

@@ -54,8 +54,8 @@ function getResetValue(){
       // let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
 
 
-    fetch("/rpc/resetCount", {
-        method: "GET",
+    fetch("/rpc/resetCount")
+        // method: "GET",
         // headers: {
         //     "Accept": "application/json, text/plain, */*",
         //     "Content-type": "application/json",
@@ -63,7 +63,7 @@ function getResetValue(){
 
         // },
         // body: factoryResetData
-    })
+    // })
     .then((res)=> {
     if(res.status === 200){
         return res.json()

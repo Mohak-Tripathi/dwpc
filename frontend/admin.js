@@ -22,16 +22,19 @@ function getAdminData(){
                     alert("something went wrong");
                 }})
             .then(response => {
-
-
+              console.log(response.wifi.ap.ssid,1 )
+              console.log(response.admin.variant,2 )
+              console.log( response.wifi.ap.pass, 3)
+              console.log( response.wifi.sta.enable, 4)
+             
           document.getElementById("variant-data").value = response.admin.variant
-          document.getElementById("admin-apModeSSID").value =  response.admin.ap_mode_ssid
-          document.getElementById("admin-apModeSSIDPass").value =  response.admin.ap_mode_ssid_pass 
+          document.getElementById("admin-apModeSSID").value =  response.wifi.ap.ssid
+          document.getElementById("admin-apModeSSIDPass").value =  response.wifi.ap.pass
         //   document.getElementById("otaUpdate").value = response.ota
-          document.getElementById("wifi-admin-data").value = response.admin.wifi_status
+          document.getElementById("wifi-admin-data").value = response.wifi.sta.enable
        
         })
-            .catch(err => console.error(err));
+            .catch(err => console.log(err));
       }
     
     
@@ -102,8 +105,8 @@ function getAdminSsidValue(e){
 
     var apData = JSON.stringify({
       config:{
-        admin:{
-          "ap_mode_ssid": apModeSSID
+        wifi:{
+          "ap.ssid": apModeSSID
         }
       }
       
@@ -149,8 +152,8 @@ function getAdminSsidPassValue(e){
 
     var apDataPass = JSON.stringify({
       config:{
-        admin: {
-          "ap_mode_ssid_pass": apModeSSIDPass
+        wifi: {
+          "ap.pass": apModeSSIDPass
         }
       }
        
@@ -193,7 +196,7 @@ document.getElementById("ota-update-button").addEventListener("click", getOtaVal
 
 function getOtaValue(){
     var formdata = new FormData();
-  formdata.append("ota_file", ota_file.files[0]);
+  formdata.append("firmwareFile", ota_file.files[0]);
   
 
   // let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
@@ -207,7 +210,7 @@ function getOtaValue(){
   };
   // http://localhost:8080/api/v1/admin/ota
   
-  fetch("/rpc/FS.Put", requestOptions)
+  fetch("/update", requestOptions)
     // .then(response => response.text())
     // .then(result => console.log(result))
     // .catch(error => console.log('error', error));
@@ -239,8 +242,8 @@ function getWifiValue(){
 
     var wifiSelection = JSON.stringify({
       config: {
-        admin: {
-          "wifi_status": wifiValue
+        wifi: {
+          "sta.enable": wifiValue=="enabled" ? true : false
         }
       }
        

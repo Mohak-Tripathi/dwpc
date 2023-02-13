@@ -23,15 +23,15 @@ function getMqttDataTwo(){
             .then(response => {
 
   
-            document.getElementById("mqtt-broker-2").value = response.mqtt_two.server   //broker
-            document.getElementById("mqtt-port-2").value = response.mqtt_two.port
-            document.getElementById("mqtt-people-count-2").value = response.mqtt_two.pub
-             document.getElementById("mqtt-device-health-2").value = response.mqtt_two.device_health
-           document.getElementById("mqtt-user-name-2").value = response.mqtt_two.user
-            document.getElementById("mqtt-user-password-2").value = response.mqtt_two.pass
-            document.getElementById("mqtt-protocol-2").value = response.mqtt_two.protocol
-            document.getElementById("mqtt-cert-2").value = response.mqtt_two.ca
-            document.getElementById("response-2").value = response.mqtt_two.sub
+            document.getElementById("mqtt-broker-2").value = response.mqtt1.server   //broker
+            document.getElementById("mqtt-port-2").value = response.mqtt1.port
+            document.getElementById("mqtt-people-count-2").value = response.mqtt1.pub
+             document.getElementById("mqtt-device-health-2").value = response.mqtt1.device_health
+           document.getElementById("mqtt-user-name-2").value = response.mqtt1.user
+            document.getElementById("mqtt-user-password-2").value = response.mqtt1.pass
+            document.getElementById("mqtt-protocol-2").value = response.mqtt1.protocol
+            document.getElementById("mqtt-cert-2").value = response.mqtt1.ca
+            document.getElementById("response-2").value = response.mqtt1.sub
     
 
             if(response.mqtt_protocol === "TCP"){
@@ -131,14 +131,14 @@ e.preventDefault()
 
 var mqttBrokerTwoData = JSON.stringify({
   config:{
-    mqtt_two:{
-      "broker": mqttBroker,
+    mqtt1:{
+      "server": mqttBroker,
       "port":  mqttPort,
-      "people_count_topic": mqttPeopleCount,
-      "device_health_topic": mqttDeviceHealth,
-      "mqtt_user_name": mqttUserName,
-      "mqtt_password": mqttUserPassword,
-     "response_time" : mqttResponse
+      "pub": mqttPeopleCount,
+      "device_health": mqttDeviceHealth,
+      "user": mqttUserName,
+      "pass": mqttUserPassword,
+      "sub" : mqttResponse
     }
   }
     

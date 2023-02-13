@@ -33,8 +33,8 @@ function getInferenceData(){
       document.getElementById("periodic-reset-interval").value  =  response.dwpc.periodic_reset
       document.getElementById("function-mode").value  =  response.dwpc.function_mode
       document.getElementById("measurement-frequency").value  =  response.dwpc.sensor_freq
-      document.getElementById("pixel-count-one-person-threshold").value  =  response.dwpc.Inzonecount_threshold
-      document.getElementById("pixel-count-two-person-threshold").value  =  response.dwpc.outzonecount_threshold
+      document.getElementById("pixel-count-one-person-threshold").value  =  response.dwpc.onepersoncount_threshold
+      document.getElementById("pixel-count-two-person-threshold").value  =  response.dwpc.twopersoncount_threshold
       document.getElementById("os-timer-delay").value  =  response.dwpc.os_timer_delay
       document.getElementById("wait-timer").value  =  response.dwpc.wait_timer
       document.getElementById("sensing-mode").value  =  response.dwpc.sensing_mode
@@ -72,7 +72,7 @@ function  getInferenceForm(e){
 e.preventDefault()
   let aggregationInterval = document.getElementById("aggregation-interval").value
   let InZoneDistanceThrehold= document.getElementById("In-zone-distance-threshold").value
-  let OutZoneDistanceThrehold= document.getElementById("out-zone-distance-threshold").value
+  // let OutZoneDistanceThrehold= document.getElementById("out-zone-distance-threshold").value
   let PeriodicResetInterval= document.getElementById("periodic-reset-interval").value
   let FunctionMode= document.getElementById("function-mode").value
   let MeasurementFrequency = document.getElementById("measurement-frequency").value
@@ -88,14 +88,16 @@ e.preventDefault()
     config:{
       dwpc :{
         "interval": parseInt(aggregationInterval),
-        "in_zone_distance_threshold": parseInt(InZoneDistanceThrehold),
-        "out_zone_distance_threshold": parseInt(OutZoneDistanceThrehold),
+        // "in_zone_distance_threshold": parseInt(InZoneDistanceThrehold),
+        // "out_zone_distance_threshold": parseInt(OutZoneDistanceThrehold),
+        "distance": parseInt(InZoneDistanceThrehold),
+        // "distance": parseInt(OutZoneDistanceThrehold),
         "capacity": parseInt(RoomCapacity),
         "periodic_reset": parseInt(PeriodicResetInterval),
         "function_mode": parseInt(FunctionMode),
         "sensor_freq":  parseInt(MeasurementFrequency) ,
-        "Inzonecount_threshold": parseInt(PixelCountOnePersonThreshold),
-        "outzonecount_threshold": parseInt(PixelCountTwoPersonThreshold),    
+        "onepersoncount_threshold": parseInt(PixelCountOnePersonThreshold),
+        "twopersoncount_threshold": parseInt(PixelCountTwoPersonThreshold),    
         "os_timer_delay": parseInt(OsTimerDelay),
       "wait_timer": parseInt(WaitTimer),
       "sensing_mode": parseInt(SensingMode)

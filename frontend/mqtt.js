@@ -23,7 +23,7 @@ function getMqttData(){
           }})
             .then(response => {
           // console.log(response)
-    
+    console.log(response.mqtt.pass, "kl")
 
             document.getElementById("mqtt-broker").value = response.mqtt.server
             document.getElementById("mqtt-port").value = response.mqtt.port
@@ -32,7 +32,7 @@ function getMqttData(){
             document.getElementById("mqtt-protocol").value = response.mqtt.protocol
             document.getElementById("mqtt-device-health").value = response.mqtt.device_health
            document.getElementById("mqtt-user-name").value = response.mqtt.user
-            document.getElementById("mqtt-user-password").value = response.pass
+            document.getElementById("mqtt-user-password").value = response.mqtt.pass
             document.getElementById("mqtt-cert").value = response.mqtt.ca
 
 
