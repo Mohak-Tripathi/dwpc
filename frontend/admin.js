@@ -1,4 +1,17 @@
 
+
+
+
+let userRole = JSON.parse(localStorage.getItem("user") || null)
+
+
+
+if(userRole ==="Support" || userRole ==="Demo"){
+ document.getElementById("admin-page").style.display= "none"
+ 
+}
+
+
 function getAdminData(){
 
     // let BearerCheck = JSON.parse(localStorage.getItem("token") || null)

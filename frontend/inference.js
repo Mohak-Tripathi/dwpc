@@ -1,4 +1,12 @@
 
+let userRole = JSON.parse(localStorage.getItem("user") || null)
+
+
+
+if(userRole ==="Support" || userRole ==="Demo"){
+ document.getElementById("inference-page").style.display= "none"
+ 
+}
 
 
 function getInferenceData(){

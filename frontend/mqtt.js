@@ -1,4 +1,14 @@
 
+let userRole = JSON.parse(localStorage.getItem("user") || null)
+
+
+if(userRole ==="Demo"){
+ document.getElementById("admin-page").style.display= "none"
+ 
+}
+
+
+
 function getMqttData(){
 
     
