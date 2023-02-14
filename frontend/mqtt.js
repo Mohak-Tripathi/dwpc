@@ -297,14 +297,53 @@ var mqttBrokerOneData = JSON.stringify({
 document.getElementById("upload-cert-button").addEventListener("click",  setMqttProtocolCert)
 
 
-function  setMqttProtocolCert(){
-  var formdata = new FormData();
+async function  setMqttProtocolCert(){
+  // var formdata = new FormData();
   // formdata.append("mqtt_cert_file", mqtt_cert_file.files[0]);
-  
-  formdata.append("myFile", mqtt_cert_file.files[0]);
 
-  // const file =  mqtt_cert_file.files[0]
-  // console.log(file, "ho")
+  const file =  mqtt_cert_file.files[0]
+  console.log(file, "file-m")
+  const base64Data = await encodeAsBase64(file);
+  console.log(base64Data, "file-kl")
+  if (base64Data.length < 10240) {
+    if (base64Data.length > 2048) {
+      postLargeData(file.name, base64Data, 2048);
+    } else {
+      fetch("/rpc/FS.Put", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json, text/plain, */*",
+            "Content-type": "application/json"
+    
+        },
+        body: JSON.stringify({
+          filename: fileName,
+          append: true,
+          data: base64Data,
+        })
+    })
+    .then((res)=> {
+    if(res.status === 200){
+        return res.json()
+    }
+    else if(res.status === 401){
+      window.location.href="./login.html"
+    }
+    else{
+        alert("something went wrong")  ;
+    }})
+    .then((data)=>{
+      console.log(encodedData.slice(chunkSize));
+      
+     
+    })
+    .catch(err => console.log(err))
+
+    }
+  } else {
+    alert("File size exceeds the limit, Please upload file lessthan 10KB ");
+  }
+
 
 
   var requestOptions = {
@@ -345,6 +384,182 @@ function  setMqttProtocolCert(){
 
 
 
+    /*********************************************************************
+ * @fn      encodeAsBase64
+ *
+ * @brief   Encodes the user uploaded file date into base64 format
+ *
+ * @param   file -> user uploaded file
+ *
+ * @return  None.
+ */
+const encodeAsBase64 = (file) =>
+new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = () =>
+    resolve(reader.result.replace(/^data:.+;base64,/, ""));
+  reader.onerror = (error) => reject(error);
+});
+
+
+/*********************************************************************
+ * @fn      postLargeData
+ *
+ * @brief   To procees the large files into chuncks
+ *
+ * @param   fileName -> get the user uploaded file by its name
+ *
+ * @param   encodedData -> get the user uploaded file data in base64 encoded data format
+ *
+ * @param   chunkSize -> get the encoded data as chucks
+ *
+ * @return  None.
+ */
+// const postLargeData = (fileName, encodedData, chunkSize) => {
+//   fetch("/rpc/FS.Put", {
+//     method: "POST",
+//     headers: {
+//         "Accept": "application/json, text/plain, */*",
+//         "Content-type": "application/json"
+//         // Authorization: `Bearer ${BearerCheck}`,
+//     },
+//     body: JSON.stringify({
+//       filename: fileName,
+//       append: true,
+//       data: encodedData.slice(0, chunkSize),
+//     })
+// })
+
+// .then((res)=> {
+//   if(res.status === 200){
+//   return res.json()
+//   }
+//   else if(res.status === 401){
+//     window.location.href="./login.html"
+//   }
+//   else{
+//       alert("something went wrong")  ;
+//   }})
+//   .then((data)=>{
+//     if (
+//       chunkSize < encodedData.length &&
+//       encodedData.length - chunkSize > chunkSize
+//     ) {
+//       postLargeData(fileName, encodedData.slice(chunkSize), chunkSize);
+//     } else {
+//       fetch("/rpc/FS.Put", {
+//         method: "POST",
+//         headers: {
+//             "Accept": "application/json, text/plain, */*",
+//             "Content-type": "application/json"
+//             // Authorization: `Bearer ${BearerCheck}`,
+//         },
+//         body: JSON.stringify({
+//           filename: fileName,
+//           append: true,
+//           data: encodedData.slice(chunkSize),
+//         })
+//     })
+//     .then((res)=> {
+//     if(res.status === 200){
+//         return res.json()
+//     }
+//     else if(res.status === 401){
+//       window.location.href="./login.html"
+//     }
+//     else{
+//         alert("something went wrong")  ;
+//     }})
+//     .then((data)=>{
+
+//       console.log(encodedData.slice(chunkSize));
+    
+
+//     }
+//   }
+  
+
+// }
+// .catch(err => console.log(err))
+// }
+
+
+const postLargeData = (fileName, encodedData, chunkSize) => {
+
+  fetch("/rpc/FS.Put", {
+    method: "POST",
+    headers: {
+        "Accept": "application/json, text/plain, */*",
+        "Content-type": "application/json"
+
+    },
+    body: JSON.stringify({
+      filename: fileName,
+      append: true,
+      data: encodedData.slice(0, chunkSize),
+    })
+})
+.then((res)=> {
+if(res.status === 200){
+    return res.json()
+}
+else if(res.status === 401){
+  window.location.href="./login.html"
+}
+else{
+    alert("something went wrong")  ;
+}})
+.then((data)=>{
+
+  console.log(encodedData.slice(0, chunkSize));
+  if (
+    chunkSize < encodedData.length &&
+    encodedData.length - chunkSize > chunkSize
+  ) {
+    postLargeData(fileName, encodedData.slice(chunkSize), chunkSize);
+  }
+  else{
+
+
+
+  fetch("/rpc/FS.Put", {
+    method: "POST",
+    headers: {
+        "Accept": "application/json, text/plain, */*",
+        "Content-type": "application/json"
+
+    },
+    body: JSON.stringify({
+      filename: fileName,
+      append: true,
+      data: encodedData.slice(chunkSize),
+    })
+})
+.then((res)=> {
+if(res.status === 200){
+    return res.json()
+}
+else if(res.status === 401){
+  window.location.href="./login.html"
+}
+else{
+    alert("something went wrong")  ;
+}})
+.then((data)=>{
+  console.log(encodedData.slice(chunkSize));
+  
+ 
+})
+.catch(err => console.log(err))
+}
+})
+.catch(err => console.log(err))
+
+};
+
+
+// };
 //APPLY 
 
 //     document.getElementById("mqtt-one-button").addEventListener("click",  setMqttBrokerOneApplyForm)
