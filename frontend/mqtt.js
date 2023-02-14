@@ -299,10 +299,14 @@ document.getElementById("upload-cert-button").addEventListener("click",  setMqtt
 
 function  setMqttProtocolCert(){
   var formdata = new FormData();
-  formdata.append("mqtt_cert_file", mqtt_cert_file.files[0]);
+  // formdata.append("mqtt_cert_file", mqtt_cert_file.files[0]);
   
+  formdata.append("myFile", mqtt_cert_file.files[0]);
 
-  // let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+  // const file =  mqtt_cert_file.files[0]
+  // console.log(file, "ho")
+
+
   var requestOptions = {
     method: 'POST',
     body: formdata,
