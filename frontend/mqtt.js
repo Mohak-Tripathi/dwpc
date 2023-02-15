@@ -548,7 +548,7 @@ else{
     alert("something went wrong")  ;
 }})
 .then((data)=>{
-  console.log(encodedData.slice(chunkSize));
+  // console.log(encodedData.slice(chunkSize));
   
  
 })
