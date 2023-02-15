@@ -3,7 +3,7 @@ let userRole = JSON.parse(localStorage.getItem("user") || null)
 
 
 if(userRole ==="Demo"){
- document.getElementById("admin-page").style.display= "none"
+ document.getElementById("mqtt-1-page").style.display= "none"
  
 }
 
@@ -317,7 +317,7 @@ async function  setMqttProtocolCert(){
     
         },
         body: JSON.stringify({
-          filename: fileName,
+          filename: file.name,
           append: true,
           data: base64Data,
         })
@@ -333,7 +333,8 @@ async function  setMqttProtocolCert(){
         alert("something went wrong")  ;
     }})
     .then((data)=>{
-      console.log(encodedData.slice(chunkSize));
+      alert("MQTT certificate uploaded successfully");
+      // console.log(encodedData.slice(chunkSize));
       
      
     })
@@ -346,39 +347,39 @@ async function  setMqttProtocolCert(){
 
 
 
-  var requestOptions = {
-    method: 'POST',
-    body: formdata,
-  //   headers: {
-  //   //   "Accept": "application/json, */*",
-  //   // "Content-Type": "text/html; charset=utf-8",
+//   var requestOptions = {
+//     method: 'POST',
+//     body: formdata,
+//   //   headers: {
+//   //   //   "Accept": "application/json, */*",
+//   //   // "Content-Type": "text/html; charset=utf-8",
   
-  // Authorization: `Bearer ${BearerCheck}`,
+//   // Authorization: `Bearer ${BearerCheck}`,
   
-  // }
-  };
+//   // }
+//   };
   
-  fetch("/rpc/FS.Put", requestOptions)
-    // .then(response => response.text())
-    // .then(result => console.log(result))
-    // .catch(error => console.log('error', error));
+//   fetch("/rpc/FS.Put", requestOptions)
+//     // .then(response => response.text())
+//     // .then(result => console.log(result))
+//     // .catch(error => console.log('error', error));
 
 
-.then((res)=> {
-    if(res.status === 200){  
-        return res.text()
-    }
-    else if(res.status === 401){
-      window.location.href="./login.html"
-    }
-    else{
+// .then((res)=> {
+//     if(res.status === 200){  
+//         return res.text()
+//     }
+//     else if(res.status === 401){
+//       window.location.href="./login.html"
+//     }
+//     else{
   
-        alert("something went wrong")  ;
-    }})
-    .then((data)=>{
-      console.log(data) 
-    })
-    .catch(err => console.log(err))
+//         alert("something went wrong")  ;
+//     }})
+//     .then((data)=>{
+//       console.log(data) 
+//     })
+//     .catch(err => console.log(err))
 
     }
 

@@ -3,39 +3,39 @@ let userRole = JSON.parse(localStorage.getItem("user") || null)
 
 
 if(userRole ==="Demo"){
- document.getElementById("admin-page").style.display= "none"
+ document.getElementById("service-page").style.display= "none"
 }
 
 
 
-document.getElementById("calliberate-button").addEventListener("click", getCalliberateValue)
+document.getElementById("caliberate-button").addEventListener("click", getCalliberateValue)
 
 
 function getCalliberateValue(){
 
-    var calliberateData = JSON.stringify({
-        "calliberate" : "start"
-      });
+    // var calliberateData = JSON.stringify({
+    //     "calliberate" : "start"
+    //   });
 
 
-      let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
+    //   let BearerCheck = JSON.parse(localStorage.getItem("token") || null)
 
 
-    fetch("/api/v1/service/calliberate", {
-        method: "POST",
-        headers: {
-            "Accept": "application/json, text/plain, */*",
-            "Content-type": "application/json",
-        Authorization: `Bearer ${BearerCheck}`,
+    fetch("/rpc/calibration", {
+        method: "GET",
+        // headers: {
+        //     "Accept": "application/json, text/plain, */*",
+        //     "Content-type": "application/json",
+        // Authorization: `Bearer ${BearerCheck}`,
 
-        },
-        body: calliberateData
+        // },
+        // body: calliberateData
     })
     .then((res)=> {
     if(res.status === 200){
         return res.json()
     }else if(res.status === 401){
-        window.location.href="../login/login.html"
+        window.location.href="./login.html"
       }
     else{
         alert("something went wrong")  ;

@@ -3,7 +3,7 @@ let userRole = JSON.parse(localStorage.getItem("user") || null)
 
 
 if(userRole ==="Demo"){
- document.getElementById("admin-page").style.display= "none"
+ document.getElementById("mqtt-2-page").style.display= "none"
  
 }
 

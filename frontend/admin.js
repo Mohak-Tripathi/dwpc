@@ -37,13 +37,15 @@ function getAdminData(){
               // console.log(response.wifi.ap.ssid,1 )
               // console.log(response.admin.variant,2 )
               // console.log( response.wifi.ap.pass, 3)
-              // console.log( response.wifi.sta.enable, 4)
+              console.log( response.wifi.sta.enable, 4)
+
+              let newValue = response.wifi.sta.enable  == true ? "enabled" : "disabled"
              
           document.getElementById("variant-data").value = response.admin.variant
           document.getElementById("admin-apModeSSID").value =  response.wifi.ap.ssid
           document.getElementById("admin-apModeSSIDPass").value =  response.wifi.ap.pass
         //   document.getElementById("otaUpdate").value = response.ota
-          document.getElementById("wifi-admin-data").value = response.wifi.sta.enable
+          document.getElementById("wifi-admin-data").value = newValue
        
         })
             .catch(err => console.log(err));
@@ -326,10 +328,11 @@ function getWifiValue(){
 
     let wifiValue =   document.getElementById("wifi-admin-data").value
 
+    // let value=   wifiValue =="enabled" ? true : false
     var wifiSelection = JSON.stringify({
       config: {
         wifi: {
-          "sta.enable": wifiValue=="enabled" ? true : false
+          "sta.enable": wifiValue== "enabled" ? true : false
         }
       }
        
