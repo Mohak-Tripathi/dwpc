@@ -42,12 +42,12 @@ function getMqttDataTwo(){
             // document.getElementById("mqtt-protocol-2").value = response.mqtt1.protocol
             // document.getElementById("mqtt-cert-2").value = response.mqtt1.ca
             document.getElementById("response-2").value = response.mqtt1.sub
-    
+            document.getElementById("qos-level-2").value = response.mqtt1.max_qos
 
-            if(response.mqtt_protocol === "TCP"){
-              document.getElementById("display-mqtt").style.display="none"
+            // if(response.mqtt_protocol === "TCP"){
+            //   document.getElementById("display-mqtt").style.display="none"
            
-            }
+            // }
 
        
 
@@ -137,7 +137,7 @@ e.preventDefault()
   let mqttUserName= document.getElementById("mqtt-user-name-2").value
   let mqttUserPassword = document.getElementById("mqtt-user-password-2").value
   let mqttResponse = document.getElementById("response-2").value
-
+  let qosResponse = document.getElementById("qos-level-2").value
 
 var mqttBrokerTwoData = JSON.stringify({
   config:{
@@ -148,7 +148,8 @@ var mqttBrokerTwoData = JSON.stringify({
       "device_health": mqttDeviceHealth,
       "user": mqttUserName,
       "pass": mqttUserPassword,
-      "sub" : mqttResponse
+      "sub" : mqttResponse,
+      "max_qos": qosResponse
     }
   }
     

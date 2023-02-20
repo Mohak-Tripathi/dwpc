@@ -14,7 +14,7 @@ function Navbar() {
         <div class="d-flex">
          
     
-          <a class="btn btn-primary px-3 me-2 " id="admin-nav" href="./admin.html" role="button" > <span class="material-symbols-outlined">
+          <a class="btn btn-primary px-3 me-2" id="admin-nav" href="./admin.html" role="button" > <span class="material-symbols-outlined">
           admin_panel_settings
           </span> Admin </a>
      

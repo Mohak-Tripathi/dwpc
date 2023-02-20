@@ -33,6 +33,15 @@
    
 //    }
 
+const activePage = window.location.pathname;
+// console.log(activePage, "pp")
+const navLinks = document.querySelectorAll("a").forEach(link => {
+//    console.log(link, "link")
+    if(link.href.includes(`${activePage}`)){
+        link.classList.add("active")
+    }
+})
+
 
 userRole = JSON.parse(localStorage.getItem("user") || null)
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>DWPC: Inference </title>
     
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
   <!-- Google Fonts -->
@@ -18,12 +18,13 @@
   
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <link     rel="stylesheet" href="inference.css"  />
+  <link     rel="stylesheet" href="style.css"  />
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary"> </nav>
     <div class="container mt-4 mb-4 pb-1 admin-container" id="inference-page">
        
-        <div class="text-center pt-5 pb-4 fst-italic opacity-99 sub-heading"> Model input parameters for optimal performance during inference, should be configured by the production team before the product is shipped from the factory.
+        <div class="text-center pt-5 pb-4 ms-3 me-3 fst-italic opacity-99 sub-heading"> Input parameters for adjusting sensitivity and field of view for optimal performance during people counting, and periodic interval for setting data reporting frequency. It should be configured by the trained expert engineer after the sensor is being installed at desired location.
         </div>
 
         <div class="row mt-3 mb-5 me-2 ms-2 p-2">
@@ -42,7 +43,7 @@
       
                 <div class="col-md-6 ">
                     <!-- border -->
-                    <p>In-zone Distance threshold</p>
+                    <p>In-zone Distance threshold (mm) </p>
                   <div class="form">
                     <input type="number" id="In-zone-distance-threshold" class="form-control form-control-sm" placeholder="Enter In-zone Distance threshold"/>
      
@@ -54,7 +55,7 @@
                 <!-- <p class="text-primary">Configure the topics to publish the data</p> -->
                 <div class="col-md-6">
                     <!-- border -->
-                    <p>Out-zone Distance threshold</p>
+                    <p>Out-zone Distance threshold (mm) </p>
                 <div class="form">
                     <input type="number" id="out-zone-distance-threshold" class="form-control form-control-sm" placeholder= "Enter In-zone Distance threshold"/>
                     <!-- <label class="form-label" for="form1Example1">text address</label> -->
@@ -84,7 +85,7 @@
       
                 <div class="col-md-6">
                     <!-- border -->
-                    <p> Measurement (Sensor) Frequency</p>
+                    <p> Measurement (Sensor) Frequency (HZ)</p>
                   <div class="form">
                     <input type="number" id="measurement-frequency" class="form-control form-control-sm" placeholder="Enter Measurement Frequency"/>
 
@@ -125,7 +126,7 @@
                 
                 <div class="col-md-6">
                   <!-- border -->
-                  <p>OS Timer Delay</p>
+                  <p>OS Timer Delay (msec)</p>
                 <div class="form">
                   <input type="number" id="os-timer-delay" class="form-control form-control-sm" placeholder="Enter OS Timer Delay"/>
 
@@ -138,7 +139,7 @@
        
               <div class="col-md-6">
                   <!-- border -->
-                  <p>Wait Timer</p>
+                  <p>Wait Timer (msec) </p>
               <div class="form">
                   <input type="number" id="wait-timer" class="form-control form-control-sm" placeholder="Enter Wait Timer"/>
             

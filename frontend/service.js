@@ -42,6 +42,7 @@ function getCalliberateValue(){
     }})
     .then((data)=>{
       console.log(data) 
+      alert("Calibration is done sucessfully");
     })
     .catch(err => console.log(err))
 
@@ -83,7 +84,9 @@ function getResetValue(){
         alert("something went wrong")  ;
     }})
     .then((data)=>{
+      alert("Factory Reset is done sucessfully");
       console.log(data) 
+
     })
     .catch(err => console.log(err))
 
@@ -119,6 +122,7 @@ function getRebootValue(){
         alert("something went wrong")  ;
     }})
     .then((data)=>{
+      alert("Reboot is done sucessfully");
       console.log(data) 
     })
     .catch(err => console.log(err))

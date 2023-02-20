@@ -31,9 +31,9 @@ function getMqttData(){
           }})
             .then(response => {
           // console.log(response)
-    console.log(response.mqtt.pass, "kl")
-    console.log(response.mqtt.user, "kl2")
-    console.log(response.mqtt.device_health, "kl3")
+    // console.log(response.mqtt.pass, "kl")
+    // console.log(response.mqtt.user, "kl2")
+    // console.log(response.mqtt.device_health, "kl3")
 
             document.getElementById("mqtt-broker").value = response.mqtt.server
             document.getElementById("mqtt-port").value = response.mqtt.port
@@ -44,12 +44,12 @@ function getMqttData(){
            document.getElementById("mqtt-user-name").value = response.mqtt.user
             document.getElementById("mqtt-user-password").value = response.mqtt.pass
             // document.getElementById("mqtt-cert").value = response.mqtt.ca
+            document.getElementById("qos-level").value = response.mqtt.max_qos
 
-
-            if(response.mqtt_protocol === "TCP"){
-              document.getElementById("display-mqtt-1").style.display="none"
+            // if(response.mqtt_protocol === "TCP"){
+            //   document.getElementById("display-mqtt-1").style.display="none"
            
-            }
+            // }
 
 
        
@@ -142,6 +142,7 @@ e.preventDefault()
   let mqttUserName= document.getElementById("mqtt-user-name").value
   let mqttUserPassword = document.getElementById("mqtt-user-password").value
   let mqttResponse = document.getElementById("response-1").value
+  let qosResponse = document.getElementById("qos-level").value
 
 
 var mqttBrokerOneData = JSON.stringify({
@@ -153,7 +154,8 @@ var mqttBrokerOneData = JSON.stringify({
       "device_health": mqttDeviceHealth,
       "user": mqttUserName,
       "pass": mqttUserPassword,
-      "sub" : mqttResponse
+      "sub" : mqttResponse,
+      "max_qos": qosResponse
     }
   }
  
@@ -548,7 +550,7 @@ else{
     alert("something went wrong")  ;
 }})
 .then((data)=>{
-  // console.log(encodedData.slice(chunkSize));
+  console.log(encodedData.slice(chunkSize));
   
  
 })

@@ -3,7 +3,7 @@ let userRole = JSON.parse(localStorage.getItem("user") || null)
 
 
 
-if(userRole ==="Support" || userRole ==="Demo"){
+if(userRole ==="Demo"){
  document.getElementById("inference-page").style.display= "none"
  
 }
@@ -35,8 +35,8 @@ function getInferenceData(){
       console.log(response)
 
       document.getElementById("aggregation-interval").value =  response.dwpc.interval
-      document.getElementById("In-zone-distance-threshold").value  =  response.dwpc.distance
-      document.getElementById("out-zone-distance-threshold").value  =  response.dwpc.distance
+      document.getElementById("In-zone-distance-threshold").value  =  response.dwpc.inzonedistance
+      document.getElementById("out-zone-distance-threshold").value  =  response.dwpc.outzonedistance
       document.getElementById("room-capacity").value  =  response.dwpc.capacity
       document.getElementById("periodic-reset-interval").value  =  response.dwpc.periodic_reset
       document.getElementById("function-mode").value  =  response.dwpc.function_mode
@@ -80,7 +80,7 @@ function  getInferenceForm(e){
 e.preventDefault()
   let aggregationInterval = document.getElementById("aggregation-interval").value
   let InZoneDistanceThrehold= document.getElementById("In-zone-distance-threshold").value
-  // let OutZoneDistanceThrehold= document.getElementById("out-zone-distance-threshold").value
+  let OutZoneDistanceThrehold= document.getElementById("out-zone-distance-threshold").value
   let PeriodicResetInterval= document.getElementById("periodic-reset-interval").value
   let FunctionMode= document.getElementById("function-mode").value
   let MeasurementFrequency = document.getElementById("measurement-frequency").value
@@ -96,9 +96,9 @@ e.preventDefault()
     config:{
       dwpc :{
         "interval": parseInt(aggregationInterval),
-        // "in_zone_distance_threshold": parseInt(InZoneDistanceThrehold),
-        // "out_zone_distance_threshold": parseInt(OutZoneDistanceThrehold),
-        "distance": parseInt(InZoneDistanceThrehold),
+        "inzonedistance": parseInt(InZoneDistanceThrehold),
+        "outzonedistance": parseInt(OutZoneDistanceThrehold),
+        // "distance": parseInt(InZoneDistanceThrehold),
         // "distance": parseInt(OutZoneDistanceThrehold),
         "capacity": parseInt(RoomCapacity),
         "periodic_reset": parseInt(PeriodicResetInterval),

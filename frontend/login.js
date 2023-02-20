@@ -6,17 +6,17 @@
 const credentials=  [
   {
     app_user: "Production_User",
-    app_password: "f213ca89494ed2145819fd304ba0cee5",
+    app_password: "6515a828fcd7955efa8614e8fe32f6b6",
     role: "Production"
   },
   {
     app_user: "Support_User",
-    app_password: "a3517876c46b72354b5c330bf57f5968",
+    app_password: "e556a8ac44843c4f0849a07e23c72948",
     role: "Support"
   },
   {
     app_user: "Demo_User",
-    app_password: "faeb5fa19d257ec2303cb3b4ca41759e",
+    app_password: "fc9b98fd63286f67cfe9b212f31afe28",
     role: "Demo"
   }
 ]
@@ -34,6 +34,7 @@ e.preventDefault()
 
     const hashedPwd = CryptoJS.MD5(username + password).toString();
 
+    // alert(hashedPwd)
 
       let targetObject = credentials.filter((elem) => {
         return elem.app_user === username;
@@ -62,6 +63,9 @@ e.preventDefault()
           else{
                       window.location.href="dashboard.html"
          }
+        }
+        else{
+          alert("Please provide correct login credentials")
         }
 
 
